@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
-import classes from './Unsplash.module.css';
+import React, {Component} from 'react';
+import NavBar from '../../components/UI/Navigation/NavigationMenu/Navbar';
 
 class Unsplash extends Component {
 
-    render() {
-        return (
-            <div className={classes.Unsplash}>
-                <h1>Unsplash</h1>
-            </div>
-        )
-    }
+  render(){
+    return <NavBar />
+  }
 }
+
 
 
 

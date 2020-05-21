@@ -1,3 +1,17 @@
 .Unsplash {
     text-align: center;
 }
+
+
+.root {
+    margin : 50px;
+    
+}
+
+.root button {
+    margin: 200px;
+}
+
+Input {
+    height: 100px;
+}
