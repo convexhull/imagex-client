@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
+import MainNavbar from '../../components/UI/MainNavigation/MainNavigation';
 
 
 
@@ -10,8 +11,7 @@ class Layout extends Component {
     return (
       <Fragment>
         <header>
-          <h1>Some header</h1>
-          {this.props.isAuthenticated ? <h3>Logged in!</h3> : <h3>Please log in</h3>}
+          <MainNavbar />
         </header>
         {this.props.children}
         <footer>

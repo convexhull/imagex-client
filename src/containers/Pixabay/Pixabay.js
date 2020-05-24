@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-import Navbar from '../../components/Unsplash/Navigation/Navbar';
+import Navbar from '../../components/Pixabay/Navigation/Navbar';
 import ImageGrid from '../../components/UI/ImageGrid/ImageGrid';
 import * as actions from '../../store/actions/index';
 

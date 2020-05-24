@@ -8,7 +8,7 @@ import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
 import Unsplash from './containers/Unsplash/Unsplash';
 import Authentication from './containers/Authentication/Authentication';
-import * as actions from './store/actions';
+import Pixabay from './containers/Pixabay/Pixabay';
 
 
 class App extends Component {
@@ -27,6 +27,8 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/authentication" exact component={Authentication} />
             <Route path="/unsplash" exact component={Unsplash} />
+            <Route path="/pixabay" exact component={Pixabay} />
+            <Route component={()=>(<h1>Not found!!!</h1>)} />
           </Switch>
         </Layout>
       </div>
