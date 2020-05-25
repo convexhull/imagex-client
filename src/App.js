@@ -9,6 +9,7 @@ import Home from './containers/Home/Home';
 import Unsplash from './containers/Unsplash/Unsplash';
 import Authentication from './containers/Authentication/Authentication';
 import Pixabay from './containers/Pixabay/Pixabay';
+import Profile from './containers/Profile/Profile';
 
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
 
 
   componentDidMount(){
-
+    
   }
   
   render(){
@@ -28,6 +29,7 @@ class App extends Component {
             <Route path="/authentication" exact component={Authentication} />
             <Route path="/unsplash" exact component={Unsplash} />
             <Route path="/pixabay" exact component={Pixabay} />
+            <Route path="/profile" exact component={Profile} />
             <Route component={()=>(<h1>Not found!!!</h1>)} />
           </Switch>
         </Layout>

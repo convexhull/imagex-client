@@ -2,14 +2,12 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 import Navbar from '../../components/Pixabay/Navigation/Navbar';
-import ImageGrid from '../../components/UI/ImageGrid/ImageGrid';
+import ImageGrid from '../../components/Pixabay/ImageGrid/ImageGrid';
 import * as actions from '../../store/actions/index';
 
 
 
-
-
-class Unsplash extends Component {
+class Pixabay extends Component {
 
   render(){
     return (
@@ -24,8 +22,8 @@ class Unsplash extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    images: state.unsplash.images,
-    page: state.unsplash.page,
+    images: state.pixabay.images,
+    page: state.pixabay.page,
     isAuthenticated: state.auth.token !== null
   }
 }
@@ -33,8 +31,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchByKeyword : (keyword) => dispatch(actions.unsplashImageSearchByKeyword(keyword))
+    onSearchByKeyword : (keyword) => dispatch(actions.pixabayImageSearchByKeyword(keyword))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Unsplash);
+export default connect(mapStateToProps, mapDispatchToProps)(Pixabay);
