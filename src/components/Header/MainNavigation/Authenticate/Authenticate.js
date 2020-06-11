@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-class LoginInfo extends Component {
+class Authenticate extends Component {
   render() {
     let info = <h2>Please Login</h2>;
     if(this.props.isAuthenticated){
@@ -27,4 +27,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(LoginInfo);
+export default connect(mapStateToProps)(Authenticate);

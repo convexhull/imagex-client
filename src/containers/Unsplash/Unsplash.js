@@ -14,7 +14,7 @@ class Unsplash extends Component {
   render(){
     return (
       <React.Fragment>
-        <Navbar onSearchByKeyword={this.props.onSearchByKeyword} isAuthenticated={this.props.isAuthenticated}/>
+        <Navbar />
         <ImageGrid images={this.props.images}/>
       </React.Fragment>
     );
