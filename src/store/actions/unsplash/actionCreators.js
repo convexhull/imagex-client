@@ -26,8 +26,39 @@ export const unsplashImageSearchByKeyword = (keyword) => {
         catch(e){
 
         }
-        
     }
 }
+
+
+
+const unsplashGetHeroImage = (payload) => {
+    return {
+        type: actionTypes.UNSPLASH_GET_RANDOM_HERO_IMAGE,
+        payload
+    }
+}
+
+export const asyncUnsplashGetRandomHeroImage = () => {
+    return async (dispatch) => {
+        try {
+            let apiResponse = await Axios.get('/unsplash/randomPhoto');
+            let payload = {
+                image: apiResponse.data
+            }
+
+
+            dispatch(unsplashGetHeroImage(payload));
+        }
+        catch(e){
+            console.log(e.response.data);
+            let payload = {
+                error: e.response.data
+            }
+
+            dispatch(unsplashGetHeroImage(payload));
+        }
+    }
+}
+
 
 

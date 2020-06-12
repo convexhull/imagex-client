@@ -28,7 +28,7 @@ class NavigationBar extends Component {
 
   render() {
     return (
-        <div>
+        <div className={classes.Navbar}>
           <ul>
             <li>Current Events</li>
             <li>COVID-19</li>

@@ -4,7 +4,8 @@ export {
 
 
 export {
-    unsplashImageSearchByKeyword
+    unsplashImageSearchByKeyword,
+    asyncUnsplashGetRandomHeroImage
 } from './unsplash/actionCreators';
 
 
