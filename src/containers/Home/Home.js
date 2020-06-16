@@ -6,7 +6,7 @@ class Home extends Component {
     render(){
         return (
             <div class={classes.Home}>
-                <h1>Home Page</h1>
+                <h1>Home Pagez</h1>
             </div>
         )
     }
