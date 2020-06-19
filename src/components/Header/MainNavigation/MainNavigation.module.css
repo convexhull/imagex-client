@@ -17,10 +17,30 @@
 .main-navigation .logo {
     width: 50px;
     height: 50px;
+    margin-right: 40px;
 }
 
 
 .main-navigation .logo img {
     width: 100%;
     height: auto;
+}
+
+.main-navigation input[type="text"] {
+    flex-basis: 40%;
+    margin-right: 40px;
+}
+
+.main-navigation .navbar-links {
+    margin-right: 40px;
+    text-decoration: none;
+}
+
+.main-navigation .navbar-links:first-of-type {
+    margin-left: 40px;
+}
+
+.main-navigation .auth-info {
+    margin-left: 500px;
+    font-size: 500px;
 }

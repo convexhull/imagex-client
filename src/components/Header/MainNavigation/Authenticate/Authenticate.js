@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 class Authenticate extends Component {
   render() {
-    let info = <h2>Please Login</h2>;
+    let info = <h2 >Please Login</h2>;
     if(this.props.isAuthenticated){
       info = (
         <Link to="/profile" >Profile</Link>
