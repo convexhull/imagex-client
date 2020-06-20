@@ -1,5 +1,7 @@
 .main-navigation {
-    
+    display: flex;
+    align-items: center;
+    height: 60px;
 }
 
 
@@ -10,6 +12,7 @@
 .main-navigation ul {
     display: flex;
     list-style: none;
+    align-items: center;
 }
 
 
@@ -26,21 +29,27 @@
     height: auto;
 }
 
-.main-navigation input[type="text"] {
+.main-navigation .image-search {
     flex-basis: 40%;
-    margin-right: 40px;
+    height: 80%;
+}
+
+.main-navigation input[type="text"] {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border-radius: 10px;
 }
 
 .main-navigation .navbar-links {
-    margin-right: 40px;
     text-decoration: none;
+    flex-basis: 25%;
 }
 
 .main-navigation .navbar-links:first-of-type {
     margin-left: 40px;
 }
 
-.main-navigation .auth-info {
-    margin-left: 500px;
-    font-size: 500px;
+.main-navigation .authenticate {
+    margin-left: auto;
 }

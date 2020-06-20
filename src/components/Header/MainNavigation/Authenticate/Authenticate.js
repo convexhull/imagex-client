@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import classes from './Authenticate.module.css';
+
 
 class Authenticate extends Component {
   render() {
@@ -12,7 +14,7 @@ class Authenticate extends Component {
       )
     }
     return (
-      <div>
+      <div className={classes.Authenticate}>
         {info}
       </div>
     );

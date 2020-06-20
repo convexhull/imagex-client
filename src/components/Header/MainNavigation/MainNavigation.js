@@ -13,17 +13,29 @@ class MainNavbar extends Component {
     render(){
         return (
           <div className={classes["main-navigation"]}>
-              <ul>
-                <div className={classes.logo} >
-                  <img src={logo} />
-                </div>
+              <div className={classes.logo} >
+                <img src={logo} />
+              </div>
+              <div className={classes["image-search"]}>
                 <input type="text" placeholder="Search free high resolution photos" />
-                <NavLink to="/unsplash" exact className={classes["navbar-links"]}>Unsplash</NavLink>
-                <NavLink to="/pixabay" exact className={classes["navbar-links"]}>Pixabay</NavLink>
-                <NavLink to="#" className={classes["navbar-links"]} >...</NavLink>
-                <NavLink to="#" className={classes["navbar-links"]} >Search by Image</NavLink>
-                <Authenticate style={{fontSize: "500px"}}  />
+              </div>
+              <ul>
+                <li>
+                  <NavLink to="/unsplash" exact className={classes["navbar-links"]}>Unsplash</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/pixabay" exact className={classes["navbar-links"]}>Pixabay</NavLink>
+                </li>
+                <li>
+                  <NavLink to="#" className={classes["navbar-links"]} >...</NavLink>
+                </li>
+                <li>
+                  <NavLink to="#" className={classes["navbar-links"]}>Search By Image</NavLink>
+                </li>
               </ul>
+              <div className={classes.authenticate}>  
+                <Authenticate />
+              </div>
           </div>
         );
     }
