@@ -5,7 +5,8 @@ const initialState = {
     images: [],
     page: 1,
     loading: false,
-    heroImageUrl: ''
+    heroImageUrl: '',
+    redirectUrl: ''
 }
 
 
