@@ -3,15 +3,20 @@ import { connect } from 'react-redux';
 
 import ImageGrid from '../../components/Pixabay/ImageGrid/ImageGrid';
 import * as actions from '../../store/actions/index';
+import HeroSection from '../../components/Pixabay/HeroSection/HeroSection';
 
 
 
 class Pixabay extends Component {
 
+  componentDidMount() {
+
+  }
+
   render(){
     return (
       <React.Fragment>
-        <ImageGrid images={this.props.images}/>
+        <HeroSection platform="Pixabay" />
       </React.Fragment>
     );
   }
@@ -20,7 +25,6 @@ class Pixabay extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    images: state.pixabay.images,
     page: state.pixabay.page,
     isAuthenticated: state.auth.token !== null
   }
@@ -29,7 +33,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchByKeyword : (keyword) => dispatch(actions.pixabayImageSearchByKeyword(keyword))
+
   }
 }
 

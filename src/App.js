@@ -11,6 +11,7 @@ import Authentication from './containers/Authentication/Authentication';
 import Pixabay from './containers/Pixabay/Pixabay';
 import Profile from './containers/Profile/Profile';
 import UnsplashSearch from './components/Unsplash/Search/Search';
+import PixabaySearch from './components/Pixabay/Search/Search';
 
 
 class App extends Component {
@@ -30,9 +31,10 @@ class App extends Component {
             <Route path="/authentication" exact component={Authentication} />
             <Route path="/unsplash" exact component={Unsplash} />
             <Route path="/photos/unsplash" exact component={UnsplashSearch} />
+            <Route path="/photos/pixabay" exact component={PixabaySearch} />
             <Route path="/pixabay" exact component={Pixabay} />
             <Route path="/profile" exact component={Profile} />
-            <Route component={()=>(<h1>Not found!!!</h1>)} />
+            <Route component={()=>(<h1>Route Not found!!!</h1>)} />
           </Switch>
         </Layout>
       </div>

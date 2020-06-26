@@ -20,6 +20,8 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, {
                 images: action.payload.images
             })
+        case actionTypes.PIXABAY_IMAGE_KEYWORD_SEARCH_FAILURE:
+            return state;
         default: 
             return state;
     }

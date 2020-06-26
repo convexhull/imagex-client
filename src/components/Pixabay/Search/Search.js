@@ -30,13 +30,13 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        images: state.unsplash.images
+        images: state.pixabay.images
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSearchByKeyword : (keyword) => dispatch(actions.unsplashImageSearchByKeyword(keyword))
+        onSearchByKeyword : (keyword) => dispatch(actions.pixabayImageSearchByKeyword(keyword))
     }
 }
 

@@ -1,9 +1,9 @@
 import React , { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import classes from './HeroSection.module.css';
 import * as actions from '../../../store/actions/index';
-
+import HeroImage from '../../../assets/Pixabay/hero.jpg';
 
 
 class HeroSection extends Component {
@@ -17,7 +17,10 @@ class HeroSection extends Component {
 
     onSearchByKeyword = (e) => {
         e.preventDefault();
-        this.props.history.replace(`/photos/unsplash?keyword=${this.state.form.value}`);
+        this.props.history.push({
+            pathname: '/photos/pixabay',
+            search: `?keyword=${this.state.form.value}`
+        });
     }
 
     onInputChange = (e) => {
@@ -32,10 +35,10 @@ class HeroSection extends Component {
         return (
             <div className={classes["hero-section"]}>
                 <div className={classes["image-container"]}>
-                    <img src={this.props.heroImageUrl} alt="random hero image" />
+                    <img src={HeroImage} alt="random hero image" />
                 </div>
                 <div className={classes["hero-info"]}>
-                    <h1>Unsplash</h1>
+                    <h1>Pixabay</h1>
                     <form>
                         <input type="text" placeholder="Search free high resolution photos" value={this.state.form.value} onChange={this.onInputChange}/>
                         <button onClick={this.onSearchByKeyword}>Search</button>
@@ -55,7 +58,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onRandomHeroImageLoad: () => dispatch(actions.asyncUnsplashGetRandomHeroImage())
     }
 }
   

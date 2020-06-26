@@ -4,12 +4,16 @@ import classes from './ImageGrid.module.css';
 
 class ImageGrid extends Component {
 
+  componentDidMount(){
+    console.log("yash");
+  }
+
     render(){
-        console.log(this.props.images);
+        console.log("xxxx", this.props.images);
         let images = this.props.images.map((image) => (
           <div>
             <img src={image.webformatURL} alt="shit" />
-          </div>
+          </div>  
         ));
         
         return (
