@@ -9,7 +9,6 @@ class ImageGrid extends Component {
   }
 
     render(){
-        console.log("xxxx", this.props.images);
         let images = this.props.images.map((image) => (
           <div>
             <img src={image.webformatURL} alt="shit" />
