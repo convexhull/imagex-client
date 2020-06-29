@@ -11,16 +11,12 @@ import ScrollLazyLoader from '../../UI/ScrollLazyLoading/ScrollLazyLoading';
 
 class Search extends Component {
 
-    componentDidMount(){
+    render(){
         let search = new URLSearchParams(this.props.location.search);
         let keyword = search.get('keyword');
-        this.props.onSearchByKeyword(keyword);
-    }
-
-    render(){
         return (
             <React.Fragment>
-                <ScrollLazyLoader />
+                <ScrollLazyLoader keyword={keyword} />
             </React.Fragment>
         )
     }
@@ -35,11 +31,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onSearchByKeyword : (keyword) => dispatch(actions.unsplashImageSearchByKeyword(keyword))
-    }
-}
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+
+export default connect(mapStateToProps)(Search);

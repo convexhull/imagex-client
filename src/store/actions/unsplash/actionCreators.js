@@ -15,11 +15,11 @@ const unsplashImageKeywordSearchSuccess = (payload) => {
 }
 
 
-export const unsplashImageSearchByKeyword = (keyword) => {
+export const unsplashImageSearchByKeyword = (keyword, page) => {
     return async (dispatch) => {
         dispatch(unsplashImageKeywordSearchStart());
         try {
-            let apiResponse = await Axios.post(`/unsplash/searchPhotos?keywords=${keyword}`);
+            let apiResponse = await Axios.post(`/unsplash/searchPhotos?keywords=${keyword}&page=${page}`);
             let payload = {images: apiResponse.data.images};
             dispatch(unsplashImageKeywordSearchSuccess(payload));
         }

@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
             })
         case actionTypes.UNSPLASH_IMAGE_KEYWORD_SEARCH_SUCCESS:
             return updateObject(state, {
-                images: action.payload.images
+                images: [...state.images, ...action.payload.images]
             })
         case actionTypes.UNSPLASH_GET_RANDOM_HERO_IMAGE:
             if(action.payload.error){
