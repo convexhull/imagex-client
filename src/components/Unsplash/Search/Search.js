@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 
 import * as actions from '../../../store/actions/index';
-import ImageGrid from '../ImageGrid/ImageGrid';
+import ScrollLazyLoader from '../../UI/ScrollLazyLoading/ScrollLazyLoading';
 
 
 
@@ -20,7 +20,7 @@ class Search extends Component {
     render(){
         return (
             <React.Fragment>
-                <ImageGrid images={this.props.images} />
+                <ScrollLazyLoader />
             </React.Fragment>
         )
     }
@@ -30,7 +30,8 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        images: state.unsplash.images
+        images: state.unsplash.images,
+        loading: state.unsplash.loading
     }
 }
 
