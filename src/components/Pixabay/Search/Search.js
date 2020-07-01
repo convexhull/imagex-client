@@ -4,23 +4,18 @@ import { connect } from 'react-redux';
 
 
 import * as actions from '../../../store/actions/index';
-import ImageGrid from '../ImageGrid/ImageGrid';
-
+import ImageLazyLoader from '../ImageLazyLoader/ImageLazyLoader';
 
 
 
 class Search extends Component {
 
-    componentDidMount(){
+    render(){
         let search = new URLSearchParams(this.props.location.search);
         let keyword = search.get('keyword');
-        this.props.onSearchByKeyword(keyword);
-    }
-
-    render(){
         return (
             <React.Fragment>
-                <ImageGrid images={this.props.images} />
+                <ImageLazyLoader keyword={keyword} />
             </React.Fragment>
         )
     }

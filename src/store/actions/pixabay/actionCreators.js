@@ -16,16 +16,24 @@ const pixabayImageKeywordSearchSuccess = (payload) => {
 }
 
 
-export const pixabayImageSearchByKeyword = (keyword) => {
+export const pixabayImageSearchByKeyword = (keyword, page) => {
     return async (dispatch) => {
         dispatch(pixabayImageKeywordSearchStart());
         try {
-            let apiResponse = await Axios.get(`/pixabay/searchPhotos?keywords=${keyword}`);
+            let apiResponse = await Axios.get(`/pixabay/searchPhotos?keywords=${keyword}&page=${page}`);
             let payload = {images: apiResponse.data.images};
             dispatch(pixabayImageKeywordSearchSuccess(payload));
         }
         catch(e){
             console.log(e);
         }
+    }
+}
+
+
+
+export const pixabayClearAllImages = () => {
+    return {
+        type: actionTypes.PIXABAY_CLEAR_ALL_IMAGES
     }
 }

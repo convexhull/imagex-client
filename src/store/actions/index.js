@@ -5,10 +5,12 @@ export {
 
 export {
     unsplashImageSearchByKeyword,
-    asyncUnsplashGetRandomHeroImage
+    asyncUnsplashGetRandomHeroImage,
+    unsplashClearAllImages
 } from './unsplash/actionCreators';
 
 
 export {
-    pixabayImageSearchByKeyword
+    pixabayImageSearchByKeyword,
+    pixabayClearAllImages
 } from './pixabay/actionCreators';

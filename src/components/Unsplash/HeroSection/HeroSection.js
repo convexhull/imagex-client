@@ -17,6 +17,7 @@ class HeroSection extends Component {
 
     onSearchByKeyword = (e) => {
         e.preventDefault();
+        this.props.onClearAllImages();
         this.props.history.replace(`/photos/unsplash?keyword=${this.state.form.value}`);
     }
 
@@ -55,7 +56,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onRandomHeroImageLoad: () => dispatch(actions.asyncUnsplashGetRandomHeroImage())
+      onRandomHeroImageLoad: () => dispatch(actions.asyncUnsplashGetRandomHeroImage()),
+      onClearAllImages: () => dispatch(actions.unsplashClearAllImages())
     }
 }
   

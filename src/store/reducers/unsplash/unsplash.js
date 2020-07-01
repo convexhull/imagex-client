@@ -3,7 +3,6 @@ import updateObject from '../../../utils/updateObject';
 
 const initialState = {
     images: [],
-    page: 1,
     loading: false,
     heroImageUrl: '',
     redirectUrl: ''
@@ -33,6 +32,10 @@ const reducer = (state = initialState, action) => {
                     heroImageUrl: action.payload.image.urls.full
                 })
             }
+        case actionTypes.UNSPLASH_CLEAR_ALL_IMAGES:
+            return updateObject(state, {
+                images: []
+            })
         default: 
             return state;
     }

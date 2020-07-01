@@ -7,7 +7,7 @@ class ImageGrid extends Component {
     render(){
         let images = this.props.images.map((image) => (
           <div>
-            <img src={image.urls.small} alt="shit" />
+            <img src={image.urls.small} alt="image" />
           </div>
         ));
         

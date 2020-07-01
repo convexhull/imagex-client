@@ -17,6 +17,7 @@ class HeroSection extends Component {
 
     onSearchByKeyword = (e) => {
         e.preventDefault();
+        this.props.onClearAllImages();
         this.props.history.push({
             pathname: '/photos/pixabay',
             search: `?keyword=${this.state.form.value}`
@@ -58,6 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        onClearAllImages: () => dispatch(actions.pixabayClearAllImages())
     }
 }
   

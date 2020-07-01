@@ -24,7 +24,7 @@ export const unsplashImageSearchByKeyword = (keyword, page) => {
             dispatch(unsplashImageKeywordSearchSuccess(payload));
         }
         catch(e){
-
+            console.log(e);
         }
     }
 }
@@ -45,18 +45,30 @@ export const asyncUnsplashGetRandomHeroImage = () => {
             let payload = {
                 image: apiResponse.data
             }
-
-
             dispatch(unsplashGetHeroImage(payload));
         }
         catch(e){
-            console.log(e.response.data);
-            let payload = {
-                error: e.response.data
+            console.log(e);
+            let payload = {};
+            if(e.response){
+                payload = {
+                    error: e.response.data
+                }
             }
-
+            else {
+                payload = {
+                    error : e
+                }
+            }
             dispatch(unsplashGetHeroImage(payload));
         }
+    }
+}
+
+
+export const unsplashClearAllImages = () => {
+    return {
+        type: actionTypes.UNSPLASH_CLEAR_ALL_IMAGES
     }
 }
 
