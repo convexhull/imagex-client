@@ -21,16 +21,16 @@ class ImageLazyLoader extends Component {
         let options = {
             root: null,
             rootMargin: '0px',
-            threshold: 1.0
+            threshold: 0.9
         }
         let pagecount = 0;
         let callback = (entries, observer) => {
-            if(entries[0].isIntersecting){
-                alert('next page');
-                console.log(entries[0]);
-                pagecount++;
-                this.props.onSearchByKeyword(this.props.keyword, pagecount);
+            console.log("xxxxxxx", entries[0]);
+            if(!entries[0].isIntersecting){
+                return;
             }
+            pagecount++;
+            this.props.onSearchByKeyword(this.props.keyword, pagecount);
         }
         let observer = new IntersectionObserver(callback, options);
         observer.observe(this.loaderRef.current);
@@ -41,8 +41,8 @@ class ImageLazyLoader extends Component {
         return (
             <div className={classes.ImageLazyLoader}>
                 <ImageGrid images={this.props.images} />
-                <div ref={this.loaderRef} style={{height: '100vh'}}>
-                    {spinner}
+                <div ref={this.loaderRef} >
+                    <Spinner /> 
                 </div>
             </div>
         )
