@@ -1,4 +1,10 @@
 .ImageLazyLoader {
-    /* height: 200px;
-    background-color: rgb(247, 195, 195); */
+    height: 200vh;
+    /* background-color: rgb(247, 195, 195); */
+}
+
+.Dummy {
+    height: 100px;
+    width: 100px;
+    background-color: pink;
 }
