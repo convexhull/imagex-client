@@ -12,7 +12,7 @@ class Modal extends Component {
     render(){
         return (
             <React.Fragment>
-                <Backdrop />
+                <Backdrop show={this.props.show} hideBackdrop={this.props.hideModal} />
                 <div className={classes.Modal}>
                     {this.props.children}
                 </div>

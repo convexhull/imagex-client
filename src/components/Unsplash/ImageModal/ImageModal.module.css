@@ -1,0 +1,15 @@
+.image-container {
+    width: 80%;
+}
+
+
+.image-container > img {
+    height: auto;
+    width: 100%;
+}
+
+
+    
+.image-options {
+    display: flex;
+}

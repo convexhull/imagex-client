@@ -4,9 +4,7 @@ import classes from './ImageGrid.module.css';
 
 class ImageGrid extends Component {
 
-  componentDidMount(){
-    console.log("yash");
-  }
+
 
     render(){
         let images = this.props.images.map((image) => (

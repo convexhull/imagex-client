@@ -8,7 +8,6 @@ const pixabayImageKeywordSearchStart = () => {
 }
 
 const pixabayImageKeywordSearchSuccess = (payload) => {
-    console.log("yyy", payload);
     return {
         type: actionTypes.PIXABAY_IMAGE_KEYWORD_SEARCH_SUCCESS,
         payload

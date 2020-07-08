@@ -26,7 +26,6 @@ class ImageLazyLoader extends Component {
         }
         let pagecount = 0;
         let callback = (entries, observer) => {
-            console.log("xxxxxxx", entries[0]);
             // if(!entries[0].isIntersecting){
             //     return;
             // }

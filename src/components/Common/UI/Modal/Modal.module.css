@@ -1,13 +1,12 @@
-.Modal {
-    --x : 100%;
-}
 
 
 .Modal {
-    height: 300px;
-    position: absolute;
-    /* left: 0; */
-    top: 500px;
-    left: calc(var(--x)/2 - 100px);
-    background-color: #90ee90;
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+    overflow: auto;
+    width: 80%;
+    top: 0;
+    left : calc(10%);
+    background-color: #ecf0f1;
 }
