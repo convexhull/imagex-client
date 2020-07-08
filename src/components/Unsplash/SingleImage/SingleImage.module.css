@@ -1,0 +1,12 @@
+.image-container {
+    height: 300px;
+    justify-content: flex-end;
+}
+
+
+
+
+.image-options {
+    display: flex;
+    
+}

@@ -9,7 +9,7 @@ class Backdrop extends Component {
     render(){
         return (
             <div className={classes.Backdrop}>
-                
+                <h1>Backdrop</h1>
             </div>
         )
     }
