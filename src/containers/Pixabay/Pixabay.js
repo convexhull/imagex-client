@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-import ImageGrid from '../../components/Pixabay/ImageGrid/ImageGrid';
-import * as actions from '../../store/actions/index';
 import HeroSection from '../../components/Pixabay/HeroSection/HeroSection';
 
 

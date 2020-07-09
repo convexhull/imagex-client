@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 import Navbar from '../../components/Unsplash/Navigation/Navbar';
-import ImageGrid from '../../components/Unsplash/ImageGrid/ImageGrid';
 import HeroSection from '../../components/Unsplash/HeroSection/HeroSection';
 import * as actions from '../../store/actions/index';
 
