@@ -6,11 +6,12 @@ import ImageModal from '../ImageModal/ImageModal';
 class ImageGrid extends Component {
 
   state = {
-    showImageModal : false
+    showImageModal : false,
+    imageToLoad: ''
   }
 
-  imageClickHandler = () => {
-    this.setState({showImageModal : true})
+  imageClickHandler = (imageUrl) => {
+    this.setState({showImageModal : true, imageToLoad: imageUrl})
   }
 
   hideModalHandler = () => {
@@ -22,14 +23,14 @@ class ImageGrid extends Component {
       let imgOrientation = (image.width >= image.height ? "landscape" : "portrait") ; 
       return (
         <div className={classes[imgOrientation]}>
-          <img src={image.urls.small} alt="image" onClick={this.imageClickHandler} />
+          <img src={image.urls.small} alt="image" onClick={() => this.imageClickHandler(image.urls.regular)} />
         </div>
       );
     })
 
     return (
       <div>
-        {this.state.showImageModal ? <ImageModal show={this.state.showImageModal} hideImageModal={this.hideModalHandler} /> : null}
+        {this.state.showImageModal ? <ImageModal show={this.state.showImageModal} hideImageModal={this.hideModalHandler} imageToLoad={this.state.imageToLoad}/> : null}
         <div className={classes["image-grid"]}>
           {images1}
         </div>

@@ -1,11 +1,18 @@
 import React , { Component } from 'react';
 import Modal from '../../Common/UI/Modal/Modal';
 import classes from './ImageModal.module.css';
+import Spinner from '../../UI/Spinner2/Spinner2';
 
 
 class ImageModal extends Component {
 
-    
+    state = {
+        loading: true
+    }
+    imageLoadedHandler = () => {
+        console.log("yassshh")
+        this.setState({loading: false})
+    }
     render(){
         return (
             <Modal show={this.props.show} hideModal={this.props.hideImageModal} >
@@ -18,7 +25,8 @@ class ImageModal extends Component {
                     </div>  
                 </div>
                 <div className={classes["image-container"]}>
-                    <img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2555&q=80" alt="india's tricolour flag" />
+                    <img src={this.props.imageToLoad} alt="india's tricolour flag" onLoad={this.imageLoadedHandler} />
+                    {/* {this.state.loading ? <Spinner /> : null } */}
                 </div>
                 <div>
                     India's tricolour

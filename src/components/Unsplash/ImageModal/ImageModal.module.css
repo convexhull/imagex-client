@@ -1,15 +1,19 @@
 .image-container {
     width: 80%;
+    height: 90vh;
+    margin: 0 auto;
+    text-align: center;
 }
 
 
 .image-container > img {
-    height: auto;
-    width: 100%;
+    width: auto;
+    max-height: 90%;
 }
 
 
     
 .image-options {
     display: flex;
+    height: 50px;
 }
