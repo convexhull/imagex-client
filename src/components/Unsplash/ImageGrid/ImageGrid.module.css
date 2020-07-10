@@ -16,7 +16,7 @@
 
 
 .image-grid > div > img:hover {
-    cursor: pointer;
+    cursor: zoom-in;
     opacity: 0.8;
     transition: opacity  0.3s ease-out;
 }

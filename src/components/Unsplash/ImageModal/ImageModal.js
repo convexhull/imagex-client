@@ -12,12 +12,11 @@ class ImageModal extends Component {
                 <div className={classes["image-header"]}>
                     <div className={classes["user-info"]}>
                         <div>
-                            <img src="https://images.unsplash.com/profile-1529188896528-7f0ccc5a7172?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32" alt="user image" />
+                            <img src={this.props.image.user.profile_image.large } alt="user image" />
                         </div>
-                        <p>Yash</p>
-                        <p>Singh</p>
+                        <p><strong>{this.props.image.user.name}</strong></p>
+                        <p>@{this.props.image.user.username}</p>
                     </div>
-                    
                     
                     
                     <div className={classes["actions"]}>
@@ -36,7 +35,7 @@ class ImageModal extends Component {
                 <div className={classes["image-container"]}>
                     <img src={this.props.image.urls.regular} alt="india's tricolour flag"  />
                 </div>
-
+                <br />
                 <div className={classes["image-footer"]}>
                     {this.props.image.description || this.props.image.alt_description}
                 </div>
