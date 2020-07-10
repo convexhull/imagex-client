@@ -8,6 +8,20 @@
     grid-gap: 40px;
 }
 
+
+.image-grid div {
+    background-color: black;
+}
+
+
+
+.image-grid > div > img:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity  0.3s ease-out;
+}
+
+
 .image-grid > div > img {
     width: 100%;
     overflow: hidden;

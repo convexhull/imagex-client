@@ -7,7 +7,7 @@
 
 .image-container > img {
     width: auto;
-    max-height: 90%;
+    max-height: 100%;
 }
 
 .image-header {
@@ -17,14 +17,13 @@
 }
 
 
-.actions {
+.download-button {
     margin-left: auto;
 }
 
 .user-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* grid-template-rows: 20px 20px; */
 }
 
 .user-info > div {
@@ -36,4 +35,46 @@
     height: 100%;
     width: 100%;
     border-radius: 50%;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #adacac;
+    border-radius: 5px;
+    height: 30px;
+    width: 35px;
+    font-size: 1.25rem;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+.actions {
+    display: flex;
+    margin-left: auto;
+}
+
+
+
+.download-button  a:link , .download-button  a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.download-button  a:visited , .download-button  a:active {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+.download-button {
+    border: 1px solid #adacac;
+    height: 30px;
+    padding: 5px 15px 0px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
 }
