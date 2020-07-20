@@ -12,11 +12,10 @@ import Pixabay from './containers/Pixabay/Pixabay';
 import Profile from './containers/Profile/Profile';
 import UnsplashSearch from './components/Unsplash/Search/Search';
 import PixabaySearch from './components/Pixabay/Search/Search';
+import Login from './containers/Authentication/Login/Login';
 
 
 class App extends Component {
-
-
 
   componentDidMount(){
     
@@ -25,8 +24,9 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <Layout>
-          <Switch>
+        <Switch>
+          <Route path="/login" exact component={Login} />
+          <Layout>
             <Route path="/" exact component={Home} />
             <Route path="/authentication" exact component={Authentication} />
             <Route path="/unsplash" exact component={Unsplash} />
@@ -34,9 +34,9 @@ class App extends Component {
             <Route path="/photos/pixabay" exact component={PixabaySearch} />
             <Route path="/pixabay" exact component={Pixabay} />
             <Route path="/profile" exact component={Profile} />
-            <Route component={()=>(<h1>Route Not found!!!</h1>)} />
-          </Switch>
-        </Layout>
+            <Route component={() => (<h1>Route Not found!!!</h1>)} />
+          </Layout>
+        </Switch>
       </div>
     );
   }
