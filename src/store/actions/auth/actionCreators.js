@@ -10,13 +10,14 @@ const authStart = () => {
     }
 }
 
-export const asyncAuthStart = () => {
+export const asyncAuthStart = (email, password) => {
     return async (dispatch) => {
         dispatch(authStart());
         let data = {
-            email: "y@gmail.com",
-            password: "password"
+            email,
+            password
         }
+        console.log(data);
         try {
             let response = await axios.post('/users/login', data);
             let authInfo = {
