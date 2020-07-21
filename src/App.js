@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 
@@ -27,14 +27,16 @@ class App extends Component {
         <Switch>
           <Route path="/login" exact component={Login} />
           <Layout>
-            <Route path="/" exact component={Home} />
-            <Route path="/authentication" exact component={Authentication} />
-            <Route path="/unsplash" exact component={Unsplash} />
-            <Route path="/photos/unsplash" exact component={UnsplashSearch} />
-            <Route path="/photos/pixabay" exact component={PixabaySearch} />
-            <Route path="/pixabay" exact component={Pixabay} />
-            <Route path="/profile" exact component={Profile} />
-            <Route component={() => (<h1>Route Not found!!!</h1>)} />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/authentication" exact component={Authentication} />
+              <Route path="/unsplash" exact component={Unsplash} />
+              <Route path="/photos/unsplash" exact component={UnsplashSearch} />
+              <Route path="/photos/pixabay" exact component={PixabaySearch} />
+              <Route path="/pixabay" exact component={Pixabay} />
+              <Route path="/profile" exact component={Profile} />
+              <Route component={() => (<h1>Route Not found!!!</h1>)} />
+            </Switch>
           </Layout>
         </Switch>
       </div>
