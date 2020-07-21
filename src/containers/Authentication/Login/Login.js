@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 import classes from './Login.module.css';
@@ -74,7 +75,7 @@ class Login extends Component {
                         <input type="password" value={this.state.form.password || ''} onChange={this.inputPasswordHandler} required/>
                         <button>Login</button>
                     </form>
-                    <h5>Don't have an account? <a href="#">Join</a></h5>
+                    <h5>Don't have an account? <Link to="/signup" >Join</Link></h5>
                 </div>
             </div>
         );

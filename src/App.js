@@ -13,6 +13,7 @@ import Profile from './containers/Profile/Profile';
 import UnsplashSearch from './components/Unsplash/Search/Search';
 import PixabaySearch from './components/Pixabay/Search/Search';
 import Login from './containers/Authentication/Login/Login';
+import Signup from './containers/Authentication/Signup/Signup';
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
           <Layout>
             <Switch>
               <Route path="/" exact component={Home} />
