@@ -1,0 +1,17 @@
+.Signup {
+    display: flex;   
+    height: 100vh;
+    align-items: stretch;
+}
+
+.image-container {
+    flex-basis: 40%;
+    background-color: slateblue;
+}
+
+.form-container {
+    margin-left: auto;
+    flex-basis: 60%;
+    background-color: mediumaquamarine;
+    padding: 40px 80px;
+}
