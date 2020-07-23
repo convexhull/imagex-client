@@ -16,17 +16,18 @@ class FormElements extends Component {
                         <input
                             className={cssClasses.join(' ')}
                             type="text"
+                            value={this.props.value}
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
                     </React.Fragment>
-                    
                 )
                 break;
             case "password":
                 inputElement = (
                     <input
                         type="password"
+                        value={this.props.value}
                         required={this.props.required}
                         onChange={this.props.onChange}
                     />
@@ -39,21 +40,23 @@ class FormElements extends Component {
                         <input
                             className={cssClasses.join(' ')}
                             type="email"
+                            value={this.props.value}
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
                     </React.Fragment>
                 )
                 break;
-            // default:
-            //     inputElement = (
-            //         <input
-            //             className={cssClasses.join(' ')}
-            //             type="text"
-            //             required={this.props.required}
-            //             onChange={this.props.onChange}
-            //         />
-            //     )
+            default:
+                inputElement = (
+                    <input
+                        className={cssClasses.join(' ')}
+                        type="text"
+                        value={this.props.value}
+                        required={this.props.required}
+                        onChange={this.props.onChange}
+                    />
+                )
         }
         return inputElement;
     }

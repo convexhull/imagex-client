@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../../axios/axios';
+import Axios from '../../../axios/axios';
 import jwtDecode from 'jwt-decode';
 
 
@@ -19,7 +19,7 @@ export const asyncAuthStart = (email, password) => {
         }
         console.log(data);
         try {
-            let response = await axios.post('/users/login', data);
+            let response = await Axios.post('/users/login', data);
             let authInfo = {
                 token: response.data.token,
                 userId: response.data._id,
@@ -93,5 +93,41 @@ export const asyncAppInitAutoLogin = () => {
                 
             }
         }
+    }
+}
+
+
+
+const userSignupStart = () => {
+    return {
+        type: actionTypes.USER_SIGNUP_START
+    }
+}
+
+
+const userSignupSuccess = (payload) => {
+    return {
+        type: actionTypes.USER_SIGNUP_SUCCESS
+    }
+}
+
+const userSignupFailure = () => {
+    return {
+        type: actionTypes.USER_SIGNUP_FAILURE
+    }
+}
+
+export const asyncUserSignup = (userInfo) => {
+    return async (dispatch) => {
+        dispatch(userSignupStart());
+        let data = userInfo;
+        console.log("xxxx", data);
+        try {
+            let response = await Axios.post('/users/signup', data);
+            console.log(response);
+        }
+        catch(e){
+            console.log(e);
+        }   
     }
 }
