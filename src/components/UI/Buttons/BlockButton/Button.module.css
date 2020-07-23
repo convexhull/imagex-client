@@ -1,0 +1,19 @@
+.Button {
+    display: block;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.Button:link , .Button:visited {
+    background-color: green;
+    transition: background-color 0.2s ;
+    
+}
+
+
+.Button:hover, .Button:active {
+    background-color: rgb(59, 241, 59);
+
+}

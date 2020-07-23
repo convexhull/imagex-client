@@ -32,11 +32,19 @@
 }
 
 
-.inp {
-    width: 100%;
+.form-container form > div {
+    padding: 20px 0;
 }
-
 
 .name-container {
     display: flex;
+}
+
+
+.name-container > div {
+    flex-basis: 48%;
+}
+
+.name-container > div:nth-child(2) {
+    margin-left: auto;
 }

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import classes from './Signup.module.css';
 import image from '../../../assets/images/signup.jpeg';
 import InputField from '../../../components/UI/FormElements/FormElements';
+import Button from '../../../components/UI/Buttons/BlockButton/Button';
 import * as actions from '../../../store/actions';
 
 
@@ -93,7 +94,7 @@ class Signup extends Component {
                                     onChange={(event) => this.inputChangeHandler(event,'password')}
                                 />
                             </div>
-                            <button>Join</button>
+                            <Button btnTitle="Join"  btnLink="#" />
                         </form>
                         <small>By joining, you agree to the Terms and Privacy Policy.</small>
                     </div>

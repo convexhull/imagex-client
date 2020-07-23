@@ -25,12 +25,17 @@ class FormElements extends Component {
                 break;
             case "password":
                 inputElement = (
-                    <input
-                        type="password"
-                        value={this.props.value}
-                        required={this.props.required}
-                        onChange={this.props.onChange}
-                    />
+                    <React.Fragment>
+                        <label>{this.props.label}</label>
+                        <input
+                            type="password"
+                            className={cssClasses.join(' ')}
+                            value={this.props.value}
+                            required={this.props.required}
+                            onChange={this.props.onChange}
+                        />
+                    </React.Fragment>
+                    
                 )
                 break;
             case "email":
