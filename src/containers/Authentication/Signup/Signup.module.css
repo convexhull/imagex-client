@@ -30,3 +30,13 @@
     width: 80%;
     background-color: mediumorchid;
 }
+
+
+.inp {
+    width: 100%;
+}
+
+
+.name-container {
+    display: flex;
+}
