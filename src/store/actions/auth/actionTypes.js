@@ -1,7 +1,10 @@
-export const AUTH_START = "AUTH_START";
-export const AUTH_SUCCESS = "AUTH_SUCCESS";
-export const AUTH_FAIL = "AUTH_FAIL";
-export const AUTH_LOGOUT = "AUTH_LOGOUT";
+export const USER_LOGIN_START = "USER_LOGIN_START";
+export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
+export const USER_LOGIN_FAIL = "USER_LOGIN_FAIL";
+export const USER_LOGOUT = "USER_LOGOUT";
+
+
+
 export const APP_INIT_AUTO_LOGIN = "APP_INIT_AUTO_LOGIN";
 
 

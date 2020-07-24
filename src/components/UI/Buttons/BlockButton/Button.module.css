@@ -1,19 +1,19 @@
 .Button {
     display: block;
     width: 100%;
-    padding: 20px 0;
+    padding: 15px 0;
     text-align: center;
     text-decoration: none;
-}
-
-.Button:link , .Button:visited {
+    cursor: pointer;
     background-color: green;
-    transition: background-color 0.2s ;
-    
+    border: none;
+    border-radius: 8px;
 }
 
-
-.Button:hover, .Button:active {
+.Button:hover {
     background-color: rgb(59, 241, 59);
+}
 
+.facebook-btn {
+    background-color: #02cef1;
 }

@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 import classes from './Signup.module.css';
@@ -24,7 +25,6 @@ class Signup extends Component {
     formSubmitHandler = (event) => {
         event.preventDefault();
         this.props.onSubmitForm(this.state.form);
-        alert('form submitted');
     }
 
     inputChangeHandler = (event, formParam) => {
@@ -47,8 +47,11 @@ class Signup extends Component {
                 </div>
                 <div className={classes["form-container"]}>
                     <div className={classes["signup-info"]}>
-                        <h1>Join Unsplash</h1>
-                        <h4>Already have an account? <a href="#">Login</a></h4>
+                        <h1>Join ImageX</h1>
+                        <h4>Already have an account? <Link to="/login">Login</Link></h4>
+                        <div className={classes["facebook-join"]}>
+                            <Button theme="facebook"><span><ion-icon name="logo-facebook"></ion-icon></span>Join using Facebook</Button>
+                        </div>
                         <p>OR</p>
                         <form onSubmit={this.formSubmitHandler}>
                             <div className={classes["name-container"]}>
@@ -94,9 +97,11 @@ class Signup extends Component {
                                     onChange={(event) => this.inputChangeHandler(event,'password')}
                                 />
                             </div>
-                            <Button btnTitle="Join"  btnLink="#" />
+                            <div>
+                                <Button btnLink="#" clicked={this.onSubmitForm}> Join  </Button>
+                            </div>
                         </form>
-                        <small>By joining, you agree to the Terms and Privacy Policy.</small>
+                        <p><small>By joining, you agree to the Terms and Privacy Policy.</small></p>
                     </div>
                 </div>
             </div>
@@ -106,7 +111,7 @@ class Signup extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSubmitForm: (userInfo) => dispatch(actions.asyncUserSignup(userInfo))
+        onSubmitForm: (userInfo) => dispatch(actions.asyncUserSignupStart(userInfo))
     }
 }
 

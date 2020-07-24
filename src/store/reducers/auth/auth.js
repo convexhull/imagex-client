@@ -3,36 +3,39 @@ import * as actionTypes from '../../actions/auth/actionTypes';
 const initialState = {
     token: null,
     userId: '',
-    loading: false
+    loading: false,
+    redirectUrl: ''
 };
 
 
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case actionTypes.AUTH_START:
+        case actionTypes.USER_LOGIN_START:
             return {
                 ...state, 
                 loading: true
             }
-        case actionTypes.AUTH_SUCCESS:
+        case actionTypes.USER_LOGIN_SUCCESS:
             return {
                 ...state,
                 token: action.payload.token,
                 loading: false,
-                userId: action.payload.userId
+                userId: action.payload.userId,
+                redirectUrl: '/'
             }
-        case actionTypes.AUTH_FAIL:
+        case actionTypes.USER_LOGIN_FAIL:
             return {
                 ...state,
                 loading: false
             }
-        case actionTypes.AUTH_LOGOUT:
+        case actionTypes.USER_LOGOUT:
             return {
                 ...state,
                 token: null,
                 userId: '',
-                loading: false
+                loading: false,
+                redirectUrl: ''
             }
         default: 
             return state;

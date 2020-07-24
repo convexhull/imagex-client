@@ -1,6 +1,6 @@
 export {
-    asyncAuthStart,
-    asyncUserSignup
+    asyncUserLoginStart,
+    asyncUserSignupStart
 } from './auth/actionCreators';
 
 

@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 import classes from './Login.module.css';
@@ -55,6 +55,9 @@ class Login extends Component {
 
 
     render(){
+        if(this.props.redirectUrl){
+            return <Redirect to={this.props.redirectUrl} />;
+        }
         return (
             <div className={classes.Login}>
                 <div>
@@ -82,12 +85,16 @@ class Login extends Component {
     }
 }
 
-
-
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        onLogin: (email, password) => dispatch(actions.asyncAuthStart(email, password))
+        redirectUrl: state.auth.redirectUrl
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onLogin: (email, password) => dispatch(actions.asyncUserLoginStart(email, password))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

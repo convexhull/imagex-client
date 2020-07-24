@@ -4,20 +4,35 @@ import jwtDecode from 'jwt-decode';
 
 
 
-const authStart = () => {
+const loginStart = () => {
     return {
-        type: actionTypes.AUTH_START
+        type: actionTypes.USER_LOGIN_START
     }
 }
 
-export const asyncAuthStart = (email, password) => {
+
+const loginFail = (error) => {
+    return {
+        type: actionTypes.USER_LOGIN_FAIL,
+        payload: error
+    }
+}
+
+
+const loginSuccess = (payload) => {
+    return {
+        type: actionTypes.USER_LOGIN_SUCCESS,
+        payload
+    }
+}
+
+export const asyncUserLoginStart = (email, password) => {
     return async (dispatch) => {
-        dispatch(authStart());
+        dispatch(loginStart());
         let data = {
             email,
             password
         }
-        console.log(data);
         try {
             let response = await Axios.post('/users/login', data);
             let authInfo = {
@@ -27,10 +42,10 @@ export const asyncAuthStart = (email, password) => {
             }
             localStorage.setItem('token', authInfo.token);
             localStorage.setItem('userId', authInfo.userId);
-            dispatch(asyncAuthSuccess(authInfo));
+            dispatch(asyncLoginSuccess(authInfo));
         }
         catch(e){
-            dispatch(authFail(e));
+            dispatch(loginFail(e));
             console.log(e);
         }
         
@@ -38,43 +53,27 @@ export const asyncAuthStart = (email, password) => {
 }
 
 
-const authSuccess = (payload) => {
+
+const userLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('expirationTime');
     return {
-        type: actionTypes.AUTH_SUCCESS,
-        payload
+        type: "USER_LOGOUT"
     }
 }
 
 
-export const asyncAuthSuccess = (authInfo) => {
+export const asyncLoginSuccess = (authInfo) => {
     return dispatch => {
-        dispatch(authSuccess(authInfo));
+        dispatch(loginSuccess(authInfo));
         let decodedToken = jwtDecode(authInfo.token);
         let expirationTime = decodedToken.exp;
         expirationTime = expirationTime*1000;
         localStorage.setItem('expirationTime', expirationTime);
         const currentTime = new Date().getTime();
         const expiresIn = expirationTime - currentTime;
-        setTimeout(()=> dispatch(authLogout()), expiresIn);
-    }
-}
-
-
-export const authFail = (error) => {
-    return {
-        type: actionTypes.AUTH_FAIL,
-        payload: error
-    }
-}
-
-
-
-export const authLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('expirationTime');
-    return {
-        type: "AUTH_LOGOUT"
+        setTimeout(()=> dispatch(userLogout()), expiresIn);
     }
 }
 
@@ -117,11 +116,10 @@ const userSignupFailure = () => {
     }
 }
 
-export const asyncUserSignup = (userInfo) => {
+export const asyncUserSignupStart = (userInfo) => {
     return async (dispatch) => {
         dispatch(userSignupStart());
         let data = userInfo;
-        console.log("xxxx", data);
         try {
             let response = await Axios.post('/users/signup', data);
             console.log(response);

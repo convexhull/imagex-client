@@ -19,7 +19,6 @@
 .form-container {
     margin-left: auto;
     flex-basis: 60%;
-    background-color: mediumaquamarine;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,13 +26,43 @@
 
 
 .signup-info {
-    width: 80%;
-    background-color: mediumorchid;
+    width: 77.5%;
+    padding: 20px;
+}
+
+.facebook-join {
+    margin-top: 80px;
+    margin-bottom: 25px;
+}
+
+
+.signup-info h1, .signup-info h4 {
+    text-align: center;
+}
+
+.signup-info > h1 {
+    margin-bottom: 20px;
+}
+
+
+
+.signup-info span {
+    font-size: 30px;
+    color: white;
+}
+
+
+.signup-info p {
+    text-align: center;
+}
+
+.signup-info p:last-child {
+    margin-top: 10px;
 }
 
 
 .form-container form > div {
-    padding: 20px 0;
+    padding: 15px 0;
 }
 
 .name-container {
