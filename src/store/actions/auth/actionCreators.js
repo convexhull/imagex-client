@@ -79,17 +79,28 @@ export const asyncLoginSuccess = (authInfo) => {
 
 
 
-export const asyncAppInitAutoLogin = () => {
+export const asyncAppStartupSessionCheck = () => {
     return (dispatch) => {
         let storedToken = localStorage.getItem('token');
+        console.log("xxxx", storedToken);
         if(!storedToken){
-
+            
         }
         else {
             let expirationTime = localStorage.getItem('expirationTime');
             let currentTime = new Date().getTime();
-            if(currentTime > expirationTime){
-                
+            if(currentTime >= expirationTime){
+                dispatch(userLogout());                
+            }
+            else {
+                let authInfo = {
+                    token: localStorage.getItem('token'),
+                    userId: localStorage.getItem('userId'),
+                    email: jwtDecode(localStorage.getItem('token')).email
+                }
+                dispatch(loginSuccess(authInfo));
+                let expiresIn = expirationTime - currentTime;
+                setTimeout(() => dispatch(userLogout()), expiresIn);
             }
         }
     }

@@ -13,12 +13,15 @@ import UnsplashSearch from './components/Unsplash/Search/Search';
 import PixabaySearch from './components/Pixabay/Search/Search';
 import Login from './containers/Authentication/Login/Login';
 import Signup from './containers/Authentication/Signup/Signup';
+import * as actions from './store/actions/index';
 
 
 class App extends Component {
 
   componentDidMount(){
-    
+    console.log('xxxxxxxx');
+      this.props.onAppStartupSessionCheck();
+
   }
   
   render(){
@@ -55,7 +58,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitialLoginCheck : () => dispatch()
+    onAppStartupSessionCheck : () => dispatch(actions.asyncAppStartupSessionCheck())
   }
 }
 
