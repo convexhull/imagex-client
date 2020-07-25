@@ -27,6 +27,9 @@ class MainNavbar extends Component {
                   <NavLink to="/pixabay" exact className={classes["navbar-links"]}>Pixabay</NavLink>
                 </li>
                 <li>
+                  <NavLink to="/randomImage" exact className={classes["navbar-links"]}>Random Image</NavLink>
+                </li>
+                <li>
                   <NavLink to="#" className={classes["navbar-links"]} >...</NavLink>
                 </li>
                 <li>
