@@ -2,17 +2,17 @@
     /* grid display for centering */
     display: grid;
     height: 100vh;
-    width: 100%;
+    grid-template-columns: 500px;
     justify-content: center;
     align-content: center;
-    /* background-color: cyan; */
-    text-align: center;
+}
+
+.container {
+    background-color: mintcream;
 }
 
 
-
-
-.logo {
+.container__logo {
     width: auto;
     height: 50px;
     margin-bottom: 30px;
@@ -20,19 +20,21 @@
 }
 
 
-.logo img {
+.container__logo img {
     height: 100%;
     width: auto;
 }
 
 
-.Login > h3 {
+.log-in {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 
-.Login > h5 {
+.wlcm-back {
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .Login > h4 {
@@ -50,10 +52,14 @@ form > h4 {
     padding: 0px 10px;
 }
 
-.password {
+.form__input {
+    margin-bottom: 25px;
+}
+
+.form__password {
     display: flex;
 }
-.password > h6 {
+.form__password h6 {
     margin-left: auto;
 }
 

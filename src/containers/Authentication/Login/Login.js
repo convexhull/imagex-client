@@ -59,34 +59,37 @@ class Login extends Component {
         }
         return (
             <div className={classes.Login}>
-                <div>
-                    <div className={classes["logo"]}>
+                <div className={classes["container"]}>
+                    <div className={classes["container__logo"]}>
                         <img src={logo} alt="logo" />
                     </div>
-                    <h3>Login</h3>
-                    <h5>Welcome back.</h5>
+                    <h3 className={classes["log-in"]}>Login</h3>
+                    <h5 className={classes["wlcm-back"]}>Welcome back.</h5>
                     <Button>Login With Facebook</Button>
                     <h5>OR</h5>
-                    <form onSubmit={this.formSubmissionHandler}>
-                        <h4>Email</h4>
-                        <InputElement
-                            elementType="text"
-                            label="Email"
-                            value={this.state.form.email|| ''}
-                            onChange={this.inputEmailHandler}
-                        />
-                        <div className={classes.password}>
-                            <h4>Password</h4>
-                            <h6>Forgot your password</h6>
+                    <form onSubmit={this.formSubmissionHandler} className={classes["login-form"]}>
+                        {/* <h4 cla>Email</h4> */}
+                        <div className={classes["form__input"]}>
+                            <InputElement
+                                elementType="text"
+                                label="Email"
+                                value={this.state.form.email || ''}
+                                onChange={this.inputEmailHandler}
+                            />
                         </div>
-                        <InputElement
-                            elementType="password"
-                            label="Passwordi"
-                            value={this.state.form.password || ''}
-                            onChange={this.inputPasswordHandler}
-                        />
-
-                        <button>Login</button>
+                        
+                        <div className={classes["form__input"]}>
+                            <div className={classes["form__password"]}>
+                                <h4>Password</h4>
+                                <h6>Forgot your password</h6>
+                            </div>
+                            <InputElement
+                                elementType="password"
+                                value={this.state.form.password || ''}
+                                onChange={this.inputPasswordHandler}
+                            />
+                        </div>
+                        <Button>Login</Button>
                     </form>
                     <h5>Don't have an account? <Link to="/signup" >Join</Link></h5>
                 </div>
