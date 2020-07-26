@@ -6,6 +6,8 @@ import { Link, Redirect } from 'react-router-dom';
 import classes from './Login.module.css';
 import logo from '../../../assets/images/logo.png';
 import * as actions from '../../../store/actions';
+import Button from '../../../components/UI/Buttons/BlockButton/Button';
+import InputElement from '../../../components/UI/FormElements/FormElements';
 
 
 class Login extends Component {
@@ -16,15 +18,12 @@ class Login extends Component {
         }
     }
 
-
     
 
     formSubmissionHandler = (e) => {
         e.preventDefault();
         this.props.onLogin(this.state.form.email, this.state.form.password);
     }
-
-
 
 
     inputEmailHandler = (event) => {
@@ -66,16 +65,27 @@ class Login extends Component {
                     </div>
                     <h3>Login</h3>
                     <h5>Welcome back.</h5>
-                    <a href="#" >Login with facebook</a>
+                    <Button>Login With Facebook</Button>
                     <h5>OR</h5>
                     <form onSubmit={this.formSubmissionHandler}>
                         <h4>Email</h4>
-                        <input type="text" value={this.state.form.email || ''} onChange={this.inputEmailHandler}  required/>
+                        <InputElement
+                            elementType="text"
+                            label="Email"
+                            value={this.state.form.email|| ''}
+                            onChange={this.inputEmailHandler}
+                        />
                         <div className={classes.password}>
                             <h4>Password</h4>
                             <h6>Forgot your password</h6>
                         </div>
-                        <input type="password" value={this.state.form.password || ''} onChange={this.inputPasswordHandler} required/>
+                        <InputElement
+                            elementType="password"
+                            label="Passwordi"
+                            value={this.state.form.password || ''}
+                            onChange={this.inputPasswordHandler}
+                        />
+
                         <button>Login</button>
                     </form>
                     <h5>Don't have an account? <Link to="/signup" >Join</Link></h5>

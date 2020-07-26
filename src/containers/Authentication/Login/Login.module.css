@@ -5,16 +5,18 @@
     width: 100%;
     justify-content: center;
     align-content: center;
-    background-color: cyan;
+    /* background-color: cyan; */
+    text-align: center;
 }
 
 
 
 
 .logo {
-    width: 50px;
+    width: auto;
     height: 50px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 
