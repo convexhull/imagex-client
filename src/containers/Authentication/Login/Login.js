@@ -65,11 +65,13 @@ class Login extends Component {
                     </div>
                     <h3 className={classes["log-in"]}>Login</h3>
                     <h5 className={classes["wlcm-back"]}>Welcome back.</h5>
-                    <Button>Login With Facebook</Button>
-                    <h5>OR</h5>
+                    <div className={classes["container__fbbtn"]}>
+                        <Button>Login With Facebook</Button>
+                    </div>
+                    <h5 className={classes["container__OR"]}>OR</h5>
+
                     <form onSubmit={this.formSubmissionHandler} className={classes["login-form"]}>
-                        {/* <h4 cla>Email</h4> */}
-                        <div className={classes["form__input"]}>
+                        <div className={classes["login-form__input"]}>
                             <InputElement
                                 elementType="text"
                                 label="Email"
@@ -78,10 +80,10 @@ class Login extends Component {
                             />
                         </div>
                         
-                        <div className={classes["form__input"]}>
-                            <div className={classes["form__password"]}>
-                                <h4>Password</h4>
-                                <h6>Forgot your password</h6>
+                        <div className={classes["login-form__input"]}>
+                            <div className={classes["login-form__password"]}>
+                                <p>Password</p>
+                                <p>Forgot your password</p>
                             </div>
                             <InputElement
                                 elementType="password"
@@ -89,9 +91,12 @@ class Login extends Component {
                                 onChange={this.inputPasswordHandler}
                             />
                         </div>
-                        <Button>Login</Button>
+
+                        <div className={classes["container__loginbtn"]}>
+                            <Button>Login</Button>
+                        </div>
                     </form>
-                    <h5>Don't have an account? <Link to="/signup" >Join</Link></h5>
+                    <p className={classes["container__signuplink"]}>Don't have an account? <Link to="/signup" >Join</Link> </p>
                 </div>
             </div>
         );

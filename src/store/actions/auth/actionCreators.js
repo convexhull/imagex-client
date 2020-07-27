@@ -82,7 +82,6 @@ export const asyncLoginSuccess = (authInfo) => {
 export const asyncAppStartupSessionCheck = () => {
     return (dispatch) => {
         let storedToken = localStorage.getItem('token');
-        console.log("xxxx", storedToken);
         if(!storedToken){
             
         }

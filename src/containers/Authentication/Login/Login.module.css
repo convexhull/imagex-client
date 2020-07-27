@@ -2,13 +2,13 @@
     /* grid display for centering */
     display: grid;
     height: 100vh;
-    grid-template-columns: 500px;
+    grid-template-columns: 540px;
     justify-content: center;
     align-content: center;
 }
 
 .container {
-    background-color: mintcream;
+
 }
 
 
@@ -25,6 +25,19 @@
     width: auto;
 }
 
+.container__fbbtn {
+    margin-bottom: 30px;
+}
+
+.container__OR {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+
+.container__loginbtn {
+    margin-bottom: 40px;
+}
 
 .log-in {
     margin-bottom: 20px;
@@ -37,13 +50,6 @@
     text-align: center;
 }
 
-.Login > h4 {
-    margin-bottom: 15px;
-}
-
-form > h4 {
-    margin-bottom: 5px;
-}
 
 .Login input[type=text] , .Login input[type=password]    {
     width: 100%;
@@ -52,14 +58,20 @@ form > h4 {
     padding: 0px 10px;
 }
 
-.form__input {
+.login-form__input {
     margin-bottom: 25px;
 }
 
-.form__password {
+.login-form__password {
     display: flex;
 }
-.form__password h6 {
+
+.login-form__password p:last-child {
     margin-left: auto;
 }
+
+.container__signuplink {
+    text-align: center;
+}
+
 
