@@ -11,13 +11,15 @@ class Home extends Component {
         return (
             <div class={classes.Home}>
                 <div className={classes["hero-container"]}>
-                    <div className={classes["hero-container__maintext"]}>
+                    <div className={classes["hero-container__mainsection"]}>
                         <h1>Unsplash</h1>
                         <p>Your source of freely-usable images.</p>
                         <p>Powered by creators everywhere.</p>
+                        <form className={classes["main-section__form"]}>
+                            <Search />
+                        </form>
                     </div>
-                    <div className={classes["hero-container__subtext"]}>
-                        <Search />
+                    <div className={classes["hero-container__subsection"]}>
                     </div>
                 </div>
             </div>

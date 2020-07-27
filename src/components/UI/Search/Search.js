@@ -8,10 +8,15 @@ class Search extends Component {
     render(){
         return (
             <div className={classes["Search"]}>
-                <input type="text" />
+                <div>
+                    Mag
+                </div>
+                <input type="search" />
+                <button type="button">X</button>
             </div>
         )
     }
+    
 }
 
 
