@@ -8,15 +8,14 @@ class Search extends Component {
     render(){
         return (
             <div className={classes["Search"]}>
-                <div>
-                    Mag
+                <div className={classes["search-symbol"]}>
+                    <ion-icon name="search-outline"></ion-icon>                    
                 </div>
-                <input type="search" />
-                <button type="button">X</button>
+                <input type="text" placeholder="Search free high-resolution photos" />
+                <div className={classes["cancel-btn"]}><ion-icon name="close-outline"></ion-icon></div>
             </div>
         )
     }
-    
 }
 
 

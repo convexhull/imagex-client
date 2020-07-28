@@ -1,13 +1,48 @@
 .Home {
+
 }
+
 
 
 .hero-container {
     background: linear-gradient(
-        rgba(0, 0, 0, 0.45), 
-        rgba(0, 0, 0, 0.45)
-      ), url('../../assets/images/homepage-hero.jpg') ;
+        rgba(0, 0, 0, 0.55), 
+        rgba(0, 0, 0, 0.55)
+      ), url('../../assets/images/homepage-hero.jpg');
     height: 780px;
     background-size: cover;
     background-position: top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+
+.mainsection__form {
+  width: 100%; 
+  margin-top: 30px;
+}
+
+.hero-container__mainsection {
+  width: 50%; 
+  margin: 0 auto;
+  color: white;
+
+}
+
+
+
+.mainsection__title {
+  margin-bottom: 20px;
+
+}
+
+.mainsection__subtitle {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.mainsection__trending {
+  margin-top: 20px;
+}
+
