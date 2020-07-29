@@ -5,6 +5,7 @@ import React , { Component } from 'react';
 import classes from './Home.module.css';
 import Search from '../../components/UI/Search/Search';
 import ImageLazyLoader from '../../components/UI/ScrollLazyLoading/ScrollLazyLoading';
+import HeroSection from '../../components/Common/HeroSection/HeroSection';
 
 class Home extends Component {
 
@@ -17,17 +18,12 @@ class Home extends Component {
         return (
             <div class={classes.Home}>
                 <div className={classes["hero-container"]}>
-                    <div className={classes["hero-container__mainsection"]}>
-                        <h1 className={classes["mainsection__title"]}>ImageX</h1>
-                        <p className={classes["mainsection__subtitle"]}>Your source of freely-usable images.</p>
-                        <p className={classes["mainsection__subtitle"]}>Powered by creators everywhere.</p>
-                        <form className={classes["mainsection__form"]} onSubmit={this.formSubmitHandler}>
-                            <Search />
-                        </form>
-                        <p className={classes["mainsection__trending"]}>Trending: flower, wallpapers, backgrounds, happy, love</p>
-                    </div>
-                    <div className={classes["hero-container__subsection"]}>
-                    </div>
+                    <HeroSection 
+                        title="ImageX"
+                        subtitle1="Your source of freely-usable images."
+                        subtitle2="Powered by creators everywhere."
+                        subtitle3="Trending: flower, wallpapers, backgrounds, happy, love"
+                    />
                 </div>
                 <div className={classes["trending-images"]}>
                     <ImageLazyLoader keyword="people" />

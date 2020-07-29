@@ -11,7 +11,12 @@ class Search extends Component {
                 <div className={classes["search-symbol"]}>
                     <ion-icon name="search-outline"></ion-icon>                    
                 </div>
-                <input type="text" placeholder="Search free high-resolution photos" />
+                <input 
+                    type="text"
+                    placeholder="Search free high-resolution photos"
+                    value={this.props.value}
+                    onChange={this.props.changed}
+                />
                 <div className={classes["cancel-btn"]}><ion-icon name="close-outline"></ion-icon></div>
             </div>
         )

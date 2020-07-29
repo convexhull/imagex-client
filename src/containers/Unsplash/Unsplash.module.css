@@ -1,17 +1,14 @@
-.Unsplash {
-    text-align: center;
+.hero-container {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.55), 
+        rgba(0, 0, 0, 0.55)
+      ), url('../../assets/images/homepage-hero.jpg');
+    height: 780px;
+    background-size: cover;
+    background-position: top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
-.root {
-    margin : 50px;
-    
-}
-
-.root button {
-    margin: 200px;
-}
-
-Input {
-    height: 100px;
-}

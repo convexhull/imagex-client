@@ -1,0 +1,28 @@
+.mainsection {
+    width: 50%; 
+    margin: 0 auto;
+    color: white;
+}
+
+.mainsection__form {
+    width: 100%; 
+    margin-top: 30px;
+}
+
+.mainsection__title {
+    margin-bottom: 20px;
+
+}
+
+.mainsection__subtitle {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.mainsection__trending {
+    margin-top: 20px;
+}
+
+.trending-images {
+    margin-top: 30px;
+}
