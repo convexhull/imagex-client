@@ -17,8 +17,6 @@ class ImageModal extends Component {
                         <p><strong>{this.props.image.user.name}</strong></p>
                         <p>@{this.props.image.user.username}</p>
                     </div>
-                    
-                    
                     <div className={classes["actions"]}>
                         <div className={classes["icons"]}>
                             <ion-icon name="heart"></ion-icon>

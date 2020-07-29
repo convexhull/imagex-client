@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+
 import classes from './ImageGrid.module.css';
 import ImageModal from '../ImageModal/ImageModal';
 
@@ -38,7 +41,13 @@ class ImageGrid extends Component {
     );
   }
 
+
 }
 
+const mapStateToProps = (state) => {
+  return {
+    images: state.unsplash.images
+  }
+}
 
-export default ImageGrid;
+export default connect(mapStateToProps)(ImageGrid);

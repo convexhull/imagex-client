@@ -41,7 +41,7 @@ class MainNavbar extends Component {
     return (
       <div className={classes["main-navigation"]}>
         <div className={classes.logo} >
-          <img src={logo} />
+          <NavLink to="/"><img src={logo} /></NavLink>
         </div>
         <div className={classes["image-search"]}>
           <input type="text" placeholder="Search free high resolution photos" />
@@ -53,8 +53,8 @@ class MainNavbar extends Component {
           <li>
             <NavLink to="/pixabay" exact className={classes["navbar-links"]}>Pixabay</NavLink>
           </li>
-          <li>
-            <NavLink to="/randomImage" exact className={classes["navbar-links"]}>Random Image</NavLink>
+          <li className={classes["main-navigation__random-image-btn"]} onClick={this.props.clicked}>
+            RandomImage
           </li>
           <li>
             <NavLink to="#" className={classes["navbar-links"]} >...</NavLink>
@@ -64,7 +64,6 @@ class MainNavbar extends Component {
           </li>
         </ul>
         {authenticationInfo}
-        
       </div>
     );
   }
@@ -78,10 +77,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    
-  }
-}
+
 
 export default connect(mapStateToProps)(MainNavbar);

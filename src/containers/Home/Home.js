@@ -4,6 +4,7 @@ import React , { Component } from 'react';
 
 import classes from './Home.module.css';
 import Search from '../../components/UI/Search/Search';
+import ImageLazyLoader from '../../components/UI/ScrollLazyLoading/ScrollLazyLoading';
 
 class Home extends Component {
 
@@ -27,6 +28,9 @@ class Home extends Component {
                     </div>
                     <div className={classes["hero-container__subsection"]}>
                     </div>
+                </div>
+                <div className={classes["trending-images"]}>
+                    <ImageLazyLoader keyword="people" />
                 </div>
             </div>
         )

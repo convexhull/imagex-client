@@ -19,7 +19,7 @@ class ScrollLazyLoading extends React.Component {
         let options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.9
+            threshold: 0.2
         }
         let pagecount = 0;
         let callback = (entries, observer) => {
@@ -30,13 +30,12 @@ class ScrollLazyLoading extends React.Component {
         }
         let observer = new IntersectionObserver(callback, options);
         observer.observe(this.loaderRef.current);
-        
     }
 
     render(){
         return (
             <React.Fragment>
-                <ImageGrid images={this.props.images} />
+                <ImageGrid />
                 <div ref={this.loaderRef}>
                     <Spinner  />
                 </div>

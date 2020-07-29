@@ -1,15 +1,34 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-import MainNavbar from '../../components/Header/MainNavigation/MainNavigation'
+
+
+import * as actions from '../../store/actions/index';
+import MainNavbar from '../../components/Header/MainNavigation/MainNavigation';
+import RandomImageModal from '../../components/Unsplash/ImageModal/ImageModal';
 
 
 class Layout extends Component {
 
+  state = {
+    showRandomImageModal: false
+  }
+
+
+  toggleRandomImageModal = () => {
+    this.setState((prevState, props) => {
+      return {
+        showRandomImageModal: !prevState.showRandomImageModal
+      }
+    })
+  }
+
+
   render(){
     return (
       <Fragment>
+        {this.state.showRandomImageModal ? <RandomImageModal show={this.state.showRandomImageModal}  /> : null }
         <header>
-          <MainNavbar />
+          <MainNavbar clicked={this.toggleRandomImageModal}/>
         </header>
         {this.props.children}
         <footer>
@@ -27,5 +46,11 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRandomImageLoad: () => dispatch(actions.asyncUnsplashGetRandomHeroImage())
+  }
+}
 
-export default connect(mapStateToProps)(Layout);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
