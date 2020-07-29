@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import classes from './HeroSection.module.css';
 import * as actions from '../../../store/actions/index';
-import HeroImage from '../../../assets/Pixabay/hero.jpg';
+import Search from '../../UI/Search/Search';
 
 
 class HeroSection extends Component {
@@ -15,8 +15,8 @@ class HeroSection extends Component {
     }
 
 
-    onSearchByKeyword = (e) => {
-        e.preventDefault();
+    formSubmitHandler = (event) => {
+        event.preventDefault();
         this.props.onClearAllImages();
         this.props.history.push({
             pathname: '/photos/pixabay',
@@ -24,28 +24,31 @@ class HeroSection extends Component {
         });
     }
 
-    onInputChange = (e) => {
+    onInputChange = (event) => {
         this.setState({
             form: {
-                value: e.target.value
+                value: event.target.value
             }
         })
     }
 
     render(){
         return (
-            <div className={classes["hero-section"]}>
-                <div className={classes["image-container"]}>
-                    <img src={HeroImage} alt="random hero image" />
-                </div>
-                <div className={classes["hero-info"]}>
-                    <h1>Pixabay</h1>
-                    <form>
-                        <input type="text" placeholder="Search free high resolution photos" value={this.state.form.value} onChange={this.onInputChange}/>
-                        <button onClick={this.onSearchByKeyword}>Search</button>
+            <React.Fragment>
+                <div className={classes["mainsection"]}>
+                    <h1 className={classes["mainsection__title"]}>{this.props.title}</h1>
+                    <p className={classes["mainsection__subtitle"]}>{this.props.subtitle1}</p>
+                    <p className={classes["mainsection__subtitle"]}>{this.props.subtitle2}</p>
+                    <form className={classes["mainsection__form"]} onSubmit={this.formSubmitHandler}>
+                        <Search
+                            value={this.state.form.value}
+                            changed={this.onInputChange} />
                     </form>
+                    <p className={classes["mainsection__trending"]}>{this.props.subtitle3}</p>
                 </div>
-            </div>
+                <div className={classes["subsection"]}>
+                </div>
+            </React.Fragment>
         )
     }
 }   

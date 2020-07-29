@@ -1,28 +1,28 @@
-.hero-section {
-    position: relative;
+.mainsection {
+    width: 50%; 
+    margin: 0 auto;
+    color: white;
 }
 
-.hero-section .image-container {
-    height: 90vh;
-    width: 100%;
+.mainsection__form {
+    width: 100%; 
+    margin-top: 30px;
 }
 
+.mainsection__title {
+    margin-bottom: 20px;
 
-.hero-section .image-container img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
 }
 
-
-
-.hero-info {
-    position: absolute;
-    top: 50px;
-    left: 100px;
-    width: 40%;
+.mainsection__subtitle {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
-.hero-info input[type="text"] {
-    width: 80%;
+.mainsection__trending {
+    margin-top: 20px;
+}
+
+.trending-images {
+    margin-top: 30px;
 }

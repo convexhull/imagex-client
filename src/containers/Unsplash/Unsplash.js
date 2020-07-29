@@ -30,7 +30,6 @@ class Unsplash extends Component {
             subtitle3="Trending: flower, wallpapers, backgrounds, happy, love"
           />
         </div>
-        {/* <HeroSection platform="Unsplash" /> */}
       </React.Fragment>
     );
   }
