@@ -4,31 +4,24 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
 import MainNavbar from '../../components/Header/MainNavigation/MainNavigation';
-import RandomImageModal from '../../components/Unsplash/ImageModal/ImageModal';
+import ImageModal from '../../components/Unsplash/ImageModal/ImageModal';
 
 
 class Layout extends Component {
 
-  state = {
-    showRandomImageModal: false
-  }
-
 
   toggleRandomImageModal = () => {
-    this.setState((prevState, props) => {
-      return {
-        showRandomImageModal: !prevState.showRandomImageModal
-      }
-    })
+    this.props.onRandomImageLoad();
   }
 
 
   render(){
+
     return (
       <Fragment>
-        {this.state.showRandomImageModal ? <RandomImageModal show={this.state.showRandomImageModal}  /> : null }
+        {this.props.randomImage ? <ImageModal show={this.props.randomImage} hideImageModal={false} image={this.props.randomImage} /> : null }
         <header>
-          <MainNavbar clicked={this.toggleRandomImageModal}/>
+          <MainNavbar randomImageLoad={this.toggleRandomImageModal}/>
         </header>
         {this.props.children}
         <footer>
@@ -42,13 +35,14 @@ class Layout extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.token !== null 
+    isAuthenticated: state.auth.token !== null,
+    randomImage: state.unsplash.randomImage
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onRandomImageLoad: () => dispatch(actions.asyncUnsplashGetRandomHeroImage())
+    onRandomImageLoad: () => dispatch(actions.asyncUnsplashGetRandomImage())
   }
 }
 

@@ -53,7 +53,7 @@ class MainNavbar extends Component {
           <li>
             <NavLink to="/pixabay" exact className={classes["navbar-links"]}>Pixabay</NavLink>
           </li>
-          <li className={classes["main-navigation__random-image-btn"]} onClick={this.props.clicked}>
+          <li className={classes["main-navigation__random-image-btn"]} onClick={this.props.randomImageLoad}>
             RandomImage
           </li>
           <li>

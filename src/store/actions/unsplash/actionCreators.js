@@ -31,21 +31,21 @@ export const unsplashImageSearchByKeyword = (keyword, page) => {
 
 
 
-const unsplashGetHeroImage = (payload) => {
+const unsplashGetRandomImage = (payload) => {
     return {
-        type: actionTypes.UNSPLASH_GET_RANDOM_HERO_IMAGE,
+        type: actionTypes.UNSPLASH_GET_RANDOM_IMAGE,
         payload
     }
 }
 
-export const asyncUnsplashGetRandomHeroImage = () => {
+export const asyncUnsplashGetRandomImage = () => {
     return async (dispatch) => {
         try {
             let apiResponse = await Axios.get('/unsplash/randomPhoto');
             let payload = {
                 image: apiResponse.data
             }
-            dispatch(unsplashGetHeroImage(payload));
+            dispatch(unsplashGetRandomImage(payload));
         }
         catch(e){
             console.log(e);
@@ -60,7 +60,7 @@ export const asyncUnsplashGetRandomHeroImage = () => {
                     error : e
                 }
             }
-            dispatch(unsplashGetHeroImage(payload));
+            dispatch(unsplashGetRandomImage(payload));
         }
     }
 }

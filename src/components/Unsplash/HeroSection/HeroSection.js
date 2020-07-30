@@ -59,10 +59,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-      onRandomHeroImageLoad: () => dispatch(actions.asyncUnsplashGetRandomHeroImage())
-    }
-}
+
   
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(HeroSection));
+export default connect(mapStateToProps)(withRouter(HeroSection));

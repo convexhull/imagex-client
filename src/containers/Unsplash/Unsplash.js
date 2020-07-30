@@ -13,10 +13,6 @@ import CategoryNav from '../../components/Header/CategoryNavigation/CategoryNavi
 class Unsplash extends Component {
 
 
-  componentDidMount(){
-    this.props.onRandomHeroImageLoad();
-  }
-
   render(){
     return (
       <React.Fragment>
@@ -43,10 +39,6 @@ const mapStateToProps = (state) => {
 }
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onRandomHeroImageLoad: () => dispatch(actions.asyncUnsplashGetRandomHeroImage())
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Unsplash);
+
+export default connect(mapStateToProps)(Unsplash);

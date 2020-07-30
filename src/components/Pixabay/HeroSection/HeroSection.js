@@ -2,7 +2,6 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import classes from './HeroSection.module.css';
-import * as actions from '../../../store/actions/index';
 import Search from '../../UI/Search/Search';
 
 

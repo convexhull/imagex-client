@@ -3,9 +3,8 @@ import React , { Component } from 'react';
 
 
 import classes from './Home.module.css';
-import Search from '../../components/UI/Search/Search';
 import ImageLazyLoader from '../../components/UI/ScrollLazyLoading/ScrollLazyLoading';
-import HeroSection from '../../components/Common/HeroSection/HeroSection';
+import HeroSection from '../../components/Home/HeroSection/HeroSection';
 
 class Home extends Component {
 

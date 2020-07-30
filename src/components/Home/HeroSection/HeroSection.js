@@ -1,4 +1,5 @@
 import React , { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 
 
 import Search from '../../UI/Search/Search';
@@ -6,6 +7,27 @@ import classes from './HeroSection.module.css';
 
 
 class HeroSection extends Component {
+
+    state = {
+        form: {
+            value: ''
+        }
+    }
+
+
+    formSubmitHandler = (event) => {
+        event.preventDefault();
+        this.props.history.push(`/photos/unsplash?keyword=${this.state.form.value}`);
+    }
+
+    onInputChange = (e) => {
+        this.setState({
+            form: {
+                value: e.target.value
+            }
+        })
+    }
+
 
     render(){
         return (
@@ -15,7 +37,9 @@ class HeroSection extends Component {
                     <p className={classes["mainsection__subtitle"]}>{this.props.subtitle1}</p>
                     <p className={classes["mainsection__subtitle"]}>{this.props.subtitle2}</p>
                     <form className={classes["mainsection__form"]} onSubmit={this.formSubmitHandler}>
-                        <Search />
+                        <Search 
+                            value={this.state.form.value}
+                            changed={this.onInputChange} />
                     </form>
                     <p className={classes["mainsection__trending"]}>{this.props.subtitle3}</p>
                 </div>
@@ -27,4 +51,6 @@ class HeroSection extends Component {
 }
 
 
-export default HeroSection;
+
+
+export default withRouter(HeroSection);

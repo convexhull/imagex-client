@@ -29,15 +29,13 @@ class ImageModal extends Component {
                         </div>
                     </div>  
                 </div>
-
                 <div className={classes["image-container"]}>
-                    <img src={this.props.image.urls.regular} alt="india's tricolour flag"  />
+                    <img src={this.props.image.urls.regular} alt={this.props.image.alt_description || this.props.image.description || 'alternate definition'}  />
                 </div>
                 <br />
                 <div className={classes["image-footer"]}>
                     {this.props.image.description || this.props.image.alt_description}
                 </div>
-
             </Modal>
         )
     }
