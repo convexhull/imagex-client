@@ -3,12 +3,17 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 
 
+import * as actions from '../../../store/actions/index'
 import ScrollLazyLoader from '../../UI/ScrollLazyLoading/ScrollLazyLoading';
 
 
 
 
 class Search extends Component {
+
+    componentDidMount(){
+        this.props.onClearPreviousImages();
+    }
 
     render(){
         let search = new URLSearchParams(this.props.location.search);
@@ -32,5 +37,11 @@ const mapStateToProps = (state) => {
 
 
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onClearPreviousImages: () => dispatch(actions.unsplashClearAllImages())
+    }
+}
 
-export default connect(mapStateToProps)(Search);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

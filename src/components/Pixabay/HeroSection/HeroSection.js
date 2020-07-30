@@ -17,7 +17,6 @@ class HeroSection extends Component {
 
     formSubmitHandler = (event) => {
         event.preventDefault();
-        this.props.onClearAllImages();
         this.props.history.push({
             pathname: '/photos/pixabay',
             search: `?keyword=${this.state.form.value}`
@@ -60,10 +59,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onClearAllImages: () => dispatch(actions.pixabayClearAllImages())
-    }
-}
+
   
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(HeroSection));
+export default connect(mapStateToProps)(withRouter(HeroSection));

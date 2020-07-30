@@ -1,0 +1,17 @@
+.Category-navigation {
+
+}
+
+.navlink-container {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin: 0 10px;
+    padding: 20px 0;
+}
+
+
+.navlink-container__link {
+    /* margin-right: 40px; */
+
+}

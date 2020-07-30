@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 import HeroSection from '../../components/Pixabay/HeroSection/HeroSection';
+import CategoryNav from '../../components/Header/CategoryNavigation/CategoryNavigation';
 import classes from './Pixabay.module.css';
 
 
@@ -15,6 +16,7 @@ class Pixabay extends Component {
   render(){
     return (
       <React.Fragment>
+        <CategoryNav platform="pixabay" />
         <div className={classes["hero-container"]}>
           <HeroSection
             title="Pixabay"

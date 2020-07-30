@@ -10,6 +10,11 @@ import ImageLazyLoader from '../ImageLazyLoader/ImageLazyLoader';
 
 class Search extends Component {
 
+
+    componentDidMount() {
+        this.props.onClearPreviousImages();
+    }
+
     render(){
         let search = new URLSearchParams(this.props.location.search);
         let keyword = search.get('keyword');
@@ -31,7 +36,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSearchByKeyword : (keyword) => dispatch(actions.pixabayImageSearchByKeyword(keyword))
+        onSearchByKeyword : (keyword) => dispatch(actions.pixabayImageSearchByKeyword(keyword)),
+        onClearPreviousImages: () => dispatch(actions.pixabayClearAllImages())
     }
 }
 

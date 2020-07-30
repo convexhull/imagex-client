@@ -20,7 +20,6 @@ class HeroSection extends Component {
 
     formSubmitHandler = (event) => {
         event.preventDefault();
-        this.props.onClearAllImages();
         this.props.history.push(`/photos/unsplash?keyword=${this.state.form.value}`);
     }
 
@@ -62,8 +61,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onRandomHeroImageLoad: () => dispatch(actions.asyncUnsplashGetRandomHeroImage()),
-      onClearAllImages: () => dispatch(actions.unsplashClearAllImages())
+      onRandomHeroImageLoad: () => dispatch(actions.asyncUnsplashGetRandomHeroImage())
     }
 }
   

@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-import Navbar from '../../components/Unsplash/Navigation/Navbar';
 import HeroSection from '../../components/Unsplash/HeroSection/HeroSection';
-import HeroSection1 from '../../components/Common/HeroSection/HeroSection';
 import * as actions from '../../store/actions/index';
 import classes from './Unsplash.module.css';
+import CategoryNav from '../../components/Header/CategoryNavigation/CategoryNavigation';
 
 
 
@@ -21,7 +20,7 @@ class Unsplash extends Component {
   render(){
     return (
       <React.Fragment>
-        <Navbar />
+        <CategoryNav platform="unsplash" />
         <div className={classes["hero-container"]}>
           <HeroSection
             title="Unsplash"
