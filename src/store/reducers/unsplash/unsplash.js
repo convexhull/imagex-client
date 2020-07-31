@@ -29,6 +29,10 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, {
                 images: []
             })
+        case actionTypes.UNSPLASH_CLEAR_RANDOM_IMAGE:
+            return updateObject(state, {
+                randomImage: ''
+            })
         default: 
             return state;
     }

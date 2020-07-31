@@ -9,17 +9,15 @@ import ImageModal from '../../components/Unsplash/ImageModal/ImageModal';
 
 class Layout extends Component {
 
-
   toggleRandomImageModal = () => {
     this.props.onRandomImageLoad();
   }
-
 
   render(){
 
     return (
       <Fragment>
-        {this.props.randomImage ? <ImageModal show={this.props.randomImage} hideImageModal={false} image={this.props.randomImage} /> : null }
+        {this.props.randomImage ? <ImageModal show={this.props.randomImage} hideImageModal={this.props.onClearRandomImage} image={this.props.randomImage} /> : null }
         <header>
           <MainNavbar randomImageLoad={this.toggleRandomImageModal}/>
         </header>
@@ -32,7 +30,6 @@ class Layout extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.token !== null,
@@ -42,9 +39,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onRandomImageLoad: () => dispatch(actions.asyncUnsplashGetRandomImage())
+    onRandomImageLoad: () => dispatch(actions.asyncUnsplashGetRandomImage()),
+    onClearRandomImage: () => dispatch(actions.unsplashClearRandomImage())
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);

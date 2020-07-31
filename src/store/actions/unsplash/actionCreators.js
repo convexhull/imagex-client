@@ -66,6 +66,13 @@ export const asyncUnsplashGetRandomImage = () => {
 }
 
 
+export const unsplashClearRandomImage = () => {
+    return {
+        type: actionTypes.UNSPLASH_CLEAR_RANDOM_IMAGE
+    }
+}
+
+
 export const unsplashClearAllImages = () => {
     return {
         type: actionTypes.UNSPLASH_CLEAR_ALL_IMAGES

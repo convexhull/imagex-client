@@ -8,7 +8,8 @@ export {
 export {
     unsplashImageSearchByKeyword,
     asyncUnsplashGetRandomImage,
-    unsplashClearAllImages
+    unsplashClearAllImages,
+    unsplashClearRandomImage
 } from './unsplash/actionCreators';
 
 
