@@ -60,7 +60,7 @@ class MainNavbar extends Component {
             <NavLink to="#" className={classes["navbar-links"]} >...</NavLink>
           </li>
           <li>
-            <NavLink to="/searchByImage" className={classes["navbar-links"]}>Search By Image</NavLink>
+            <NavLink to="/computerVision" className={classes["navbar-links"]}>Search By Image</NavLink>
           </li>
         </ul>
         {authenticationInfo}

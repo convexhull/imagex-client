@@ -8,7 +8,6 @@ import classes from './Modal.module.css';
 
 
 class Modal extends Component {
-
     render(){
         return (
             <React.Fragment>
@@ -20,7 +19,5 @@ class Modal extends Component {
         )
     }
 }
-
-
 
 export default Modal;

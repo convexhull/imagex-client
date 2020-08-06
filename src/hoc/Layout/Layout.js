@@ -7,6 +7,7 @@ import MainNavbar from '../../components/Header/MainNavigation/MainNavigation';
 import ImageModal from '../../components/Unsplash/ImageModal/ImageModal';
 
 
+
 class Layout extends Component {
 
   toggleRandomImageModal = () => {

@@ -13,6 +13,7 @@ import UnsplashSearch from './components/Unsplash/Search/Search';
 import PixabaySearch from './components/Pixabay/Search/Search';
 import Login from './containers/Authentication/Login/Login';
 import Signup from './containers/Authentication/Signup/Signup';
+import CV from './containers/ComputerVision/ComputerVision';
 import * as actions from './store/actions/index';
 
 
@@ -36,6 +37,7 @@ class App extends Component {
               <Route path="/photos/pixabay" exact component={PixabaySearch} />
               <Route path="/pixabay" exact component={Pixabay} />
               <Route path="/profile" exact component={Profile} />
+              <Route path="/computerVision" exact component={CV} />
               <Route component={() => (<h1>Route Not found!!!</h1>)} />
             </Switch>
           </Layout>
