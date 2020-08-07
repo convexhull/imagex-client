@@ -17,3 +17,8 @@ export {
     pixabayImageSearchByKeyword,
     pixabayClearAllImages
 } from './pixabay/actionCreators';
+
+
+export {
+    asyncSimilarImagesSearchStart
+} from './computerVision/actionCreators';
