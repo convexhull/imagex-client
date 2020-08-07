@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import classes from './ComputerVision.module.css';
 import * as actions from '../../store/actions';
+import CameraIcon from '../../assets/icons/camera.svg';
 
 class CV extends Component {
 
@@ -25,7 +26,7 @@ class CV extends Component {
 
 
     formSubmitHandler = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         this.props.onSimilarImagesSearch(this.state.formData);
     }
 
@@ -42,14 +43,13 @@ class CV extends Component {
         return (
             <div  className={classes["CV"]}>
                 <div className={classes["container"]}>
-                    <form onSubmit={this.formSubmitHandler}>
-                        <div>
-
+                    <form className={classes["form"]} onSubmit={this.formSubmitHandler}>
+                        <div className={classes["form__image"]}>
+                            <img src={CameraIcon} alt="camera icon" />
                         </div>
-                        <p>Drag and drop an image to find similar</p>
-                        <input ref={this.fileRef} accept="image/jpeg image/png image/jpeg" type="file" onChange={this.fileUploadHandler} required hidden/>
-                        <button type="button" onClick={this.clickHandler}>Shit</button>
-                        <button>Hit</button>
+                        <p className={classes["form__title"]}>Upload an image to find similar</p>
+                        <input ref={this.fileRef} accept="image/jpeg image/png image/jpeg" type="file" onChange={this.fileUploadHandler} required/>
+                        <button className={classes["form__btn"]} onClick={this.clickHandler}>Upload</button>
                     </form>
                     <p className={classes["container__image-constraints"]}><small>We only support JPG and PNG images under 5MB.</small></p>
                 </div>
