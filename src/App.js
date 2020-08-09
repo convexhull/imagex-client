@@ -35,9 +35,10 @@ class App extends Component {
               <Route path="/unsplash" exact component={Unsplash} />
               <Route path="/photos/unsplash" exact component={UnsplashSearch} />
               <Route path="/photos/pixabay" exact component={PixabaySearch} />
+              <Route path="/photots/computer-vision" exact component={} />
               <Route path="/pixabay" exact component={Pixabay} />
               <Route path="/profile" exact component={Profile} />
-              <Route path="/computerVision" exact component={CV} />
+              {/* <Route path="/computerVision" exact component={CV} /> */}
               <Route component={() => (<h1>Route Not found!!!</h1>)} />
             </Switch>
           </Layout>

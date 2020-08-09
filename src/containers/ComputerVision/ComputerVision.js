@@ -25,10 +25,7 @@ class CV extends Component {
     }
 
 
-    formSubmitHandler = (event) => {
-        // event.preventDefault();
-        this.props.onSimilarImagesSearch(this.state.formData);
-    }
+    
 
     fileUploadHandler = (event) => {
         console.log(event.target.files[0]);
@@ -36,20 +33,28 @@ class CV extends Component {
             formData: {
                 file: event.target.files[0]
             }
-        })
+        }, () => {
+            this.props.history.push('/');
+        });
+    }
+
+
+    componentDidUpdate(){
+        this.props.onSimilarImagesSearch(this.state.formData);
+        this.props.history.push('/');
     }
 
     render() {
         return (
             <div  className={classes["CV"]}>
                 <div className={classes["container"]}>
-                    <form className={classes["form"]} onSubmit={this.formSubmitHandler}>
+                    <form className={classes["form"]}>
                         <div className={classes["form__image"]}>
                             <img src={CameraIcon} alt="camera icon" />
                         </div>
                         <p className={classes["form__title"]}>Upload an image to find similar</p>
-                        <input ref={this.fileRef} accept="image/jpeg image/png image/jpeg" type="file" onChange={this.fileUploadHandler} required/>
-                        <button className={classes["form__btn"]} onClick={this.clickHandler}>Upload</button>
+                        <input ref={this.fileRef} accept="image/*" type="file" onChange={this.fileUploadHandler} required hidden />
+                        <button type="button" className={classes["form__btn"]} onClick={this.clickHandler}>Upload</button>
                     </form>
                     <p className={classes["container__image-constraints"]}><small>We only support JPG and PNG images under 5MB.</small></p>
                 </div>
