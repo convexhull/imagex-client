@@ -11,6 +11,7 @@ import Pixabay from './containers/Pixabay/Pixabay';
 import Profile from './containers/Profile/Profile';
 import UnsplashSearch from './components/Unsplash/Search/Search';
 import PixabaySearch from './components/Pixabay/Search/Search';
+import CVSearch from './components/ComputerVision/Search/Search';
 import Login from './containers/Authentication/Login/Login';
 import Signup from './containers/Authentication/Signup/Signup';
 import CV from './containers/ComputerVision/ComputerVision';
@@ -35,10 +36,10 @@ class App extends Component {
               <Route path="/unsplash" exact component={Unsplash} />
               <Route path="/photos/unsplash" exact component={UnsplashSearch} />
               <Route path="/photos/pixabay" exact component={PixabaySearch} />
-              <Route path="/photots/computer-vision" exact component={} />
+              <Route path="/photos/computer-vision" exact component={CVSearch} />
               <Route path="/pixabay" exact component={Pixabay} />
               <Route path="/profile" exact component={Profile} />
-              {/* <Route path="/computerVision" exact component={CV} /> */}
+              <Route path="/computerVision" exact component={CV} />
               <Route component={() => (<h1>Route Not found!!!</h1>)} />
             </Switch>
           </Layout>

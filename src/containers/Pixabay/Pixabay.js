@@ -1,19 +1,12 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import HeroSection from '../../components/Pixabay/HeroSection/HeroSection';
-import CategoryNav from '../../components/Header/CategoryNavigation/CategoryNavigation';
-import classes from './Pixabay.module.css';
-
-
+import HeroSection from "../../components/Pixabay/HeroSection/HeroSection";
+import CategoryNav from "../../components/Header/CategoryNavigation/CategoryNavigation";
+import classes from "./Pixabay.module.css";
 
 class Pixabay extends Component {
-
-  componentDidMount() {
-
-  }
-
-  render(){
+  render() {
     return (
       <React.Fragment>
         <CategoryNav platform="pixabay" />
@@ -30,19 +23,11 @@ class Pixabay extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
     page: state.pixabay.page,
-    isAuthenticated: state.auth.token !== null
-  }
-}
+    isAuthenticated: state.auth.token !== null,
+  };
+};
 
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Pixabay);
+export default connect(mapStateToProps)(Pixabay);

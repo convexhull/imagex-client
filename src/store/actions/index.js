@@ -20,5 +20,6 @@ export {
 
 
 export {
-    asyncSimilarImagesSearchStart
+    asyncSimilarImagesSearchStart,
+    asyncCvImageUploadStart
 } from './computerVision/actionCreators';

@@ -42,6 +42,7 @@ class ScrollLazyLoading extends React.Component {
             </React.Fragment>
         );
     }
+
 }
 
 
@@ -50,6 +51,7 @@ const mapStateToProps = (state) => {
         images: state.pixabay.images
     }
 }
+
 
 const mapDispatchToProps = (dispatch) => {
     return {

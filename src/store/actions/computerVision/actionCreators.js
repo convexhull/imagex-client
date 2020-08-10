@@ -20,9 +20,30 @@ const similarImagesSearchFailure = () => {
     }
 }
 
-export const asyncSimilarImagesSearchStart = (data) => {
+
+const cvImageUploadStart = () => {
+    return {
+        type: actionTypes.CV_IMAGE_UPLOAD_START
+    }
+}
+
+const cvImageUploadFailure = () => {
+    return {
+        type: actionTypes.CV_IMAGE_UPLOAD_FAILURE
+    }
+}
+
+
+const cvImageUploadSuccess = (payload) => {
+    return {
+        type: actionTypes.CV_IMAGE_UPLOAD_SUCCESS,
+        payload
+    }
+}
+
+export const asyncCvImageUploadStart = (data) => {
     return async (dispatch) => {
-        dispatch(similarImagesSearchStart());
+        dispatch(cvImageUploadStart());
         let formData = new FormData();
         formData.append("file", data.file);
         try {
@@ -31,11 +52,28 @@ export const asyncSimilarImagesSearchStart = (data) => {
                     'Content-Type': 'multipart/form-data'
                 }
             }
-            let apiResponse = await Axios.post(`/computer-vision/getSimilarImages`, formData, config) ;
-            console.log(apiResponse.data);
+            let apiResponse = await Axios.post(`/computer-vision/uploadImage`, formData, config);
+            if(apiResponse.data.upload_id){
+                let payload = {
+                    uploadedImageId: apiResponse.data.upload_id
+                }
+                dispatch(cvImageUploadSuccess(payload));
+            } 
+            else {
+                throw new Error("Upload id not found");
+            }
         }
         catch(e){
             console.log(e);
+            dispatch(cvImageUploadFailure());
         }
+    }
+}
+
+
+export const asyncSimilarImagesSearchStart = (data) => {
+    return async (dispatch) => {
+        dispatch(similarImagesSearchStart());
+        
     }
 }

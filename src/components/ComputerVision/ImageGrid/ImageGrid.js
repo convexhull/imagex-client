@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './ImageGrid.module.css';
-import ImageModal from '../ImageModal/ImageModal';
 
 
 class ImageGrid extends Component {
@@ -30,7 +29,6 @@ class ImageGrid extends Component {
 
     return (
       <div>
-        {this.state.showImageModal ? <ImageModal show={this.state.showImageModal} hideImageModal={this.hideModalHandler} image={this.state.selectedImage}/> : null}
         <div className={classes["image-grid"]}>
           {images1}
         </div>
@@ -41,4 +39,9 @@ class ImageGrid extends Component {
 
 
 export default ImageGrid;
+
+
+
+
+
 
