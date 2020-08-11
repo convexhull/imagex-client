@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 
 import classes from "./ComputerVision.module.css";
@@ -30,12 +31,23 @@ class CV extends Component {
     });
   };
 
-  componentDidUpdate() {
-    this.props.onImageUpload(this.state.formData);
-    this.props.history.push("/photos/computer-vision");
+
+  componentDidMount(){
+
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('did update.....');
+    if (!prevState.formData.file) {
+      this.props.onImageUpload(this.state.formData);
+    }
   }
 
   render() {
+    if (this.props.uploadedImageId !== '') {
+      return <Redirect to="/photos/computer-vision" />;
+    }
+
     return (
       <div className={classes["CV"]}>
         <div className={classes["container"]}>
@@ -71,10 +83,18 @@ class CV extends Component {
   }
 }
 
+
+const mapStateToProps = (state) => {
+  return {
+    uploadedImageId: state.cv.uploadedImageId
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onImageUpload: (data) => dispatch(actions.asyncCvImageUploadStart(data)),
+    onClearPreviousSearch: () => dispatch(actions.cvClearPreviousSearch())
   };
 };
 
-export default connect(null, mapDispatchToProps)(CV);
+export default connect(mapStateToProps, mapDispatchToProps)(CV);

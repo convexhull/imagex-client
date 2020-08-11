@@ -20,12 +20,12 @@ class ScrollLazyLoading extends React.Component {
             root: null,
             rootMargin: '0px',
             threshold: 0.9
-        }
+        }       
         let pagecount = 0;
         let callback = (entries) => {
             if(entries[0].isIntersecting){
                 pagecount++;
-                this.props.onSearchByKeyword(this.props.keyword, pagecount);
+                this.props.onSimilarImageSearch({uploadedImageId: this.props.uploadedImageId, page: pagecount});
             }
         }
         let observer = new IntersectionObserver(callback, options);
@@ -48,14 +48,15 @@ class ScrollLazyLoading extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        images: state.pixabay.images
+        images: state.cv.similarImages,
+        uploadedImageId: state.cv.uploadedImageId
     }
 }
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSearchByKeyword : (keyword, page) => dispatch(actions.pixabayImageSearchByKeyword(keyword, page))
+        onSimilarImageSearch: (data) => dispatch(actions.asyncSimilarImagesSearchStart(data))
     }
 }
 

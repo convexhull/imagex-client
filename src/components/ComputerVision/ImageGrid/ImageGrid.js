@@ -22,7 +22,7 @@ class ImageGrid extends Component {
       let imgOrientation = (image.imageWidth >= image.imageHeight ? "landscape" : "portrait") ; 
       return (
         <div className={classes[imgOrientation]}>
-          <img src={image.largeImageURL} alt="image" onClick={() => this.imageClickHandler(image)} />
+          <img src={image.assets.preview.url} alt="image" onClick={() => this.imageClickHandler(image)} />
         </div>
       );
     })

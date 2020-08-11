@@ -1,24 +1,7 @@
 import * as actionTypes from './actionTypes';
 import Axios from '../../../axios/axios';
 
-const similarImagesSearchStart = () => {
-    return {
-        type: actionTypes.SIMILAR_IMAGES_SEARCH_START
-    }
-}
 
-const similarImagesSearchSuccess = () => {
-    return {
-        type: actionTypes.SIMILAR_IMAGES_SEARCH_SUCCESS
-    }
-}
-
-
-const similarImagesSearchFailure = () => {
-    return {
-        type: actionTypes.SIMILAR_IMAGES_SEARCH_FAILURE
-    }
-}
 
 
 const cvImageUploadStart = () => {
@@ -71,9 +54,46 @@ export const asyncCvImageUploadStart = (data) => {
 }
 
 
+
+const similarImagesSearchStart = () => {
+    return {
+        type: actionTypes.SIMILAR_IMAGES_SEARCH_START
+    }
+}
+
+const similarImagesSearchSuccess = (payload) => {
+    return {
+        type: actionTypes.SIMILAR_IMAGES_SEARCH_SUCCESS,
+        payload
+    }
+}
+
+
+const similarImagesSearchFailure = () => {
+    return {
+        type: actionTypes.SIMILAR_IMAGES_SEARCH_FAILURE
+    }
+}
+
+
 export const asyncSimilarImagesSearchStart = (data) => {
     return async (dispatch) => {
         dispatch(similarImagesSearchStart());
-        
+        let similarImageSearchURL = `/computer-vision/getSimilarImages?upload_id=${data.uploadedImageId}&page=${data.page}`;
+        try {
+            let apiResponse = await Axios.get(similarImageSearchURL);
+            let payload = {images: apiResponse.data.data};
+            dispatch(similarImagesSearchSuccess(payload));
+        } catch(e) {
+            console.log(e);
+        }
+    }
+}
+
+
+
+export const cvClearPreviousSearch = () => {
+    return {
+        type: actionTypes.CV_CLEAR_PREVIOUS_SEARCH
     }
 }
