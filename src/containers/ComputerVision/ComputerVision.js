@@ -23,11 +23,16 @@ class CV extends Component {
   };
 
   fileUploadHandler = (event) => {
-    console.log(event.target.files[0]);
+    let file = event.target.files[0];
+    if(file.size > 5000000){
+      alert('Your file exceeds the maximum supported size limit of 5MB. Please upload a smaller file.');
+      this.fileRef.current.value = null;
+      return ;
+    }
     this.setState({
       formData: {
-        file: event.target.files[0],
-      },
+        file
+      }
     });
   };
 
@@ -51,12 +56,12 @@ class CV extends Component {
               Upload an image to find similar
             </p>
             <input
+              className={classes["form__file"]}
               ref={this.fileRef}
               accept="image/jpg, image/jpeg, image/png"
               type="file"
               onChange={this.fileUploadHandler}
               required
-              hidden
             />
             <button
               type="button"

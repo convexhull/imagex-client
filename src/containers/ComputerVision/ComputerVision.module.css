@@ -57,6 +57,10 @@
 }
 
 
+.form__file {
+    display: none;
+}
+
 .container__image-constraints {
     margin-top: auto;
     margin-bottom: 2rem;
