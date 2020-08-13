@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import classes from './ImageGrid.module.css';
 
 
@@ -26,7 +28,6 @@ class ImageGrid extends Component {
         </div>
       );
     })
-
     return (
       <div>
         <div className={classes["image-grid"]}>
@@ -38,7 +39,15 @@ class ImageGrid extends Component {
 }
 
 
-export default ImageGrid;
+
+const mapStateToProps = (state) => {
+  return {
+    images: state.cv.similarImages
+  }
+}
+
+
+export default connect(mapStateToProps)(ImageGrid);
 
 
 

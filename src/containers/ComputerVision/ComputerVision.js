@@ -31,22 +31,14 @@ class CV extends Component {
     });
   };
 
-
-  componentDidMount(){
-
-  }
-
+ 
   componentDidUpdate(prevProps, prevState) {
-    console.log('did update.....');
     if (!prevState.formData.file) {
-      this.props.onImageUpload(this.state.formData);
+      this.props.onImageUpload(this.state.formData, this.props.history);
     }
   }
 
   render() {
-    if (this.props.uploadedImageId !== '') {
-      return <Redirect to="/photos/computer-vision" />;
-    }
 
     return (
       <div className={classes["CV"]}>
@@ -60,7 +52,7 @@ class CV extends Component {
             </p>
             <input
               ref={this.fileRef}
-              accept="image/*"
+              accept="image/jpg, image/jpeg, image/png"
               type="file"
               onChange={this.fileUploadHandler}
               required
@@ -92,8 +84,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onImageUpload: (data) => dispatch(actions.asyncCvImageUploadStart(data)),
-    onClearPreviousSearch: () => dispatch(actions.cvClearPreviousSearch())
+    onImageUpload: (data, history) => dispatch(actions.asyncCvImageUploadStart(data, history))
+    // onClearPreviousSearch: () => dispatch(actions.cvClearPreviousSearch())
   };
 };
 

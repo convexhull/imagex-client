@@ -24,7 +24,7 @@ const cvImageUploadSuccess = (payload) => {
     }
 }
 
-export const asyncCvImageUploadStart = (data) => {
+export const asyncCvImageUploadStart = (data, history) => {
     return async (dispatch) => {
         dispatch(cvImageUploadStart());
         let formData = new FormData();
@@ -40,6 +40,7 @@ export const asyncCvImageUploadStart = (data) => {
                 let payload = {
                     uploadedImageId: apiResponse.data.upload_id
                 }
+                history.push('/photos/computer-vision');
                 dispatch(cvImageUploadSuccess(payload));
             } 
             else {
@@ -89,7 +90,6 @@ export const asyncSimilarImagesSearchStart = (data) => {
         }
     }
 }
-
 
 
 export const cvClearPreviousSearch = () => {

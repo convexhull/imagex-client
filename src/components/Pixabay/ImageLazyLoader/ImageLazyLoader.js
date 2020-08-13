@@ -19,7 +19,7 @@ class ScrollLazyLoading extends React.Component {
         let options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.9
+            threshold: 0.1
         }
         let pagecount = 0;
         let callback = (entries) => {

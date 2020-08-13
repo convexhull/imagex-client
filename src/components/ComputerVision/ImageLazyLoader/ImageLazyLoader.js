@@ -19,7 +19,7 @@ class ScrollLazyLoading extends React.Component {
         let options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.9
+            threshold: 0.1
         }       
         let pagecount = 0;
         let callback = (entries) => {
@@ -35,7 +35,7 @@ class ScrollLazyLoading extends React.Component {
     render(){
         return (
             <React.Fragment>
-                <ImageGrid images={this.props.images} />
+                <ImageGrid />
                 <div ref={this.loaderRef}>
                     <Spinner  />
                 </div>
@@ -48,7 +48,6 @@ class ScrollLazyLoading extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        images: state.cv.similarImages,
         uploadedImageId: state.cv.uploadedImageId
     }
 }

@@ -35,7 +35,6 @@ const reducer = (state = initState, action) => {
             return updateObject(state, {
                 imageUploading: false
             });
-
         case actionTypes.SIMILAR_IMAGES_SEARCH_START:
             return updateObject(state, {
                 similarImagesLoading: true
