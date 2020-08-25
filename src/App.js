@@ -15,6 +15,7 @@ import CVSearch from './components/ComputerVision/Search/Search';
 import Login from './containers/Authentication/Login/Login';
 import Signup from './containers/Authentication/Signup/Signup';
 import CV from './containers/ComputerVision/ComputerVision';
+import FavouriteImages from './containers/FavouriteImages/FavouriteImages';
 import * as actions from './store/actions/index';
 
 
@@ -40,6 +41,7 @@ class App extends Component {
               <Route path="/pixabay" exact component={Pixabay} />
               <Route path="/profile" exact component={Profile} />
               <Route path="/computerVision" exact component={CV} />
+              <Route path="/favourite-images" exact component={FavouriteImages} />
               <Route component={() => (<h1>Route Not found!!!</h1>)} />
             </Switch>
           </Layout>

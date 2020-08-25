@@ -1,6 +1,10 @@
 import React , { Component } from 'react';
+import { connect } from 'react-redux';
+
+
 import Modal from '../../Common/UI/Modal/Modal';
 import classes from './ImageModal.module.css';
+import * as actions from '../../../store/actions/index';
 
 
 class ImageModal extends Component {
@@ -18,7 +22,7 @@ class ImageModal extends Component {
                         <p>@{this.props.image.user.username}</p>
                     </div>
                     <div className={classes["actions"]}>
-                        <div className={classes["icons"]}>
+                        <div className={classes["icons"]} onClick={() => this.props.onAddToFavourites(this.props.image)}>
                             <ion-icon name="heart"></ion-icon>
                         </div>
                         <div className={classes["icons"]}>
@@ -27,7 +31,7 @@ class ImageModal extends Component {
                         <div className={classes["download-button"]}>
                             <a title="Download photo" href={`${this.props.image.links.download}?force=true`} rel="nofollow" target="_blank"  ><span class="_2Aga-">Download</span></a>
                         </div>
-                    </div>  
+                    </div>
                 </div>
                 <div className={classes["image-container"]}>
                     <img src={this.props.image.urls.regular} alt={this.props.image.alt_description || this.props.image.description || 'alternate definition'}  />
@@ -42,4 +46,11 @@ class ImageModal extends Component {
 }
 
 
-export default ImageModal;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAddToFavourites: (image) => dispatch(actions.asyncSaveFavouriteImageStart(image))
+    }
+}
+
+
+export default connect(null, mapDispatchToProps)(ImageModal);

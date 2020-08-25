@@ -24,3 +24,9 @@ export {
     asyncCvImageUploadStart,
     cvClearPreviousSearch
 } from './computerVision/actionCreators';
+
+
+export {
+    asyncFetchFavouriteImagesStart,
+    asyncSaveFavouriteImageStart
+} from './favouriteImages/actionCreators';

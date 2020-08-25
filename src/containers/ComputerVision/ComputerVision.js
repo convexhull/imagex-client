@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 
 import classes from "./ComputerVision.module.css";
 import * as actions from "../../store/actions";
 import CameraIcon from "../../assets/icons/camera.svg";
+import Spinner from '../../assets/images/spinner.gif';
 
 class CV extends Component {
   constructor(props) {
@@ -44,7 +44,9 @@ class CV extends Component {
   }
 
   render() {
-
+    if(this.props.loading){
+      return <img src={Spinner} alt="loading" />
+    }
     return (
       <div className={classes["CV"]}>
         <div className={classes["container"]}>
@@ -83,13 +85,14 @@ class CV extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    uploadedImageId: state.cv.uploadedImageId
+    uploadedImageId: state.cv.uploadedImageId,
+    loading: state.cv.imageUploading
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onImageUpload: (data, history) => dispatch(actions.asyncCvImageUploadStart(data, history))
+    onImageUpload: (data, history) => dispatch(actions.asyncCvImageUploadStart(data, history)),
     // onClearPreviousSearch: () => dispatch(actions.cvClearPreviousSearch())
   };
 };

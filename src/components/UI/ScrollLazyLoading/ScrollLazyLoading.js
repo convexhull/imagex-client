@@ -7,7 +7,6 @@ import ImageGrid from '../../Unsplash/ImageGrid/ImageGrid';
 import Spinner from '../Spinner/Spinner';
 import * as actions from '../../../store/actions/index';
 
-
 class ScrollLazyLoading extends React.Component {
 
     constructor(props){
