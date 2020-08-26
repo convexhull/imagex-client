@@ -19,3 +19,7 @@ code {
     monospace;
 }
   
+
+:root {
+  --font-grey: #767676;
+}

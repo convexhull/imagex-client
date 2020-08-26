@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import classes from './MainNavigation.module.css';
 import logo from '../../../assets/images/logo.png';
+import SearchBar from './SearchBar/SearchBar';
 
 
 
@@ -44,8 +45,12 @@ class MainNavbar extends Component {
         <div className={classes.logo} >
           <NavLink to="/"><img src={logo} /></NavLink>
         </div>
+        <div className={classes["imagex-description"]}>
+          <p className={classes["imagex-title"]}>ImageX</p>
+          <p className={classes["imagex-subtitle"]}>Photos for everyone</p>
+        </div>
         <div className={classes["image-search"]}>
-          <input type="text" placeholder="Search free high resolution photos" />
+          <SearchBar />
         </div>
         <ul>
           <li>
@@ -54,14 +59,11 @@ class MainNavbar extends Component {
           <li>
             <NavLink to="/pixabay" exact className={classes["navbar-links"]}>Pixabay</NavLink>
           </li>
-          <li className={classes["main-navigation__random-image-btn"]} onClick={this.props.randomImageLoad}>
-            RandomImage
-          </li>
-          <li>
-            <NavLink to="#" className={classes["navbar-links"]} >...</NavLink>
-          </li>
           <li>
             <NavLink to="/computerVision" className={classes["navbar-links"]}>Search By Image</NavLink>
+          </li>
+          <li className={classes["main-navigation__random-image-btn"]} onClick={this.props.randomImageLoad}>
+            Random Image
           </li>
         </ul>
         {authenticationInfo}

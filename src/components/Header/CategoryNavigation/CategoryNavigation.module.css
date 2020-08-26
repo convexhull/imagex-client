@@ -1,5 +1,6 @@
 .Category-navigation {
-
+    color: var(--font-grey);
+    overflow-x: hidden;
 }
 
 .navlink-container {
@@ -8,10 +9,23 @@
     justify-content: space-between;
     margin: 0 10px;
     padding: 20px 0;
+    min-width: 1200px;
+    overflow-x: hidden;
 }
 
 
-.navlink-container__link {
-    /* margin-right: 40px; */
-
+.navlink-container__link a:visited , .navlink-container__link a:link {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    transition: color 0.1s ease-in-out;
+    font-size: 0.9rem;
 }
+
+
+
+
+.navlink-container__link a:hover , .navlink-container__link a:active {
+    color: black;
+}
+

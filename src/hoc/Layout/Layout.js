@@ -7,7 +7,6 @@ import MainNavbar from '../../components/Header/MainNavigation/MainNavigation';
 import ImageModal from '../../components/Unsplash/ImageModal/ImageModal';
 
 
-
 class Layout extends Component {
 
   toggleRandomImageModal = () => {
@@ -15,7 +14,6 @@ class Layout extends Component {
   }
 
   render(){
-
     return (
       <Fragment>
         {this.props.randomImage ? <ImageModal show={this.props.randomImage} hideImageModal={this.props.onClearRandomImage} image={this.props.randomImage} /> : null }
@@ -23,9 +21,6 @@ class Layout extends Component {
           <MainNavbar randomImageLoad={this.toggleRandomImageModal}/>
         </header>
         {this.props.children}
-        <footer>
-          <h2>Some footer</h2>
-        </footer>
       </Fragment>
     );
   }
@@ -37,6 +32,7 @@ const mapStateToProps = (state) => {
     randomImage: state.unsplash.randomImage
   }
 }
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

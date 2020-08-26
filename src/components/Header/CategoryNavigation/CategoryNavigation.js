@@ -15,7 +15,7 @@ class CategoryNavigation extends Component {
                         <NavLink strict to={{
                             pathname: `/photos/${this.props.platform}`,
                             search: `?keyword=sustainability`
-                        }} >
+                        }}>
                             Sustainability
                         </NavLink>
                     </li>
