@@ -8,7 +8,6 @@ import * as actions from '../../../store/actions/index';
 
 
 class ImageModal extends Component {
-
   
     render(){
         return (

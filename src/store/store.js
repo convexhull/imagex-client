@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
     unsplash: unsplashReducer,
     pixabay: pixabayReducer,
     cv: computerVisionReducer,
-    favourite: favouriteImagesReducer
+    favourites: favouriteImagesReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

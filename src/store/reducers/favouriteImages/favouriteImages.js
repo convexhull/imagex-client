@@ -19,12 +19,12 @@ const reducer = (state = initState, action) => {
 
         case actionTypes.FETCH_FAVOURITE_IMAGES_START:
             return updateObject(state, {
-
+                
             });
 
         case actionTypes.FETCH_FAVOURITE_IMAGES_SUCCESS:
             return updateObject(state, {
-                
+                images: action.payload
             });
 
         case actionTypes.FETCH_FAVOURITE_IMAGES_FAILURE:

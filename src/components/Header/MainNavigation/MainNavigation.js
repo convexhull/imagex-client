@@ -34,6 +34,7 @@ class MainNavbar extends Component {
           <li>
             ProfilePic
           </li>
+          <NavLink to="/favourite-images">My list</NavLink>
         </ul>
       )
     }

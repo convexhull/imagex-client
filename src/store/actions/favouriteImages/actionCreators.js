@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 import Axios from '../../../axios/axios';
 
-const saveFavouriteImagesStart = () => {
+const fetchFavouriteImagesStart = () => {
     return {
         type: actionTypes.FETCH_FAVOURITE_IMAGES_START
     }
@@ -9,15 +9,16 @@ const saveFavouriteImagesStart = () => {
 
 
 
-const saveFavouriteImagesSuccess = () => {
+const fetchFavouriteImagesSuccess = (payload) => {
     return {
-        type: actionTypes.FETCH_FAVOURITE_IMAGES_SUCCESS
+        type: actionTypes.FETCH_FAVOURITE_IMAGES_SUCCESS,
+        payload
     }
 }
 
 
 
-const saveFavouriteImagesFailure = () => {
+const fetchFavouriteImagesFailure = () => {
     return {
         type: actionTypes.FETCH_FAVOURITE_IMAGES_FAILURE
     }
@@ -26,12 +27,24 @@ const saveFavouriteImagesFailure = () => {
 
 
 export const asyncFetchFavouriteImagesStart = () => {
-    return (dispatch) => {
-        dispatch(saveFavouriteImagesStart());
+    return async (dispatch) => {
+        dispatch(fetchFavouriteImagesStart());
+        let token = localStorage.getItem('token');
+        if(!token) {
+            return alert('Please login to use this feature');
+        }
+        let config = {
+            headers: {
+                "Authorization" : `Bearer ${token}`
+            }
+        };
         try {
-
+            let apiResponse = await Axios.get('users/favourite-images', config );
+            let images = apiResponse.data.data;
+            dispatch(fetchFavouriteImagesSuccess(images));
         } catch(e) {
-            
+            console.log(e);
+            dispatch(fetchFavouriteImagesFailure(e));
         }
     }
 }
@@ -44,15 +57,16 @@ const saveFavouriteImageStart = () => {
 
 
 
-const saveFavouriteImageSuccess = () => {
+const saveFavouriteImageSuccess = (payload) => {
     return {
-        type: actionTypes.SAVE_FAVOURITE_IMAGE_SUCCESS
+        type: actionTypes.SAVE_FAVOURITE_IMAGE_SUCCESS,
+        payload
     }
 }
 
 
 
-const saveFavouriteImageFailure = () => {
+const saveFavouriteImageFailure = (error) => {
     return {
         type: actionTypes.SAVE_FAVOURITE_IMAGE_FAILURE
     }
@@ -60,11 +74,33 @@ const saveFavouriteImageFailure = () => {
 
 
 
-export const asyncSaveFavouriteImageStart = (image) => {
+export const asyncSaveFavouriteImageStart = (image, platform) => {
     return async (dispatch) => {
         dispatch(saveFavouriteImageStart());
-        let data = {
-            
+        let data = {};
+        switch (platform) {
+            case "unsplash":
+                data = {
+                    platform: "unsplash",
+                    imageId: image.id,
+                    pageUrl: image.links.html,
+                    smallImageUrl: image.urls.small,
+                    mediumImageUrl: image.urls.regular,
+                    largeImageUrl: image.urls.full,
+                    downloadUrl: image.links.download
+                }
+                break;
+            case "pixabay":
+                data = {
+                    platform: "pixabay",
+                    imageId: image.id,
+                    pageUrl: image.pageURL,
+                    smallImageUrl: image.previewURL,
+                    mediumImageUrl: image.webformatURL,
+                    largeImageUrl: image.largeImageURL,
+                    downloadUrl: image.largeImageURL
+                }   
+                break;
         }
         let token = localStorage.getItem('token');
         if(!token) {
@@ -74,13 +110,12 @@ export const asyncSaveFavouriteImageStart = (image) => {
             headers: {
                 "Authorization" : `Bearer ${token}`
             }
-        }
-        console.log("image", image);
+        };
         try {
-            let apiResponse = await Axios.post('/image-list/saveImage', image, config);
-            
+            let apiResponse = await Axios.post('/image-list/saveImage', data, config);
+            dispatch(saveFavouriteImageSuccess(apiResponse.data));
         } catch(e) {
-            
+            dispatch(saveFavouriteImageFailure(e));
         }
     }
 }

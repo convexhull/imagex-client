@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 
 
-import ImageGrid from '../../Unsplash/ImageGrid/ImageGrid';
-import Spinner from '../Spinner/Spinner';
+import ImageGrid from '../ImageGrid/ImageGrid';
+import Spinner from '../../UI/Spinner/Spinner';
 import * as actions from '../../../store/actions/index';
 
 class ScrollLazyLoading extends React.Component {
@@ -45,10 +45,17 @@ class ScrollLazyLoading extends React.Component {
 }
 
 
+const mapStateToProps = (state) => {
+    return {
+        images: state.favourites.images
+    }
+}
+
+
 const mapDispatchToProps = (dispatch) => {
     return {
         onSearchByKeyword : (keyword, page) => dispatch(actions.unsplashImageSearchByKeyword(keyword, page))
     }
 }
 
-export default connect(null, mapDispatchToProps)(ScrollLazyLoading);
+export default connect(mapStateToProps, mapDispatchToProps)(ScrollLazyLoading);

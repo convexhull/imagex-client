@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import LazyLoader from '../../components/UI/ScrollLazyLoading/ScrollLazyLoading';
+
+
+import ImageGrid from '../../components/FavouriteImages/ImageGrid/ImageGrid';
 
 
 class FavouriteImages extends Component {
 
     render(){
         return (
-            <LazyLoader />
+            <ImageGrid />
         );
     }
 }
+
 
 
 export default FavouriteImages;
