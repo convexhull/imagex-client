@@ -13,6 +13,8 @@ import SearchBar from './SearchBar/SearchBar';
 
 class MainNavbar extends Component {
 
+
+
   render() {
     
     let authenticationInfo = (

@@ -1,14 +1,43 @@
 .Searchbar {
+    display: flex;
+    border: 1px solid rgb(214, 212, 212);
+    border-radius: 25px;
+    background-color: #e2e2e2;
+    outline: none;
+    overflow: hidden;
+}
+
+
+.searchbox {
     padding: .75rem;
     font-size: 1rem;
     width: 100%;
     outline: none;
-    border: 1px solid rgb(214, 212, 212);
-    border-radius: 25px;
-    background-color: #e2e2e2;
+    border: none;
+    background-color: inherit;
 }
 
 
 .Searchbar:focus {
     background-color: white;
 }
+
+.search-icon {
+    padding-top: 12px;
+    padding-left: 12px;
+    font-size: 1.2rem;
+}
+
+.close-icon {
+    padding-top: 12px;
+    padding-right: 10px;
+    font-size: 1.1rem;
+    display: none;
+}
+
+
+.close-icon--visible {
+    display: initial;
+}
+
+
