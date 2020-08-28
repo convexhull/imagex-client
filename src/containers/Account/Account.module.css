@@ -1,4 +1,71 @@
+.Account {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 5rem;
+}
+
+.Account__title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
 .basic-info {
     display: flex;
+    margin-bottom: 3rem;
 }
+
+
+.basic-info__profile-pic  {
+    flex-basis: 40%;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.basic-info__profile-pic img  {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.basic-info__upload-btn {
+    display: block;
+    margin: 1.5rem auto 0 auto;
+    background-color: white;
+    outline: none;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    border-radius: 15px;
+    border: 1px solid rgb(112, 112, 112);
+    cursor: pointer;
+}
+
+
+.basic-info__upload-btn:hover {
+    background-color: #e9e9e9;
+}
+
+
+.basic-info__first-name {
+    margin-bottom: 2.5rem;
+}
+
+
+.basic-info__account-info {
+    flex-basis: 60%;
+}
+
+
+.extra-info__username {
+    margin-bottom: 2rem;
+}
+
+
+.extra-info__email {
+    margin-bottom: 2rem;
+}
+
+
+.extra-info__bio {
+    height: 6rem;
+    margin-bottom: 3rem;
+}
+

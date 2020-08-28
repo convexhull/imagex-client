@@ -13,3 +13,8 @@
     border-radius: 4px;
 }
 
+.text-area {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}

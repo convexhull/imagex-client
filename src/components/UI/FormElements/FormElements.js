@@ -52,6 +52,20 @@ class FormElements extends Component {
                     </React.Fragment>
                 )
                 break;
+            case "textarea":
+                cssClasses.push(classes["text-area"]);
+                inputElement = (
+                    <React.Fragment>
+                        <label>{this.props.label}</label>
+                        <textarea
+                            className={cssClasses.join(' ')}
+                            value={this.props.value}
+                            required={this.props.required}
+                            onChange={this.props.onChange}
+                        />
+                    </React.Fragment>
+                )
+                break;
             default:
                 inputElement = (
                     <input
