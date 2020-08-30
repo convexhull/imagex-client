@@ -34,5 +34,6 @@ export {
 
 export {
     asyncUserProfilePicUpdateStart,
-    asyncUserFetchAccountStart
+    asyncUserFetchAccountStart,
+    asyncUserAccountUpdateStart
 } from './userAccount/actionCreators';

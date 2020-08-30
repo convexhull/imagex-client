@@ -81,12 +81,11 @@ export const asyncUserAccountUpdateStart = (data) => {
         }
         let config = {
             headers: {
-                "Authorization" : `Bearer ${token}`,
-                "Content-Type" : `multipart/form-data`
+                "Authorization" : `Bearer ${token}`
             }
         };
         try {   
-            let apiResponse = await Axios.post('/users/updateProfilePic', data, config);
+            let apiResponse = await Axios.patch('/users/update', data, config);
             dispatch(userAccountUpdateSuccess(apiResponse.data.data));
         } catch(e) {
             console.log(e);

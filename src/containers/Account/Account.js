@@ -26,14 +26,22 @@ class Account extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     console.log("updated");
+    if(this.props.userProfileInfo != prevProps.userProfileInfo){
+      this.setState({
+        form: {
+          firstName: this.props.userProfileInfo.firstName,
+          lastName: this.props.userProfileInfo.lastName,
+          email: this.props.userProfileInfo.email,
+          userName: this.props.userProfileInfo.userName,
+          bio: this.props.userProfileInfo.bio
+        }
+      })
+    }
+    
   }
 
   componentDidMount() {
     this.props.onLoadAccountInfo();
-    let val = this.props.userProfileInfo && this.props.userProfileInfo.firstName;
-    this.setState({
-      firstName: val
-    })
   }
 
   
@@ -59,19 +67,30 @@ class Account extends Component {
     });
   };
 
+
+  updateBtnHandler = () => {
+    this.props.onUpdateAccountInfo(this.state.form);
+  }
+
   render() {
+    let profilePicUploadBtnClasses = `${classes["basic-info__upload-btn"]}`;
+    if(this.props.profilePicUpdating){
+      profilePicUploadBtnClasses += ` ${classes["basic-info__upload-btn--uploading"]}`;
+    }
     return (
       <div class={classes["Account"]}>
         <h2 className={classes["Account__title"]}>Edit profile</h2>
         <div className={classes["basic-info"]}>
           <div className={classes["basic-info__profile-pic"]}>
-            <img
-              src={
-                this.props.userProfileInfo &&
-                this.props.userProfileInfo.profilePicUrl
-              }
-              alt="profile picture"
-            />
+            <div className={classes["basic-info__profile-image-container"]}>
+              <img
+                src={
+                  this.props.userProfileInfo &&
+                  this.props.userProfileInfo.profilePicUrl
+                }
+                alt="profile picture"
+              />
+            </div>
             <input
               ref={this.inputRef}
               style={{ display: "none" }}
@@ -79,11 +98,12 @@ class Account extends Component {
               onChange={this.imageUploadHandler}
             />
             <button
-              className={classes["basic-info__upload-btn"]}
+              className={profilePicUploadBtnClasses}
               type="button"
               onClick={this.imageSelectHandler}
+              disabled={this.props.profilePicUpdating}
             >
-              Change profile picture
+              {this.props.profilePicUpdating ? "Updating Picture..." : "Change profile picture" }
             </button>
           </div>
           <div className={classes["basic-info__account-info"]}>
@@ -134,7 +154,9 @@ class Account extends Component {
           </div>
         </div>
         <div className={classes["Account__submit-btn"]}>
-          <Button theme="imagex-default">Update account</Button>
+          <Button theme="imagex-default" clicked={this.updateBtnHandler}>
+            Update account
+          </Button>
         </div>
       </div>
     );
@@ -143,7 +165,8 @@ class Account extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userProfileInfo: state.account.userProfileInfo
+    userProfileInfo: state.account.userProfileInfo,
+    profilePicUpdating: state.account.profilePicUploading
   };
 };
 
@@ -151,6 +174,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onProfilePicUpdate: (image) => dispatch(actions.asyncUserProfilePicUpdateStart(image)),
     onLoadAccountInfo: () => dispatch(actions.asyncUserFetchAccountStart()),
+    onUpdateAccountInfo: (data) => dispatch(actions.asyncUserAccountUpdateStart(data))
   };
 };
 

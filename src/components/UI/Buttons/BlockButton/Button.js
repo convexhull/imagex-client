@@ -13,8 +13,7 @@ class Button extends Component {
             elementClasses.push(classes["imagex-default-btn"])
         }
         return (
-            <button className={elementClasses.join(' ')} > {this.props.children} </button>
-            // <a className={classes.Button} href={this.props.btnLink} onClick={this.props.clicked} > <button>{this.props.btnTitle} </button></a>
+            <button className={elementClasses.join(' ')} onClick={this.props.clicked} > {this.props.children} </button>
         );
     }
 }

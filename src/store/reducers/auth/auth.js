@@ -6,8 +6,6 @@ const initialState = {
     userId: '',
     loading: false,
     redirectUrl: '',
-    profilePicUploading: false,
-    userProfileInfo: null
 };
 
 

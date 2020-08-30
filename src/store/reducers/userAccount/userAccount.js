@@ -3,7 +3,9 @@ import updateObject from '../../../utils/updateObject';
 
 const initialState = {
     loading: false,
-    userProfileInfo: null
+    userProfileInfo: null,
+    profileUpdating: false,
+    profileUpdateError: false
 };
 
 
@@ -12,16 +14,16 @@ const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.USER_ACCOUNT_UPDATE_START:
             return updateObject(state, {
-                profilePicUploading: true
+                profileUpdating: true
             });
         case actionTypes.USER_ACCOUNT_UPDATE_SUCCESS:
             return updateObject(state, {
-                profilePicUploading: false,
-                userProfileInfo: action.payload
+                profileUpdating: false
             });
         case actionTypes.USER_ACCOUNT_UPDATE_FAILURE:
             return updateObject(state, {
-                profilePicUploading: false
+                profileUpdateError: true,
+                profileUpdating: false
             });
         case actionTypes.USER_FETCH_ACCOUNT_START:
             return updateObject(state, {
@@ -36,6 +38,19 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, {
                 profilePicUploading: false
             });
+            case actionTypes.USER_PROFILE_PIC_UPDATE_START:
+                return updateObject(state, {
+                    profilePicUploading: true
+                });
+            case actionTypes.USER_PROFILE_PIC_UPDATE_SUCCESS:
+                return updateObject(state, {
+                    profilePicUploading: false,
+                    userProfileInfo: action.payload
+                });
+            case actionTypes.USER_PROFILE_PIC_UPDATE_FAILURE:
+                return updateObject(state, {
+                    profilePicUploading: false
+                });
         default: 
             return state;
     }
