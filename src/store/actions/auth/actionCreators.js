@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
-import Axios from '../../../axios/axios';
 import jwtDecode from 'jwt-decode';
+import Axios from '../../../axios/axios';
+
 
 
 
@@ -132,10 +133,12 @@ export const asyncUserSignupStart = (userInfo) => {
         let data = userInfo;
         try {
             let response = await Axios.post('/users/signup', data);
-            console.log(response);
+            dispatch(userSignupSuccess());
         }
         catch(e){
             console.log(e);
+            dispatch(userSignupFailure());
         }   
     }
 }
+

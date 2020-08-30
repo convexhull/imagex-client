@@ -6,6 +6,7 @@ import unsplashReducer from './reducers/unsplash/unsplash';
 import pixabayReducer from './reducers/pixabay/pixabay';
 import computerVisionReducer from './reducers/computerVision/computerVision';
 import favouriteImagesReducer from './reducers/favouriteImages/favouriteImages';
+import userAccountReducer from './reducers/userAccount/userAccount';
 
 
 const rootReducer = combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     unsplash: unsplashReducer,
     pixabay: pixabayReducer,
     cv: computerVisionReducer,
-    favourites: favouriteImagesReducer
+    favourites: favouriteImagesReducer,
+    account: userAccountReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -30,3 +30,9 @@ export {
     asyncFetchFavouriteImagesStart,
     asyncSaveFavouriteImageStart
 } from './favouriteImages/actionCreators';
+
+
+export {
+    asyncUserProfilePicUpdateStart,
+    asyncUserFetchAccountStart
+} from './userAccount/actionCreators';

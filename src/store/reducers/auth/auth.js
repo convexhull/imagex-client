@@ -1,10 +1,13 @@
 import * as actionTypes from '../../actions/auth/actionTypes';
+import updateObject from '../../../utils/updateObject';
 
 const initialState = {
     token: null,
     userId: '',
     loading: false,
-    redirectUrl: ''
+    redirectUrl: '',
+    profilePicUploading: false,
+    userProfileInfo: null
 };
 
 
