@@ -127,13 +127,14 @@ const userSignupFailure = () => {
     }
 }
 
-export const asyncUserSignupStart = (userInfo) => {
+export const asyncUserSignupStart = (userInfo, history) => {
     return async (dispatch) => {
         dispatch(userSignupStart());
         let data = userInfo;
         try {
             let response = await Axios.post('/users/signup', data);
             dispatch(userSignupSuccess());
+            history.push('/login');
         }
         catch(e){
             console.log(e);

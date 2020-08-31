@@ -45,6 +45,10 @@
 }
 
 
+.signup-info__login-option{
+    margin-bottom: 2rem;
+}
+
 
 .signup-info span {
     font-size: 30px;

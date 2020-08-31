@@ -45,7 +45,12 @@ class CV extends Component {
 
   render() {
     if(this.props.loading){
-      return <img src={Spinner} alt="loading" />
+      return (
+        <div className={classes["spinner"]}>
+          <img src={Spinner} alt="loading" />
+          <p className={classes["spinner__text"]}>Bringing you similar images from the web. Our AI algorithms are at work...</p>
+        </div>
+      );
     }
     return (
       <div className={classes["CV"]}>

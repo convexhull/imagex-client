@@ -86,7 +86,8 @@ class Account extends Component {
               <img
                 src={
                   this.props.userProfileInfo &&
-                  this.props.userProfileInfo.profilePicUrl
+                  this.props.userProfileInfo.profilePicUrl ||
+                  "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"
                 }
                 alt="profile picture"
               />

@@ -24,7 +24,7 @@ class Signup extends Component {
     }
     formSubmitHandler = (event) => {
         event.preventDefault();
-        this.props.onSubmitForm(this.state.form);
+        this.props.onSubmitForm(this.state.form, this.props.history);
     }
 
     inputChangeHandler = (event, formParam) => {
@@ -48,10 +48,10 @@ class Signup extends Component {
                 <div className={classes["form-container"]}>
                     <div className={classes["signup-info"]}>
                         <h1>Join ImageX</h1>
-                        <h4>Already have an account? <Link to="/login">Login</Link></h4>
-                        <div className={classes["facebook-join"]}>
+                        <h4 className={classes["signup-info__login-option"]}>Already have an account? <Link to="/login">Login</Link></h4>
+                        {/* <div className={classes["facebook-join"]}>
                             <Button theme="facebook"><span><ion-icon name="logo-facebook"></ion-icon></span>Join using Facebook</Button>
-                        </div>
+                        </div> */}
                         <p>OR</p>
                         <form onSubmit={this.formSubmitHandler}>
                             <div className={classes["name-container"]}>
@@ -111,7 +111,7 @@ class Signup extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSubmitForm: (userInfo) => dispatch(actions.asyncUserSignupStart(userInfo))
+        onSubmitForm: (userInfo, history) => dispatch(actions.asyncUserSignupStart(userInfo, history))
     }
 }
 

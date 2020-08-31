@@ -87,6 +87,7 @@ export const asyncSimilarImagesSearchStart = (data) => {
             dispatch(similarImagesSearchSuccess(payload));
         } catch(e) {
             console.log(e);
+            dispatch(similarImagesSearchFailure(e));
         }
     }
 }

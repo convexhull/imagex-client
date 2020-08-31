@@ -5,18 +5,18 @@ import { connect } from 'react-redux';
 
 import './App.css';
 import Layout from './hoc/Layout/Layout';
-import Home from './containers/Home/Home';
-import Unsplash from './containers/Unsplash/Unsplash';
-import Pixabay from './containers/Pixabay/Pixabay';
-import Profile from './containers/Profile/Profile';
+import Home from './Pages/Home/Home';
+import Unsplash from './Pages/Unsplash/Unsplash';
+import Pixabay from './Pages/Pixabay/Pixabay';
+import Profile from './Pages/Profile/Profile';
 import UnsplashSearch from './components/Unsplash/Search/Search';
 import PixabaySearch from './components/Pixabay/Search/Search';
 import CVSearch from './components/ComputerVision/Search/Search';
-import Login from './containers/Authentication/Login/Login';
-import Signup from './containers/Authentication/Signup/Signup';
-import CV from './containers/ComputerVision/ComputerVision';
-import FavouriteImages from './containers/FavouriteImages/FavouriteImages';
-import Account from './containers/Account/Account';
+import Login from './Pages/Authentication/Login/Login';
+import Signup from './Pages/Authentication/Signup/Signup';
+import CV from './Pages/ComputerVision/ComputerVision';
+import FavouriteImages from './Pages/FavouriteImages/FavouriteImages';
+import Account from './Pages/Account/Account';
 import * as actions from './store/actions/index';
 
 
