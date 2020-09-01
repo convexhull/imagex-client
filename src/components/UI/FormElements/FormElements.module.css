@@ -28,6 +28,12 @@
     color: red;
 }
 
+
+.text-input__error-msg {
+    color: red;
+    font-size: 0.8rem;
+}
+
 .text-area {
     height: 100%;
     width: 100%;

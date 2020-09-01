@@ -12,7 +12,6 @@ import * as actions from '../../../store/actions';
 
 
 
-
 class Signup extends Component {
 
     state = {
@@ -32,7 +31,7 @@ class Signup extends Component {
             userName: {
                 value: '',
                 valid: false,
-                validityChecks: ['isNonempty'],
+                validityChecks: ['isNonempty', 'isAlphaNum'],
                 touched: false
             },
             email: {
@@ -44,19 +43,36 @@ class Signup extends Component {
             password: {
                 value: '',
                 valid: false,
-                validityChecks: ['isNonempty'],
+                validityChecks: ['isNonempty', 'minlength6'],
                 touched: false
             }
-        }
+        },
+        formIsValid: false
     }
     formSubmitHandler = (event) => {
         event.preventDefault();
-        this.props.onSubmitForm(this.state.form, this.props.history);
+        if(!this.formIsValid()){
+            alert('Please fill all the details properly.');
+            return;
+        }
+        let data = {};
+        for(let key in this.state.form){
+            data[key] = this.state.form[key].value;
+        }
+        this.props.onSubmitForm(data, this.props.history);
+    }
+
+    formIsValid = () => {
+        let valid = true;
+        for(let formParam in this.state.form) {
+            valid = valid && this.state.form[formParam].valid;
+        }
+        return valid;
     }
 
     inputChangeHandler = (event, formParam) => {
         let newValue = event.target.value;
-        let valid = this.isValidInput(formParam);
+        let valid = this.isValidInput(newValue, formParam);
         this.setState((prevState, props) => {
             return {
                 form: {
@@ -72,8 +88,7 @@ class Signup extends Component {
         })
     }
 
-    isValidInput = (formParam) => {
-        let stringToValidate = this.state.form[formParam].value.trim();
+    isValidInput = (stringToValidate, formParam) => {
         let validationFactors = this.state.form[formParam].validityChecks;
         let valid = true;
         validationFactors.forEach((validationFactor) => {
@@ -82,6 +97,12 @@ class Signup extends Component {
             }
             if(validationFactor === "isEmail") {
                 valid = valid && validator.isEmail(stringToValidate);
+            }
+            if(validationFactor === "minlength6") {
+                valid = valid && validator.isLength(stringToValidate, {min: 6});
+            }
+            if(validationFactor === "isAlphaNum") {
+                valid = valid && validator.isAlphanumeric(stringToValidate);
             }
         })
         return valid;
@@ -110,6 +131,7 @@ class Signup extends Component {
                                         value={this.state.form.firstName.value || ''}
                                         onChange={(event) => this.inputChangeHandler(event,'firstName')}
                                         valid={!this.state.form.firstName.touched || this.state.form.firstName.valid}
+                                        errorMsg="*First Name is required"
                                     />
                                 </div>
                                 <div>
@@ -119,6 +141,7 @@ class Signup extends Component {
                                         value={this.state.form.lastName.value || ''}
                                         onChange={(event) => this.inputChangeHandler(event,'lastName')}
                                         valid={!this.state.form.lastName.touched || this.state.form.lastName.valid}
+                                        errorMsg="*Last Name is required"
                                     />
                                 </div>
                             </div>
@@ -130,15 +153,17 @@ class Signup extends Component {
                                     value={this.state.form.email.value || ''}
                                     onChange={(event) => this.inputChangeHandler(event,'email')}
                                     valid={!this.state.form.email.touched || this.state.form.email.valid}
+                                    errorMsg="Enter a valid email"
                                 />
                             </div>
                             <div>
                                 <InputField
                                     elementType="text"
-                                    label="Username (only letters, numbers, and underscores)"
+                                    label="Username (only letters and numbers)"
                                     value={this.state.form.userName.value || ''}
                                     onChange={(event) => this.inputChangeHandler(event,'userName')}
                                     valid={!this.state.form.userName.touched || this.state.form.userName.valid}
+                                    errorMsg="Enter a valid Username"
                                 />
                             </div>
                             <div>
@@ -148,6 +173,7 @@ class Signup extends Component {
                                     value={this.state.form.password.value || ''}
                                     onChange={(event) => this.inputChangeHandler(event,'password')}
                                     valid={!this.state.form.password.touched || this.state.form.password.valid}
+                                    errorMsg="Enter a valid password. Should have atleast 6 characters"
                                 />
                             </div>
                             <div>

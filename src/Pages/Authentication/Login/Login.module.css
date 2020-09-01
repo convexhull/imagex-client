@@ -60,6 +60,7 @@
 
 .login-form__input {
     margin-bottom: 25px;
+    /* text-align: center; */
 }
 
 .login-form__password {

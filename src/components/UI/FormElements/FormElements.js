@@ -26,7 +26,7 @@ class FormElements extends Component {
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
-                        <p className={classes["text-input__error-msg"]}>{"errorMsg"}</p>
+                        {!this.props.valid ? <p className={classes["text-input__error-msg"]}>{this.props.errorMsg}</p> : null }
                     </React.Fragment>
                 );
                 break;
@@ -41,7 +41,7 @@ class FormElements extends Component {
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
-                        <p className={classes["text-input__error-msg"]}>{"errorMsg"}</p>
+                        {!this.props.valid ? <p className={classes["text-input__error-msg"]}>{this.props.errorMsg}</p> : null }
                     </React.Fragment>
                     
                 )
@@ -57,7 +57,7 @@ class FormElements extends Component {
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
-                        <p className={classes["text-input__error-msg"]}>{"errorMsg"}</p>
+                        {!this.props.valid ? <p className={classes["text-input__error-msg"]}>{this.props.errorMsg}</p> : null }
                     </React.Fragment>
                 )
                 break;
@@ -72,7 +72,7 @@ class FormElements extends Component {
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
-                        <p className={classes["text-input__error-msg"]}>{"errorMsg"}</p>
+                        {!this.props.valid ? <p className={classes["text-input__error-msg"]}>{this.props.errorMsg}</p> : null }
                     </React.Fragment>
                 )
                 break;
