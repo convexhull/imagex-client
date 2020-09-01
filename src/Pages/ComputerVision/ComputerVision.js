@@ -38,7 +38,7 @@ class CV extends Component {
 
  
   componentDidUpdate(prevProps, prevState) {
-    if (!prevState.formData.file) {
+    if (!prevState.formData.file && this.state.formData.file) {
       this.props.onImageUpload(this.state.formData, this.props.history);
     }
   }
