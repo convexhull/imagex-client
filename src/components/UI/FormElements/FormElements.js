@@ -8,11 +8,17 @@ class FormElements extends Component {
     render(){
         let inputElement = null;
         let cssClasses = [ classes["text-input"] ];
+        let labelCssClasses = [classes["text-input__label"]];
+
+        if(!this.props.valid) {
+            cssClasses.push(classes["text-input--invalid"]);
+            labelCssClasses.push(classes["text-input__label--invalid"]);
+        }
         switch(this.props.elementType) {
             case "text" : 
                 inputElement = (
                     <React.Fragment>
-                        <label>{this.props.label}</label>
+                        <label className={labelCssClasses.join(' ')}>{this.props.label}</label>
                         <input
                             className={cssClasses.join(' ')}
                             type="text"
@@ -20,13 +26,14 @@ class FormElements extends Component {
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
+                        <p className={classes["text-input__error-msg"]}>{"errorMsg"}</p>
                     </React.Fragment>
-                )
+                );
                 break;
             case "password":
                 inputElement = (
                     <React.Fragment>
-                        <label>{this.props.label}</label>
+                        <label className={labelCssClasses.join(' ')}>{this.props.label}</label>
                         <input
                             type="password"
                             className={cssClasses.join(' ')}
@@ -34,6 +41,7 @@ class FormElements extends Component {
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
+                        <p className={classes["text-input__error-msg"]}>{"errorMsg"}</p>
                     </React.Fragment>
                     
                 )
@@ -41,7 +49,7 @@ class FormElements extends Component {
             case "email":
                 inputElement = (
                     <React.Fragment>
-                        <label>{this.props.label}</label>
+                        <label className={labelCssClasses.join(' ')}>{this.props.label}</label>
                         <input
                             className={cssClasses.join(' ')}
                             type="email"
@@ -49,6 +57,7 @@ class FormElements extends Component {
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
+                        <p className={classes["text-input__error-msg"]}>{"errorMsg"}</p>
                     </React.Fragment>
                 )
                 break;
@@ -56,13 +65,14 @@ class FormElements extends Component {
                 cssClasses.push(classes["text-area"]);
                 inputElement = (
                     <React.Fragment>
-                        <label>{this.props.label}</label>
+                        <label className={labelCssClasses.join(' ')}>{this.props.label}</label>
                         <textarea
                             className={cssClasses.join(' ')}
                             value={this.props.value}
                             required={this.props.required}
                             onChange={this.props.onChange}
                         />
+                        <p className={classes["text-input__error-msg"]}>{"errorMsg"}</p>
                     </React.Fragment>
                 )
                 break;

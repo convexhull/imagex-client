@@ -15,7 +15,7 @@ class CV extends Component {
   state = {
     formData: {
       file: null,
-    },
+    }
   };
 
   clickHandler = () => {
