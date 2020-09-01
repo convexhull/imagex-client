@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import validator from 'validator';
 
 import classes from "./Account.module.css";
 import InputElement from "../../components/UI/FormElements/FormElements";
@@ -8,14 +9,38 @@ import * as actions from "../../store/actions/index";
 
 class Account extends Component {
   state = {
-    firstName: '',
     form: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      userName: "",
-      bio: ""
-    }
+      bio: {
+        value: "",
+        valid: true,
+        validityChecks: [],
+        touched: false,
+      },
+      firstName: {
+        value: "",
+        valid: true,
+        validityChecks: ["isNonempty"],
+        touched: false,
+      },
+      lastName: {
+        value: "",
+        valid: true,
+        validityChecks: ["isNonempty"],
+        touched: false,
+      },
+      userName: {
+        value: "",
+        valid: true,
+        validityChecks: ["isNonempty", "isAlphaNum"],
+        touched: false,
+      },
+      email: {
+        value: "",
+        valid: true,
+        validityChecks: ["isNonempty", "isEmail"],
+        touched: false,
+      },
+    },
   };
 
   constructor(props) {
@@ -23,28 +48,49 @@ class Account extends Component {
     this.inputRef = React.createRef();
   }
 
-
   componentDidUpdate(prevProps, prevState) {
-    console.log("updated");
-    if(this.props.userProfileInfo != prevProps.userProfileInfo){
+    if (this.props.userProfileInfo != prevProps.userProfileInfo) {
       this.setState({
         form: {
-          firstName: this.props.userProfileInfo.firstName,
-          lastName: this.props.userProfileInfo.lastName,
-          email: this.props.userProfileInfo.email,
-          userName: this.props.userProfileInfo.userName,
-          bio: this.props.userProfileInfo.bio
-        }
-      })
+          
+          firstName: {
+            value: this.props.userProfileInfo.firstName,
+            valid: true,
+            validityChecks: ["isNonempty"],
+            touched: false,
+          },
+          lastName: {
+            value: this.props.userProfileInfo.lastName,
+            valid: true,
+            validityChecks: ["isNonempty"],
+            touched: false,
+          },
+          userName: {
+            value: this.props.userProfileInfo.userName,
+            valid: true,
+            validityChecks: ["isNonempty", "isAlphaNum"],
+            touched: false,
+          },
+          email: {
+            value: this.props.userProfileInfo.email,
+            valid: true,
+            validityChecks: ["isNonempty", "isEmail"],
+            touched: false,
+          },
+          bio: {
+            value: this.props.userProfileInfo.bio,
+            valid: true,
+            validityChecks: [],
+            touched: false, 
+          }
+        },
+      });
     }
-    
   }
 
   componentDidMount() {
     this.props.onLoadAccountInfo();
   }
-
-  
 
   imageSelectHandler = () => {
     this.inputRef.current.click();
@@ -53,28 +99,67 @@ class Account extends Component {
   imageUploadHandler = (event) => {
     let file = event.target.files[0];
     this.props.onProfilePicUpdate(file);
-    console.log(event.target.files[0]);
   };
 
   inputChangeHandler = (event, element) => {
     let updatedValue = event.target.value;
     let elementToUpdate = element;
+    let valid = this.isValidInput(updatedValue, element);
     this.setState({
       form: {
         ...this.state.form,
-        [elementToUpdate]: updatedValue,
-      },
+        [elementToUpdate]: {
+          ...this.state.form[elementToUpdate],
+          value: updatedValue,
+          valid: valid,
+          touched: true
+        }
+      }
     });
   };
 
+  isValidInput = (stringToValidate, formParam) => {
+    let validationFactors = this.state.form[formParam].validityChecks;
+    let valid = true;
+    validationFactors.forEach((validationFactor) => {
+      if (validationFactor === "isNonempty") {
+        valid = valid && !validator.isEmpty(stringToValidate);
+      }
+      if (validationFactor === "isEmail") {
+        valid = valid && validator.isEmail(stringToValidate);
+      }
+      if (validationFactor === "minlength6") {
+        valid = valid && validator.isLength(stringToValidate, { min: 6 });
+      }
+      if (validationFactor === "isAlphaNum") {
+        valid = valid && validator.isAlphanumeric(stringToValidate);
+      }
+    });
+    return valid;
+  };
+
+  formIsValid = () => {
+    let valid = true;
+    for (let formParam in this.state.form) {
+      valid = valid && this.state.form[formParam].valid;
+    }
+    return valid;
+  };
 
   updateBtnHandler = () => {
-    this.props.onUpdateAccountInfo(this.state.form);
-  }
+    if(!this.formIsValid()){
+      return alert('Please fill all the details properly');
+    }
+    let data = {};
+    for(let key in this.state.form){
+      data[key] = this.state.form[key].value;
+    }
+    this.props.onUpdateAccountInfo(data);
+  };
 
   render() {
     let profilePicUploadBtnClasses = `${classes["basic-info__upload-btn"]}`;
-    if(this.props.profilePicUpdating){
+    if (this.props.profilePicUpdating) {
       profilePicUploadBtnClasses += ` ${classes["basic-info__upload-btn--uploading"]}`;
     }
     return (
@@ -85,8 +170,8 @@ class Account extends Component {
             <div className={classes["basic-info__profile-image-container"]}>
               <img
                 src={
-                  this.props.userProfileInfo &&
-                  this.props.userProfileInfo.profilePicUrl ||
+                  (this.props.userProfileInfo &&
+                    this.props.userProfileInfo.profilePicUrl) ||
                   "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"
                 }
                 alt="profile picture"
@@ -104,7 +189,9 @@ class Account extends Component {
               onClick={this.imageSelectHandler}
               disabled={this.props.profilePicUpdating}
             >
-              {this.props.profilePicUpdating ? "Updating Picture..." : "Change profile picture" }
+              {this.props.profilePicUpdating
+                ? "Updating Picture..."
+                : "Change profile picture"}
             </button>
           </div>
           <div className={classes["basic-info__account-info"]}>
@@ -112,18 +199,22 @@ class Account extends Component {
               <InputElement
                 elementType="text"
                 label="First Name"
-                value={this.state.form.firstName}
+                value={this.state.form.firstName.value}
                 onChange={(event) =>
                   this.inputChangeHandler(event, "firstName")
                 }
+                valid={!this.state.form.firstName.touched || this.state.form.firstName.valid}
+                errorMsg="* Required"
               />
             </div>
             <div className={classes["basic-info__last-name"]}>
               <InputElement
                 elementType="text"
                 label="Last Name"
-                value={this.state.form.lastName}
+                value={this.state.form.lastName.value}
                 onChange={(event) => this.inputChangeHandler(event, "lastName")}
+                valid={!this.state.form.lastName.touched || this.state.form.lastName.valid}
+                errorMsg="* Required"
               />
             </div>
           </div>
@@ -133,24 +224,30 @@ class Account extends Component {
             <InputElement
               elementType="text"
               label="Email Address"
-              value={this.state.form.email}
+              value={this.state.form.email.value}
               onChange={(event) => this.inputChangeHandler(event, "email")}
+              valid={!this.state.form.email.touched || this.state.form.email.valid}
+              errorMsg="* Enter a valid email"
             />
           </div>
           <div className={classes["extra-info__username"]}>
             <InputElement
               elementType="text"
-              label="Username"
-              value={this.state.form.userName}
+              label="Username (only letters and numbers)"
+              value={this.state.form.userName.value}
               onChange={(event) => this.inputChangeHandler(event, "userName")}
+              valid={!this.state.form.userName.touched || this.state.form.userName.valid}
+              errorMsg="* Enter a valid username"
             />
           </div>
           <div className={classes["extra-info__bio"]}>
             <InputElement
               elementType="textarea"
               label="Bio"
-              value={this.state.form.bio}
+              value={this.state.form.bio.value}
               onChange={(event) => this.inputChangeHandler(event, "bio")}
+              valid={!this.state.form.bio.touched || this.state.form.bio.valid}
+              errorMsg="* Enter a valid bio"
             />
           </div>
         </div>

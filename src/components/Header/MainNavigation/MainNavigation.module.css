@@ -66,10 +66,10 @@
 }
 
 .main-navigation .navbar-links:hover, .main-navigation .navbar-links:active {
+
 }
 
 .main-navigation .authenticate {
-    margin-left: auto;
     margin-right: 10px;
 }
 
@@ -81,7 +81,33 @@
     font-weight: bold;
     font-size: 0.9rem;
 }
+
+
+
 .authenticate {
     flex-shrink: 0;
-    margin-left: auto;
+    display: flex;
+    margin-left: 1rem;
+}
+
+.authenticate__profile-menu {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+.authenticate__profile-menu img {
+    height: 100%;
+    width: auto;
+    border-radius: 50%;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+
+.authenticate__my-list {
+    margin-top: 0.75rem;
+    padding-bottom: -2.5rem;
+    font-size: 2rem;
 }

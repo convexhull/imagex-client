@@ -10,15 +10,12 @@ import logo from '../../../assets/images/logo.png';
 import SearchBar from './SearchBar/SearchBar';
 
 
-
 class MainNavbar extends Component {
-
-
 
   render() {
     
     let authenticationInfo = (
-      <ul className={classes.authenticate}>
+      <ul className={classes["authenticate"]}>
         <li>
           <NavLink to="/login" className={classes["navbar-links"]}>Login</NavLink>
         </li>
@@ -30,15 +27,16 @@ class MainNavbar extends Component {
 
     if(this.props.isAuthenticated){
       authenticationInfo = (
-        <ul className={classes.authenticate}>
-          <li>
-            Notification
-          </li>
-          <li>
-            ProfilePic
-          </li>
-          <NavLink to="/favourite-images">My list</NavLink>
-        </ul>
+        <div className={classes["authenticate"]}>
+          <div className={classes["authenticate__my-list"]}>
+            <NavLink to="/favourite-images"><ion-icon name="heart" style={{color: '#6f1200'}}></ion-icon></NavLink>
+          </div>
+          <div className={classes["authenticate__profile-menu"]}>
+            <NavLink to="/account">
+              <img src="https://www.worldfuturecouncil.org/wp-content/uploads/2020/02/dummy-profile-pic-300x300-1.png" alt="image" />
+            </NavLink>
+          </div>
+        </div>
       )
     }
 
