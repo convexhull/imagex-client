@@ -11,7 +11,8 @@ class ImageGrid extends Component {
 
   state = {
     showImageModal : false,
-    selectedImage: ''
+    selectedImage: '',
+    hoveredOverImageId: ''
   }
 
   componentDidMount() {
@@ -26,12 +27,58 @@ class ImageGrid extends Component {
     this.setState({showImageModal : false})
   }
 
+
+  displayImageOverlay = (id) => {
+    this.setState({
+      hoveredOverImageId: id
+    })
+  }
+
+  removeImageOverlay = () => {
+    this.setState({
+      hoveredOverImageId: ''
+    })
+  }
+
   render() {
-    let images1 = this.props.images.map((image) => {
+    let imagesToDisplay = this.props.images.map((image) => {
       let imgOrientation = (image.width >= image.height ? "landscape" : "portrait") ; 
+      let imageOptionsClasses = [classes["image__options"]];
+      if(image._id === this.state.hoveredOverImageId){
+        imageOptionsClasses.push(classes["image__options--visible"]);
+      }
       return (
-        <div className={classes[imgOrientation]}>
-          <img src={image.smallImageUrl} alt="image" onClick={() => this.imageClickHandler(image)} />
+        <div className={classes[imgOrientation] + " " + classes["image__box"]} onMouseEnter={()=>this.displayImageOverlay(image._id)} onMouseLeave={this.removeImageOverlay}>
+          <img
+            src={image.smallImageUrl}
+            alt="image"
+            onClick={() => this.imageClickHandler(image)}
+          />
+          <div
+            className={classes["image__overlay"]}
+            onClick={() => this.imageClickHandler(image)}
+          >
+          </div>
+          <div className={imageOptionsClasses.join(" ")}>
+            <div
+              className={classes["like-btn"]}
+              onClick={() => this.removeImageHandler(image)}
+            >
+              <span>
+                <i class="fas fa-heart"></i>
+              </span>
+            </div>
+            <div className={classes["download-button"]}>
+              <a
+                title="Download photo"
+                href={`${image.downloadUrl}?force=true`}
+                rel="nofollow"
+                target="_blank"
+              >
+                <span class="_2Aga-">Download</span>
+              </a>
+            </div>
+          </div>
         </div>
       );
     })
@@ -40,7 +87,7 @@ class ImageGrid extends Component {
       <div>
         {this.state.showImageModal ? <ImageModal show={this.state.showImageModal} hideImageModal={this.hideModalHandler} image={this.state.selectedImage}/> : null}
         <div className={classes["image-grid"]}>
-          {images1}
+          {imagesToDisplay}
         </div>
       </div>
     );
@@ -59,7 +106,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchFavourites: () => dispatch(actions.asyncFetchFavouriteImagesStart())
+    onFetchFavourites: () => dispatch(actions.asyncFetchFavouriteImagesStart()),
+    // onRemoveFavouriteImage: () => dispatch(actions.asyncRemove)
   }
 }
 

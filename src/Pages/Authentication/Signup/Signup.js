@@ -121,7 +121,7 @@ class Signup extends Component {
                         {/* <div className={classes["facebook-join"]}>
                             <Button theme="facebook"><span><ion-icon name="logo-facebook"></ion-icon></span>Join using Facebook</Button>
                         </div> */}
-                        <p>OR</p>
+                        <p >OR</p>
                         <form onSubmit={this.formSubmitHandler}>
                             <div className={classes["name-container"]}>
                                 <div>
