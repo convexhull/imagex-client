@@ -62,7 +62,7 @@ class ImageGrid extends Component {
           <div className={imageOptionsClasses.join(" ")}>
             <div
               className={classes["like-btn"]}
-              onClick={() => this.removeImageHandler(image)}
+              onClick={() => this.props.onRemoveFavouriteImage(image._id)}
             >
               <span>
                 <i class="fas fa-heart"></i>
@@ -107,7 +107,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onFetchFavourites: () => dispatch(actions.asyncFetchFavouriteImagesStart()),
-    // onRemoveFavouriteImage: () => dispatch(actions.asyncRemove)
+    onRemoveFavouriteImage: (imageId) => dispatch(actions.asyncRemoveFavouriteImageStart(imageId))
   }
 }
 

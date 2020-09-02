@@ -28,7 +28,8 @@ export {
 
 export {
     asyncFetchFavouriteImagesStart,
-    asyncSaveFavouriteImageStart
+    asyncSaveFavouriteImageStart,
+    asyncRemoveFavouriteImageStart
 } from './favouriteImages/actionCreators';
 
 

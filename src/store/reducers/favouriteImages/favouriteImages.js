@@ -31,6 +31,21 @@ const reducer = (state = initState, action) => {
             return updateObject(state, {
 
             });
+
+        case actionTypes.REMOVE_FAVOURITE_IMAGE_START:
+            return updateObject(state, {
+                
+            });
+
+        case actionTypes.REMOVE_FAVOURITE_IMAGE_SUCCESS:
+            return updateObject(state, {
+            });
+
+        case actionTypes.REMOVE_FAVOURITE_IMAGE_FAILURE:
+            return updateObject(state, {
+
+            });
+
         default: 
             return state;
     }

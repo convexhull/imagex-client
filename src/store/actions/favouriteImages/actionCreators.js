@@ -119,3 +119,56 @@ export const asyncSaveFavouriteImageStart = (image, platform) => {
         }
     }
 }
+
+
+
+const removeFavouriteImageStart = () => {
+    return {
+        type: actionTypes.REMOVE_FAVOURITE_IMAGE_START
+    }
+}
+
+
+
+const removeFavouriteImageSuccess = (payload) => {
+    return {
+        type: actionTypes.REMOVE_FAVOURITE_IMAGE_SUCCESS,
+        payload
+    }
+}
+
+
+
+const removeFavouriteImageFailure = (error) => {
+    return {
+        type: actionTypes.REMOVE_FAVOURITE_IMAGE_FAILURE
+    }
+}
+
+
+
+export const asyncRemoveFavouriteImageStart = (imageId) => {
+    return async (dispatch) => {
+        dispatch(removeFavouriteImageStart());
+        let token = localStorage.getItem('token');
+        if(!token) {
+            return alert('Please login to use this feature');
+        }
+        let config = {
+            headers: {
+                "Authorization" : `Bearer ${token}`
+            }
+        };
+        console.log("xxx", config)
+        try {
+            let apiResponse = await Axios.delete(`/users/removeFavouriteImage?imageId=${imageId}`, config);
+            dispatch(removeFavouriteImageSuccess(apiResponse.data));
+        } catch(e) {
+            dispatch(removeFavouriteImageFailure(e));
+        }
+    }
+}
+
+
+
+
