@@ -26,9 +26,6 @@ class ImageModal extends Component {
                         <div className={classes["icons"]} onClick={()=>this.props.onAddToFavourites(this.props.image, "pixabay")}>
                             <ion-icon name="heart"></ion-icon>
                         </div>
-                        <div className={classes["icons"]}>
-                            <ion-icon name="add-outline"></ion-icon>
-                        </div>
                         <div className={classes["download-button"]}>
                             <a title="Download photo" href={`#`} rel="nofollow" target="_blank"  ><span class="_2Aga-">Download</span></a>
                         </div>

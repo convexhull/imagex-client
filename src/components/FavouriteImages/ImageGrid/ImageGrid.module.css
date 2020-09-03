@@ -87,6 +87,12 @@
 }
 
 
+.download-button a:link , .download-button a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+
 .download-button:hover {
     background-color: #f3f3f3;
 }
@@ -96,7 +102,7 @@
     margin-left: 1rem;
     cursor: pointer;
     font-size: 2rem;
-    color: #d6d6d6;
+    color: #860606;
     height: 2rem;
 }
 
@@ -107,6 +113,6 @@
 }
 
 
-.like-btn span:hover {
-    color: #860606;
+.like-btn span:active {
+    color: #d6d6d6;
 }
