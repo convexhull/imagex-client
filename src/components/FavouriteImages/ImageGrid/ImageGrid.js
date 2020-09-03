@@ -40,6 +40,14 @@ class ImageGrid extends Component {
     })
   }
 
+
+  removeImage = (imageId) => {
+    setTimeout(() => {
+      this.props.onRemoveFavouriteImage(imageId);
+      this.props.onFetchFavourites();
+    },0);
+  }
+
   render() {
     let imagesToDisplay = this.props.images.map((image) => {
       let imgOrientation = (image.width >= image.height ? "landscape" : "portrait") ; 
@@ -48,7 +56,7 @@ class ImageGrid extends Component {
         imageOptionsClasses.push(classes["image__options--visible"]);
       }
       return (
-        <div className={classes[imgOrientation] + " " + classes["image__box"]} onMouseEnter={()=>this.displayImageOverlay(image._id)} onMouseLeave={this.removeImageOverlay}>
+        <div className={classes[imgOrientation] + " " + classes["image__box"]} onMouseEnter={()=>this.displayImageOverlay(image._id)} onMouseOver={() => this.displayImageOverlay(image._id)} onMouseLeave={this.removeImageOverlay} >
           <img
             src={image.smallImageUrl}
             alt="image"
@@ -62,7 +70,7 @@ class ImageGrid extends Component {
           <div className={imageOptionsClasses.join(" ")}>
             <div
               className={classes["like-btn"]}
-              onClick={() => this.props.onRemoveFavouriteImage(image._id)}
+              onClick={() => this.removeImage(image._id)}
             >
               <span>
                 <i class="fas fa-heart"></i>
