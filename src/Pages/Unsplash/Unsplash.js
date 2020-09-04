@@ -15,6 +15,11 @@ class Unsplash extends Component {
     keyword: ''
   }
 
+  keywordChangeHandler = (keyword) => {
+    this.setState({
+      keyword: keyword
+    })
+  }
 
   render(){
     return (

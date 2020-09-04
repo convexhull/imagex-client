@@ -162,7 +162,7 @@ class Account extends Component {
       profilePicUploadBtnClasses += ` ${classes["basic-info__upload-btn--uploading"]}`;
     }
     return (
-      <div class={classes["Account"]}>
+      <div className={classes["Account"]}>
         <h2 className={classes["Account__title"]}>Edit profile</h2>
         <div className={classes["basic-info"]}>
           <div className={classes["basic-info__profile-pic"]}>

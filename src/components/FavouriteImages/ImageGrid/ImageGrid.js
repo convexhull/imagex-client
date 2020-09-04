@@ -1,62 +1,64 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-
-import classes from './ImageGrid.module.css';
-import ImageModal from '../ImageModal/ImageModal';
-import * as actions from '../../../store/actions/index';
-
+import classes from "./ImageGrid.module.css";
+import ImageModal from "../ImageModal/ImageModal";
+import * as actions from "../../../store/actions/index";
 
 class ImageGrid extends Component {
-
   state = {
-    showImageModal : false,
-    selectedImage: '',
-    hoveredOverImageId: ''
-  }
+    showImageModal: false,
+    selectedImage: "",
+    hoveredOverImageId: "",
+  };
 
   componentDidMount() {
     this.props.onFetchFavourites();
   }
 
   imageClickHandler = (image) => {
-    this.setState({showImageModal : true, selectedImage: image})
-  }
+    this.setState({ showImageModal: true, selectedImage: image });
+  };
 
   hideModalHandler = () => {
-    this.setState({showImageModal : false})
-  }
-
+    this.setState({ showImageModal: false });
+  };
 
   displayImageOverlay = (id) => {
     this.setState({
-      hoveredOverImageId: id
-    })
-  }
+      hoveredOverImageId: id,
+    });
+  };
 
   removeImageOverlay = () => {
     this.setState({
-      hoveredOverImageId: ''
-    })
-  }
-
+      hoveredOverImageId: "",
+    });
+  };
 
   removeImage = (imageId) => {
     setTimeout(() => {
       this.props.onRemoveFavouriteImage(imageId);
       this.props.onFetchFavourites();
-    },0);
-  }
+    }, 0);
+  };
 
   render() {
     let imagesToDisplay = this.props.images.map((image) => {
-      let imgOrientation = (image.width >= image.height ? "landscape" : "portrait") ; 
+      let imgOrientation =
+        image.width >= image.height ? "landscape" : "portrait";
       let imageOptionsClasses = [classes["image__options"]];
-      if(image._id === this.state.hoveredOverImageId){
+      if (image._id === this.state.hoveredOverImageId) {
         imageOptionsClasses.push(classes["image__options--visible"]);
       }
       return (
-        <div className={classes[imgOrientation] + " " + classes["image__box"]} onMouseEnter={()=>this.displayImageOverlay(image._id)} onMouseOver={() => this.displayImageOverlay(image._id)} onMouseLeave={this.removeImageOverlay} >
+        <div
+          className={classes[imgOrientation] + " " + classes["image__box"]}
+          onMouseEnter={() => this.displayImageOverlay(image._id)}
+          onMouseOver={() => this.displayImageOverlay(image._id)}
+          onMouseLeave={this.removeImageOverlay}
+          key={image._id}
+        >
           <img
             src={image.mediumImageUrl}
             alt="user's favourite"
@@ -65,15 +67,14 @@ class ImageGrid extends Component {
           <div
             className={classes["image__overlay"]}
             onClick={() => this.imageClickHandler(image)}
-          >
-          </div>
+          ></div>
           <div className={imageOptionsClasses.join(" ")}>
             <div
               className={classes["like-btn"]}
               onClick={() => this.removeImage(image._id)}
             >
               <span>
-                <i class="fas fa-heart"></i>
+                <i className="fas fa-heart"></i>
               </span>
             </div>
             <div className={classes["download-button"]}>
@@ -83,15 +84,13 @@ class ImageGrid extends Component {
                 rel="nofollow noopener noreferrer"
                 target="_blank"
               >
-                <span class="_2Aga-">Download</span>
+                <span className="_2Aga-">Download</span>
               </a>
             </div>
           </div>
         </div>
       );
-    })
-
-
+    });
 
     return (
       <div>
@@ -104,7 +103,7 @@ class ImageGrid extends Component {
         ) : null}
         <div className={classes["profile__navigation"]}>
           <h3 className={classes["profile__navlink"]}>
-            <i class="fa fa-heart" aria-hidden="true"></i>
+            <i className="fa fa-heart" aria-hidden="true"></i>
             &nbsp;&nbsp;My Favourites ({imagesToDisplay.length})
           </h3>
         </div>
@@ -114,23 +113,18 @@ class ImageGrid extends Component {
   }
 }
 
-
-
-
-
 const mapStateToProps = (state) => {
   return {
-    images: state.favourites.images
-  }
-}
+    images: state.favourites.images,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onFetchFavourites: () => dispatch(actions.asyncFetchFavouriteImagesStart()),
-    onRemoveFavouriteImage: (imageId) => dispatch(actions.asyncRemoveFavouriteImageStart(imageId))
-  }
-}
-
-
+    onRemoveFavouriteImage: (imageId) =>
+      dispatch(actions.asyncRemoveFavouriteImageStart(imageId)),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageGrid);

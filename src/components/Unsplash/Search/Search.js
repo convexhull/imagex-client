@@ -24,7 +24,7 @@ class Search extends Component {
   }
 
   keywordChangeHandler = (newKeyword) => {
-      console.log("xxxx")
+    console.log("xxxx");
     this.setState({
       keyword: newKeyword,
     })
@@ -37,7 +37,6 @@ class Search extends Component {
         <CategoryNavigation
           platform="unsplash"
           clicked={this.keywordChangeHandler}
-          xxx="Republic"
         />
         <ScrollLazyLoader keyword={this.state.keyword} />
       </React.Fragment>

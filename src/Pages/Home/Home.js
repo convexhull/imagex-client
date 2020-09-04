@@ -15,7 +15,7 @@ class Home extends Component {
 
     render(){
         return (
-            <div class={classes.Home}>
+            <div className={classes.Home}>
                 <div className={classes["hero-container"]}>
                     <HeroSection 
                         title="ImageX"

@@ -19,10 +19,10 @@ class ImageGrid extends Component {
   }
 
   render() {
-    let images1 = this.props.images.map((image) => {
+    let imagesToDisplay = this.props.images.map((image) => {
       let imgOrientation = (image.imageWidth >= image.imageHeight ? "landscape" : "portrait") ; 
       return (
-        <div className={classes[imgOrientation]}>
+        <div className={classes[imgOrientation]} key={image.id}>
           <img src={image.largeImageURL} alt={image.tags ? image.tags :  "search result"} onClick={() => this.imageClickHandler(image)} />
         </div>
       );
@@ -32,7 +32,7 @@ class ImageGrid extends Component {
       <div>
         {this.state.showImageModal ? <ImageModal show={this.state.showImageModal} hideImageModal={this.hideModalHandler} image={this.state.selectedImage}/> : null}
         <div className={classes["image-grid"]}>
-          {images1}
+          {imagesToDisplay}
         </div>
       </div>
     );

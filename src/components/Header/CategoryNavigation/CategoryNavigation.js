@@ -19,7 +19,7 @@ class CategoryNavigation extends Component {
                     search: `?keyword=sustainability`,
                   }}
                 >
-                  Sustainability{this.props.xxx}
+                  sustainability
                 </NavLink>
               </li>
               <li className={classes["navlink-container__link"]}>

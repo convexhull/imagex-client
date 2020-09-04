@@ -29,10 +29,10 @@ class ImageModal extends Component {
                     </div> */}
                     <div className={classes["actions"]}>
                         <div className={classes["icons"]} onClick={() => this.removeFavouriteImage(this.props.image._id)}>
-                            <i class="fa fa-heart" aria-hidden="true"></i>
+                            <i className="fa fa-heart" aria-hidden="true"></i>
                         </div>
                         <div className={classes["download-button"]}>
-                            <a title="Download photo" href={`${this.props.image.downloadUrl}?force=true`}  rel="noopener noreferrer"  target="_blank"><span class="_2Aga-">Download</span></a>
+                            <a title="Download photo" href={`${this.props.image.downloadUrl}?force=true`}  rel="noopener noreferrer"  target="_blank"><span className="_2Aga-">Download</span></a>
                         </div>
                     </div>
                 </div>
