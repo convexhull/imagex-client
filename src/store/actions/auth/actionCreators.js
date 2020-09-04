@@ -133,6 +133,7 @@ export const asyncUserSignupStart = (userInfo, history) => {
         let data = userInfo;
         try {
             let response = await Axios.post('/users/signup', data);
+            console.log("new user", response);
             dispatch(userSignupSuccess());
             history.push('/login');
         }

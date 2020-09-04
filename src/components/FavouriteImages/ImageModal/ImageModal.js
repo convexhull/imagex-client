@@ -32,12 +32,12 @@ class ImageModal extends Component {
                             <i class="fa fa-heart" aria-hidden="true"></i>
                         </div>
                         <div className={classes["download-button"]}>
-                            <a title="Download photo" href={`${this.props.image.downloadUrl}?force=true`}  target="_blank" download="test.jpeg" ><span class="_2Aga-">Download</span></a>
+                            <a title="Download photo" href={`${this.props.image.downloadUrl}?force=true`}  rel="noopener noreferrer"  target="_blank"><span class="_2Aga-">Download</span></a>
                         </div>
                     </div>
                 </div>
                 <div className={classes["image-container"]}>
-                    <img src={this.props.image.largeImageUrl} alt={this.props.image.alt_description || this.props.image.description || 'alternate definition'}  />
+                    <img src={this.props.image.mediumImageUrl} alt={this.props.image.alt_description || this.props.image.description || 'alternate definition'}  />
                 </div>
                 <br />
                 <div className={classes["image-footer"]}>

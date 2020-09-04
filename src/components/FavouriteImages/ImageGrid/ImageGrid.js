@@ -58,8 +58,8 @@ class ImageGrid extends Component {
       return (
         <div className={classes[imgOrientation] + " " + classes["image__box"]} onMouseEnter={()=>this.displayImageOverlay(image._id)} onMouseOver={() => this.displayImageOverlay(image._id)} onMouseLeave={this.removeImageOverlay} >
           <img
-            src={image.smallImageUrl}
-            alt="image"
+            src={image.mediumImageUrl}
+            alt="user's favourite"
             onClick={() => this.imageClickHandler(image)}
           />
           <div
@@ -80,7 +80,7 @@ class ImageGrid extends Component {
               <a
                 title="Download photo"
                 href={`${image.downloadUrl}?force=true`}
-                rel="nofollow"
+                rel="nofollow noopener noreferrer"
                 target="_blank"
               >
                 <span class="_2Aga-">Download</span>

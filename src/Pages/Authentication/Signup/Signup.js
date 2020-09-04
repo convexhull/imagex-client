@@ -13,7 +13,6 @@ import * as actions from '../../../store/actions';
 
 
 class Signup extends Component {
-
     state = {
         form: {
             firstName: {
@@ -112,7 +111,7 @@ class Signup extends Component {
         return (
             <div className={classes.Signup}>
                 <div className={classes["image-container"]}>
-                    <img src={image} />
+                    <img src={image} alt="bridge over sea"/>
                 </div>
                 <div className={classes["form-container"]}>
                     <div className={classes["signup-info"]}>

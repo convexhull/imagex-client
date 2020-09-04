@@ -46,8 +46,8 @@ class ImageGrid extends Component {
         imageOptionsClasses.push(classes["image__options--visible"]);
       }
       return (
-        <div className={classes[imgOrientation] + " " + classes["image__box"]} onMouseEnter={()=>this.displayImageOverlay(image.id)} onMouseLeave={this.removeImageOverlay}>
-          <img src={image.urls.small} alt="image" />
+        <div className={classes[imgOrientation] + " " + classes["image__box"]} onMouseEnter={()=>this.displayImageOverlay(image.id)} onMouseLeave={this.removeImageOverlay} key={image.id}>
+          <img src={image.urls.small} alt={image.description || image.alt_description || ""} />
           <div
             className={classes["image__overlay"]}
             onClick={() => this.imageClickHandler(image)}
@@ -59,17 +59,17 @@ class ImageGrid extends Component {
               onClick={() => this.likeBtnHandler(image)}
             >
               <span>
-                <i class="fas fa-heart"></i>
+                <i className="fas fa-heart"></i>
               </span>
             </div>
             <div className={classes["download-button"]}>
               <a
                 title="Download photo"
                 href={`${image.links.download}?force=true`}
-                rel="nofollow"
+                rel="nofollow noopener noreferrer"
                 target="_blank"
               >
-                <span class="_2Aga-">Download</span>
+                <span className="_2Aga-">Download</span>
               </a>
             </div>
           </div>

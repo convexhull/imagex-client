@@ -26,7 +26,7 @@ class Profile extends Component {
                 this.props.userProfileInfo &&
                 this.props.userProfileInfo.profilePicUrl
               }
-              alt="profile picture"
+              alt="user's dp"
             />
           </div>
           <div className={classes["profile-info__name-bio"]}>

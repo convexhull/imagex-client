@@ -1,5 +1,5 @@
 import * as actionTypes from '../../actions/auth/actionTypes';
-import updateObject from '../../../utils/updateObject';
+// import updateObject from '../../../utils/updateObject';
 
 const initialState = {
     token: null,

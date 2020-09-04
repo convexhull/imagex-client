@@ -23,8 +23,8 @@ class ImageGrid extends Component {
     let images1 = this.props.images.map((image) => {
       let imgOrientation = (image.imageWidth >= image.imageHeight ? "landscape" : "portrait") ; 
       return (
-        <div className={classes[imgOrientation]}>
-          <img src={image.assets.preview.url} alt="image" onClick={() => this.imageClickHandler(image)} />
+        <div className={classes[imgOrientation]} key={image.id}>
+          <img src={image.assets.preview.url} alt={image.description ? image.description : "search result"} onClick={() => this.imageClickHandler(image)} />
         </div>
       );
     })

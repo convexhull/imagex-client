@@ -49,10 +49,9 @@ class Account extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.userProfileInfo != prevProps.userProfileInfo) {
+    if (this.props.userProfileInfo !== prevProps.userProfileInfo) {
       this.setState({
         form: {
-          
           firstName: {
             value: this.props.userProfileInfo.firstName,
             valid: true,
@@ -174,7 +173,7 @@ class Account extends Component {
                     this.props.userProfileInfo.profilePicUrl) ||
                   "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"
                 }
-                alt="profile picture"
+                alt="user's dp"
               />
             </div>
             <input

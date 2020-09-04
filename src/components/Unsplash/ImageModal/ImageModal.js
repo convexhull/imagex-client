@@ -16,7 +16,7 @@ class ImageModal extends Component {
                 <div className={classes["image-header"]}>
                     <div className={classes["user-info"]}>
                         <div>
-                            <img src={this.props.image.user.profile_image.large } alt="user image" />
+                            <img src={this.props.image.user.profile_image.large } alt="uploader's" />
                         </div>
                         <p><strong>{this.props.image.user.name}</strong></p>
                         <p>@{this.props.image.user.username}</p>
@@ -26,7 +26,7 @@ class ImageModal extends Component {
                             <ion-icon name="heart"></ion-icon>
                         </div>
                         <div className={classes["download-button"]}>
-                            <a title="Download photo" href={`${this.props.image.links.download}?force=true`} rel="nofollow" target="_blank"  ><span class="_2Aga-">Download</span></a>
+                            <a title="Download photo" href={`${this.props.image.links.download}?force=true`} rel="noopener noreferrer" target="_blank"  ><span class="_2Aga-">Download</span></a>
                         </div>
                     </div>
                 </div>

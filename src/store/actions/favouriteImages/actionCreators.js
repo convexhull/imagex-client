@@ -101,6 +101,17 @@ export const asyncSaveFavouriteImageStart = (image, platform) => {
                     downloadUrl: image.largeImageURL
                 }   
                 break;
+            default:
+                data = {
+                    platform: "unsplash",
+                    imageId: image.id,
+                    pageUrl: image.links.html,
+                    smallImageUrl: image.urls.small,
+                    mediumImageUrl: image.urls.regular,
+                    largeImageUrl: image.urls.full,
+                    downloadUrl: image.links.download
+                }
+
         }
         let token = localStorage.getItem('token');
         if(!token) {

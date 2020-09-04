@@ -33,7 +33,7 @@ class MainNavbar extends Component {
           </div>
           <div className={classes["authenticate__profile-menu"]}>
             <NavLink to="/profile/favourite-images">
-              <img src={this.props.userProfileInfo && this.props.userProfileInfo.profilePicUrl} alt="image" />
+              <img src={this.props.userProfileInfo && this.props.userProfileInfo.profilePicUrl} alt="user's dp" />
             </NavLink>
           </div>
         </div>
@@ -43,7 +43,7 @@ class MainNavbar extends Component {
     return (
       <div className={classes["main-navigation"]}>
         <div className={classes.logo} >
-          <NavLink to="/"><img src={logo} /></NavLink>
+          <NavLink to="/"><img src={logo} alt="imagex logo"/></NavLink>
         </div>
         <div className={classes["imagex-description"]}>
           <p className={classes["imagex-title"]}>ImageX</p>
