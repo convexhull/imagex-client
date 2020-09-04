@@ -41,4 +41,4 @@ class NavigationBar extends Component {
   }
 }
 
-export default withRouter(NavigationBar);
+// export default withRouter(NavigationBar);

@@ -14,6 +14,10 @@ class ScrollLazyLoading extends React.Component {
         this.loaderRef = React.createRef();
     }
    
+    // componentDidUpdate(){
+    //     this.props.onClearPreviousImages();
+    // }
+
     componentDidMount(){
         let options = {
             root: null,
@@ -47,7 +51,8 @@ class ScrollLazyLoading extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSearchByKeyword : (keyword, page) => dispatch(actions.unsplashImageSearchByKeyword(keyword, page))
+        onSearchByKeyword : (keyword, page) => dispatch(actions.unsplashImageSearchByKeyword(keyword, page)),
+        onClearPreviousImages: () => dispatch(actions.unsplashClearAllImages())
     }
 }
 

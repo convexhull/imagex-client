@@ -91,12 +91,24 @@ class ImageGrid extends Component {
       );
     })
 
+
+
     return (
       <div>
-        {this.state.showImageModal ? <ImageModal show={this.state.showImageModal} hideImageModal={this.hideModalHandler} image={this.state.selectedImage}/> : null}
-        <div className={classes["image-grid"]}>
-          {imagesToDisplay}
+        {this.state.showImageModal ? (
+          <ImageModal
+            show={this.state.showImageModal}
+            hideImageModal={this.hideModalHandler}
+            image={this.state.selectedImage}
+          />
+        ) : null}
+        <div className={classes["profile__navigation"]}>
+          <h3 className={classes["profile__navlink"]}>
+            <i class="fa fa-heart" aria-hidden="true"></i>
+            &nbsp;&nbsp;My Favourites ({imagesToDisplay.length})
+          </h3>
         </div>
+        <div className={classes["image-grid"]}>{imagesToDisplay}</div>
       </div>
     );
   }

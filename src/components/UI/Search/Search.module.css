@@ -21,11 +21,13 @@
 .cancel-btn {
     cursor: pointer;
     padding: 0 10px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    font-weight: 300;
 }
 
-.cancel-btn:focus {
-    color :red;
+.cancel-btn:hover {
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 .Search input {

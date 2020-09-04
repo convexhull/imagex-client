@@ -25,8 +25,16 @@ class App extends Component {
   componentDidMount(){
       this.props.onAppStartupSessionCheck();
   }
+
+  componentDidUpdate() {
+    console.log("[App.js] updated");
+    if(this.props.isAuthenticated){
+      this.props.onLoadAccountInfo();
+    }
+  }
   
   render(){
+
     return (
       <div className="App">
         <Switch>
@@ -40,7 +48,7 @@ class App extends Component {
               <Route path="/photos/pixabay" exact component={PixabaySearch} />
               <Route path="/photos/computer-vision" exact component={CVSearch} />
               <Route path="/pixabay" exact component={Pixabay} />
-              <Route path="/profile" exact component={Profile} />
+              <Route path="/profile" component={Profile} />
               <Route path="/account" exact component={Account} />
               <Route path="/computerVision" exact component={CV} />
               <Route path="/favourite-images" exact component={FavouriteImages} />
@@ -57,14 +65,15 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
   }
 }
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAppStartupSessionCheck : () => dispatch(actions.asyncAppStartupSessionCheck())
+    onAppStartupSessionCheck : () => dispatch(actions.asyncAppStartupSessionCheck()),
+    onLoadAccountInfo: () => dispatch(actions.asyncUserFetchAccountStart())
   }
 }
 

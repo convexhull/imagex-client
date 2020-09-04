@@ -48,7 +48,7 @@ class SearchBar extends Component {
               value={this.state.searchValue || ''}
             />
             <span className={crossIconClasses} onClick={this.searchCloseHandler}>
-              <ion-icon name="close-outline"></ion-icon>
+              <i class="fas fa-times"></i>
             </span>
           </form>
         );

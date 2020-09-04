@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import Search from '../../UI/Search/Search';    
 import classes from './HeroSection.module.css';
-import * as actions from '../../../store/actions/index';
 
 
 
@@ -31,6 +30,14 @@ class HeroSection extends Component {
         })
     }
 
+    searchClearHandle = () => {
+        this.setState({
+            form: {
+                value: ''
+            }
+        })
+    }
+
     render(){
         return (
             <React.Fragment>
@@ -41,7 +48,8 @@ class HeroSection extends Component {
                     <form className={classes["mainsection__form"]} onSubmit={this.formSubmitHandler}>
                         <Search 
                             value={this.state.form.value}
-                            changed={this.onInputChange} />
+                            changed={this.onInputChange}
+                            clearSearch={this.searchClearHandle} />
                     </form>
                     <p className={classes["mainsection__trending"]}>{this.props.subtitle3}</p>
                 </div>

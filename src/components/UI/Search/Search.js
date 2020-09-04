@@ -17,7 +17,7 @@ class Search extends Component {
                     value={this.props.value}
                     onChange={this.props.changed}
                 />
-                <div className={classes["cancel-btn"]}><ion-icon name="close-outline"></ion-icon></div>
+                {this.props.value ? <div onClick={this.props.clearSearch} className={classes["cancel-btn"]}><i class="fas fa-times"></i></div> : null }
             </div>
         )
     }

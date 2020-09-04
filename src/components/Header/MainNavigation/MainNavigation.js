@@ -32,8 +32,8 @@ class MainNavbar extends Component {
             <NavLink to="/favourite-images"><ion-icon name="heart" style={{color: '#6f1200'}}></ion-icon></NavLink>
           </div>
           <div className={classes["authenticate__profile-menu"]}>
-            <NavLink to="/account">
-              <img src="https://www.worldfuturecouncil.org/wp-content/uploads/2020/02/dummy-profile-pic-300x300-1.png" alt="image" />
+            <NavLink to="/profile/favourite-images">
+              <img src={this.props.userProfileInfo && this.props.userProfileInfo.profilePicUrl} alt="image" />
             </NavLink>
           </div>
         </div>
@@ -54,13 +54,13 @@ class MainNavbar extends Component {
         </div>
         <ul>
           <li>
-            <NavLink to="/unsplash" exact className={classes["navbar-links"]}>Unsplash</NavLink>
+            <NavLink activeClassName={classes["active-link"]} to="/unsplash" exact className={classes["navbar-links"]}>Unsplash</NavLink>
           </li>
           <li>
-            <NavLink to="/pixabay" exact className={classes["navbar-links"]}>Pixabay</NavLink>
+            <NavLink activeClassName={classes["active-link"]} to="/pixabay" exact className={classes["navbar-links"]}>Pixabay</NavLink>
           </li>
           <li>
-            <NavLink to="/computerVision" className={classes["navbar-links"]}>Search By Image</NavLink>
+            <NavLink activeClassName={classes["active-link"]} to="/computerVision" className={classes["navbar-links"]}>Search By Image</NavLink>
           </li>
           <li className={classes["main-navigation__random-image-btn"]} onClick={this.props.randomImageLoad}>
             Random Image
@@ -76,7 +76,8 @@ class MainNavbar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    userProfileInfo: state.account.userProfileInfo
   }
 }
 

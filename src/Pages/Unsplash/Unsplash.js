@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 import HeroSection from '../../components/Unsplash/HeroSection/HeroSection';
-import * as actions from '../../store/actions/index';
 import classes from './Unsplash.module.css';
 import CategoryNav from '../../components/Header/CategoryNavigation/CategoryNavigation';
 
@@ -11,6 +10,10 @@ import CategoryNav from '../../components/Header/CategoryNavigation/CategoryNavi
 
 
 class Unsplash extends Component {
+
+  state = {
+    keyword: ''
+  }
 
 
   render(){

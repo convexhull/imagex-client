@@ -35,6 +35,11 @@
     display: none;
 }
 
+.close-icon:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
 
 .close-icon--visible {
     display: initial;

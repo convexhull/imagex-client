@@ -4,25 +4,45 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../../store/actions/index'
 import ScrollLazyLoader from '../../UI/ScrollLazyLoading/ScrollLazyLoading';
+import CategoryNavigation from '../../Header/CategoryNavigation/CategoryNavigation';
 
 
 
 
 class Search extends Component {
+  state = {
+    keyword: "",
+  };
 
-    componentDidMount(){
-        this.props.onClearPreviousImages();
-    }
+  componentDidMount() {
+    this.props.onClearPreviousImages();
+    let search = new URLSearchParams(this.props.location.search);
+    let keyword = search.get("keyword");
+    this.setState({
+        keyword
+    })
+  }
 
-    render(){
-        let search = new URLSearchParams(this.props.location.search);
-        let keyword = search.get('keyword');
-        return (
-            <React.Fragment>
-                <ScrollLazyLoader keyword={keyword} />
-            </React.Fragment>
-        )
-    }
+  keywordChangeHandler = (newKeyword) => {
+      console.log("xxxx")
+    this.setState({
+      keyword: newKeyword,
+    })
+  };
+
+  render() {
+    
+    return (
+      <React.Fragment>
+        <CategoryNavigation
+          platform="unsplash"
+          clicked={this.keywordChangeHandler}
+          xxx="Republic"
+        />
+        <ScrollLazyLoader keyword={this.state.keyword} />
+      </React.Fragment>
+    );
+  }
 }
 
 

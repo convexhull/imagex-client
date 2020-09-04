@@ -57,7 +57,7 @@
 
 
 
-.main-navigation .navbar-links:visited, .main-navigation .navbar-links:link {
+.navbar-links:visited, .navbar-links:link {
     text-decoration: none;
     margin-left: 1.5rem;
     font-weight: bold;
@@ -65,9 +65,15 @@
     font-size: 0.9rem;
 }
 
-.main-navigation .navbar-links:hover, .main-navigation .navbar-links:active {
-
+.main-navigation .navbar-links:hover {
+    color: black;
 }
+
+
+.main-navigation .active-link {
+    color: black;
+}
+
 
 .main-navigation .authenticate {
     margin-right: 10px;
@@ -82,7 +88,9 @@
     font-size: 0.9rem;
 }
 
-
+.main-navigation__random-image-btn:hover {
+    color: black;
+}
 
 .authenticate {
     flex-shrink: 0;
@@ -94,15 +102,17 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    overflow: hidden;
+    margin-top: 0.5rem;
+    margin-left: 0.75rem;
 }
 
 
 .authenticate__profile-menu img {
     height: 100%;
-    width: auto;
+    width: 100%;
+    object-fit: cover;
     border-radius: 50%;
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;
 }
 
 
@@ -111,3 +121,4 @@
     padding-bottom: -2.5rem;
     font-size: 2rem;
 }
+
