@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 
 import * as actions from '../../../store/actions/index'
-import ScrollLazyLoader from '../../UI/ScrollLazyLoading/ScrollLazyLoading';
+import ScrollLazyLoader from '../ScrollLazyLoading/ScrollLazyLoading';
 import CategoryNavigation from '../../Header/CategoryNavigation/CategoryNavigation';
 
 
@@ -11,7 +11,7 @@ import CategoryNavigation from '../../Header/CategoryNavigation/CategoryNavigati
 
 class Search extends Component {
   state = {
-    keyword: "",
+    keyword: ""
   };
 
   componentDidMount() {
@@ -24,11 +24,16 @@ class Search extends Component {
   }
 
   keywordChangeHandler = (newKeyword) => {
-    console.log("xxxx");
     this.setState({
-      keyword: newKeyword,
+      keyword: newKeyword
     })
   };
+
+  inputHandler = (newKeyword) => {
+    this.setState({
+      keyword: newKeyword
+    })
+  }
 
   render() {
     
@@ -36,7 +41,7 @@ class Search extends Component {
       <React.Fragment>
         <CategoryNavigation
           platform="unsplash"
-          clicked={this.keywordChangeHandler}
+          clicked={this.inputHandler}
         />
         <ScrollLazyLoader keyword={this.state.keyword} />
       </React.Fragment>

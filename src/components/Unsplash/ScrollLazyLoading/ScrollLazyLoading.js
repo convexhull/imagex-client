@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 
 import ImageGrid from '../../Unsplash/ImageGrid/ImageGrid';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../../UI/Spinner/Spinner';
 import * as actions from '../../../store/actions/index';
 
 class ScrollLazyLoading extends React.Component {
@@ -14,11 +14,8 @@ class ScrollLazyLoading extends React.Component {
         this.loaderRef = React.createRef();
     }
    
-    // componentDidUpdate(){
-    //     this.props.onClearPreviousImages();
-    // }
-
-    componentDidMount(){
+    componentDidUpdate(){
+        this.props.onClearPreviousImages();
         let options = {
             root: null,
             rootMargin: '0px',
@@ -34,6 +31,23 @@ class ScrollLazyLoading extends React.Component {
         let observer = new IntersectionObserver(callback, options);
         observer.observe(this.loaderRef.current);
     }
+
+    // componentDidMount(){
+    //     let options = {
+    //         root: null,
+    //         rootMargin: '0px',
+    //         threshold: 0.2
+    //     }
+    //     let pagecount = 0;
+    //     let callback = (entries, observer) => {
+    //         if(entries[0].isIntersecting){
+    //             pagecount++;
+    //             this.props.onSearchByKeyword(this.props.keyword, pagecount);
+    //         }
+    //     }
+    //     let observer = new IntersectionObserver(callback, options);
+    //     observer.observe(this.loaderRef.current);
+    // }
 
     render(){
         return (

@@ -24,7 +24,7 @@ class Unsplash extends Component {
   render(){
     return (
       <React.Fragment>
-        <CategoryNav platform="unsplash" />
+        <CategoryNav platform="unsplash" clicked={this.keywordChangeHandler} />
         <div className={classes["hero-container"]}>
           <HeroSection
             title="Unsplash"

@@ -3,7 +3,7 @@ import React , { Component } from 'react';
 
 
 import classes from './Home.module.css';
-import ImageLazyLoader from '../../components/UI/ScrollLazyLoading/ScrollLazyLoading';
+import ImageLazyLoader from '../../components/Unsplash/ScrollLazyLoading/ScrollLazyLoading';
 import HeroSection from '../../components/Home/HeroSection/HeroSection';
 
 class Home extends Component {

@@ -19,10 +19,10 @@ class CategoryNavigation extends Component {
                     search: `?keyword=sustainability`,
                   }}
                 >
-                  sustainability
+                  Sustainability
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('wallpapers')}>
                 <NavLink
                   strict
                   to={{
@@ -33,7 +33,7 @@ class CategoryNavigation extends Component {
                   Wallpapers
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('covid-19')}>
                 <NavLink
                   strict
                   to={{
@@ -44,7 +44,7 @@ class CategoryNavigation extends Component {
                   COVID-19
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('travel')}>
                 <NavLink
                   strict
                   to={{
@@ -55,7 +55,7 @@ class CategoryNavigation extends Component {
                   Travel
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('nature')}>
                 <NavLink
                   strict
                   to={{
@@ -66,7 +66,7 @@ class CategoryNavigation extends Component {
                   Nature
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('textures and patterns')}>
                 <NavLink
                   strict
                   to={{
@@ -77,7 +77,7 @@ class CategoryNavigation extends Component {
                   Textures and Patterns
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('current events')}>
                 <NavLink
                   strict
                   to={{
@@ -88,7 +88,7 @@ class CategoryNavigation extends Component {
                   Current Events
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('people')}>
                 <NavLink
                   strict
                   to={{
@@ -99,7 +99,7 @@ class CategoryNavigation extends Component {
                   People
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('business and work')}>
                 <NavLink
                   strict
                   to={{
@@ -110,7 +110,7 @@ class CategoryNavigation extends Component {
                   Business & Work
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('technology')}>
                 <NavLink
                   strict
                   to={{
@@ -121,7 +121,7 @@ class CategoryNavigation extends Component {
                   Technology
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('interiors')}>
                 <NavLink
                   strict
                   to={{
@@ -132,7 +132,7 @@ class CategoryNavigation extends Component {
                   Interiors
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('architecture')}>
                 <NavLink
                   strict
                   to={{
@@ -143,7 +143,7 @@ class CategoryNavigation extends Component {
                   Architecture
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('food and drink')}>
                 <NavLink
                   strict
                   to={{
@@ -154,7 +154,7 @@ class CategoryNavigation extends Component {
                   Food & Drink
                 </NavLink>
               </li>
-              <li className={classes["navlink-container__link"]}>
+              <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('athletics')}>
                 <NavLink
                   strict
                   to={{
