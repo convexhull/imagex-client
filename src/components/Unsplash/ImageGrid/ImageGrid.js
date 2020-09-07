@@ -37,7 +37,7 @@ class ImageGrid extends Component {
   };
 
   render() {
-    let images1 = this.props.images.map((image) => {
+    let imagesToDisplay = this.props.images.map((image) => {
       let imgOrientation =
         image.width >= image.height ? "landscape" : "portrait";
       let imageOptionsClasses = [classes["image__options"]];
@@ -58,7 +58,8 @@ class ImageGrid extends Component {
           <div
             className={classes["image__overlay"]}
             onClick={() => this.imageClickHandler(image)}
-          ></div>
+          >
+          </div>
           <div className={imageOptionsClasses.join(" ")}>
             <div
               className={classes["like-btn"]}
@@ -92,7 +93,7 @@ class ImageGrid extends Component {
             image={this.state.selectedImage}
           />
         ) : null}
-        <div className={classes["image-grid"]}>{images1}</div>
+        <div className={classes["image-grid"]}>{imagesToDisplay}</div>
       </div>
     );
   }

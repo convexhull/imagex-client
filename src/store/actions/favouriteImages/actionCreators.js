@@ -101,6 +101,17 @@ export const asyncSaveFavouriteImageStart = (image, platform) => {
                     downloadUrl: image.largeImageURL
                 }   
                 break;
+            case "cv":
+                data = {
+                    platform: "cv",
+                    imageId: image.id,
+                    pageUrl: `https://www.shutterstock.com/image-photo/${image.id}`,
+                    smallImageUrl: image.assets.huge_thumb.url,
+                    mediumImageUrl: image.assets.preview_1000.url,
+                    largeImageUrl: image.assets.preview_1500.url,
+                    downloadUrl: image.assets.preview_1500.url
+                }   
+                break;
             default:
                 data = {
                     platform: "unsplash",
