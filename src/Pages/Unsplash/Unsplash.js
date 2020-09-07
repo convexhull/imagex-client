@@ -15,7 +15,7 @@ class Unsplash extends Component {
     keyword: ''
   }
 
-  keywordChangeHandler = (keyword) => {
+  inputHandler = (keyword) => {
     this.setState({
       keyword: keyword
     })
@@ -24,7 +24,7 @@ class Unsplash extends Component {
   render(){
     return (
       <React.Fragment>
-        <CategoryNav platform="unsplash" clicked={this.keywordChangeHandler} />
+        <CategoryNav platform="unsplash" clicked={this.inputHandler} />
         <div className={classes["hero-container"]}>
           <HeroSection
             title="Unsplash"

@@ -6,10 +6,22 @@ import CategoryNav from "../../components/Header/CategoryNavigation/CategoryNavi
 import classes from "./Pixabay.module.css";
 
 class Pixabay extends Component {
+
+  state = {
+    keyword: ''
+  }
+
+  keywordChangeHandler = (keyword) => {
+    this.setState({
+      keyword: keyword
+    })
+  }
+
+
   render() {
     return (
       <React.Fragment>
-        <CategoryNav platform="pixabay" />
+        <CategoryNav platform="pixabay" clicked={this.keywordChangeHandler} />
         <div className={classes["hero-container"]}>
           <HeroSection
             title="Pixabay"

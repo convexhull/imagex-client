@@ -10,6 +10,7 @@ import CategoryNavigation from '../../Header/CategoryNavigation/CategoryNavigati
 
 
 class Search extends Component {
+  
   state = {
     keyword: ""
   };
@@ -23,11 +24,6 @@ class Search extends Component {
     })
   }
 
-  keywordChangeHandler = (newKeyword) => {
-    this.setState({
-      keyword: newKeyword
-    })
-  };
 
   inputHandler = (newKeyword) => {
     this.setState({

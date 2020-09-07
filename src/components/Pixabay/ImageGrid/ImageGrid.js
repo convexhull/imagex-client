@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './ImageGrid.module.css';
 import ImageModal from '../ImageModal/ImageModal';
+import { connect } from 'react-redux';
 
 
 class ImageGrid extends Component {
@@ -40,5 +41,12 @@ class ImageGrid extends Component {
 }
 
 
-export default ImageGrid;
+const mapStateToProps = (state) => {
+  return {
+    images: state.pixabay.images,
+  };
+}
+
+
+export default connect(mapStateToProps)(ImageGrid);
 

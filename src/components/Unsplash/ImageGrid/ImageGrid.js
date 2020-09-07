@@ -102,7 +102,7 @@ const mapStateToProps = (state) => {
   return {
     images: state.unsplash.images,
   };
-};
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {

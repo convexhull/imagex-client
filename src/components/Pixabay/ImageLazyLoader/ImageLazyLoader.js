@@ -15,14 +15,16 @@ class ScrollLazyLoading extends React.Component {
         this.loaderRef = React.createRef();
     }
    
-    componentDidMount(){
+
+    componentDidUpdate(){
+        this.props.onClearPreviousImages();
         let options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.2
         }
         let pagecount = 0;
-        let callback = (entries) => {
+        let callback = (entries, observer) => {
             if(entries[0].isIntersecting){
                 pagecount++;
                 this.props.onSearchByKeyword(this.props.keyword, pagecount);
@@ -31,6 +33,24 @@ class ScrollLazyLoading extends React.Component {
         let observer = new IntersectionObserver(callback, options);
         observer.observe(this.loaderRef.current);
     }
+
+
+    // componentDidMount(){
+    //     let options = {
+    //         root: null,
+    //         rootMargin: '0px',
+    //         threshold: 0.1
+    //     }
+    //     let pagecount = 0;
+    //     let callback = (entries) => {
+    //         if(entries[0].isIntersecting){
+    //             pagecount++;
+    //             this.props.onSearchByKeyword(this.props.keyword, pagecount);
+    //         }
+    //     }
+    //     let observer = new IntersectionObserver(callback, options);
+    //     observer.observe(this.loaderRef.current);
+    // }
 
     render(){
         return (
@@ -45,16 +65,12 @@ class ScrollLazyLoading extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-        images: state.pixabay.images
-    }
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSearchByKeyword : (keyword, page) => dispatch(actions.pixabayImageSearchByKeyword(keyword, page))
+        onSearchByKeyword : (keyword, page) => dispatch(actions.pixabayImageSearchByKeyword(keyword, page)),
+        onClearPreviousImages: () => dispatch(actions.pixabayClearAllImages())
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScrollLazyLoading);
+export default connect(null, mapDispatchToProps)(ScrollLazyLoading);
