@@ -17,7 +17,6 @@ class Pixabay extends Component {
     })
   }
 
-
   render() {
     return (
       <React.Fragment>
@@ -40,6 +39,6 @@ const mapStateToProps = (state) => {
     page: state.pixabay.page,
     isAuthenticated: state.auth.token !== null,
   };
-};
+}
 
 export default connect(mapStateToProps)(Pixabay);

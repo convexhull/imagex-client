@@ -5,8 +5,20 @@ import React , { Component } from 'react';
 import classes from './Home.module.css';
 import ImageLazyLoader from '../../components/Unsplash/ScrollLazyLoading/ScrollLazyLoading';
 import HeroSection from '../../components/Home/HeroSection/HeroSection';
+import CategoryNavigation from '../../components/Header/CategoryNavigation/CategoryNavigation';
 
 class Home extends Component {
+
+
+    state = {
+        keyword: ''
+      }
+    
+    keywordChangeHandler = (keyword) => {
+        this.setState({
+            keyword: keyword
+        })
+    }
 
     formSubmitHandler = (event) => {
         event.preventDefault();
@@ -16,6 +28,7 @@ class Home extends Component {
     render(){
         return (
             <div className={classes.Home}>
+                <CategoryNavigation  platform="unsplash" clicked={this.keywordChangeHandler} />
                 <div className={classes["hero-container"]}>
                     <HeroSection 
                         title="ImageX"
