@@ -46,7 +46,7 @@ class ImageGrid extends Component {
       }
       return (
         <div className={classes[imgOrientation] + " " + classes["image__box"]} key={image.id}  onMouseEnter={() => this.displayImageOverlay(image.id)} onMouseLeave={this.removeImageOverlay}>
-          <img src={image.assets.preview.url} alt={image.description ? image.description : "search result"} />
+          <img src={image.assets.preview_1000.url} alt={image.description ? image.description : "search result"} />
           <div
             className={classes["image__overlay"]}
             onClick={() => this.imageClickHandler(image)}
@@ -78,6 +78,13 @@ class ImageGrid extends Component {
     return (
       <div>
         <div className={classes["image-grid"]}>
+          {this.state.showImageModal ? (
+            <ImageModal
+              show={this.state.showImageModal}
+              hideImageModal={this.hideModalHandler}
+              image={this.state.selectedImage}
+            />
+          ) : null}
           {imagesToDisplay}
         </div>
       </div>

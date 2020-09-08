@@ -12,42 +12,35 @@ class ScrollLazyLoading extends React.Component {
     constructor(props){
         super(props);
         this.loaderRef = React.createRef();
+        this.cnt = 1;
     }
    
+    state = {
+        pageCount: 1
+    }
+
+    intersectionObserverCallback = (entries) => {
+        if(entries[0].isIntersecting){
+            this.props.onSearchByKeyword(this.props.keyword, this.cnt++);
+        }
+    }
+
+
     componentDidUpdate(){
+        console.log("Unsplash image lazy loader updated!");
         this.props.onClearPreviousImages();
+        this.cnt = 1;
+    }
+
+    componentDidMount(){
         let options = {
             root: null,
             rootMargin: '0px',
             threshold: 0.2
         }
-        let pagecount = 0;
-        let callback = (entries, observer) => {
-            if(entries[0].isIntersecting){
-                pagecount++;
-                this.props.onSearchByKeyword(this.props.keyword, pagecount);
-            }
-        }
-        let observer = new IntersectionObserver(callback, options);
+        let observer = new IntersectionObserver(this.intersectionObserverCallback, options);
         observer.observe(this.loaderRef.current);
     }
-
-    // componentDidMount(){
-    //     let options = {
-    //         root: null,
-    //         rootMargin: '0px',
-    //         threshold: 0.2
-    //     }
-    //     let pagecount = 0;
-    //     let callback = (entries, observer) => {
-    //         if(entries[0].isIntersecting){
-    //             pagecount++;
-    //             this.props.onSearchByKeyword(this.props.keyword, pagecount);
-    //         }
-    //     }
-    //     let observer = new IntersectionObserver(callback, options);
-    //     observer.observe(this.loaderRef.current);
-    // }
 
     render(){
         return (
