@@ -22,13 +22,12 @@ class Home extends Component {
 
     formSubmitHandler = (event) => {
         event.preventDefault();
-        console.log('submitted');
     }
 
     render(){
         return (
             <div className={classes.Home}>
-                <CategoryNavigation  platform="unsplash" clicked={this.keywordChangeHandler} />
+                <CategoryNavigation hideLogo={true} platform="unsplash" clicked={this.keywordChangeHandler} />
                 <div className={classes["hero-container"]}>
                     <HeroSection 
                         title="ImageX"

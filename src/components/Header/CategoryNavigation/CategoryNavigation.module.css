@@ -1,16 +1,26 @@
 .Category-navigation {
     color: var(--font-grey);
     overflow-x: hidden;
+    display: flex;
+    height: 3rem;
+    align-items: center;
 }
 
 .navlink-container {
+    height: 100%;
     display: flex;
     list-style: none;
     justify-content: space-between;
     margin: 0 10px;
-    padding: 20px 0;
     min-width: 1200px;
     overflow-x: hidden;
+    align-items: center;
+    flex-basis: 100%;
+}
+
+
+.navlink-container__link {
+
 }
 
 
@@ -23,9 +33,26 @@
 }
 
 
-
-
 .navlink-container__link a:hover , .navlink-container__link a:active {
     color: black;
 }
 
+
+
+.platform-logo {
+    height: 60%;
+    overflow: hidden;
+    width: 10rem;
+    text-align: center;
+    border-right: 1px solid black; 
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.platform-logo img {
+    height: 70%;
+    width: auto;
+    align-self: center;
+}

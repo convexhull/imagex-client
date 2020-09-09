@@ -3,13 +3,35 @@ import { NavLink } from 'react-router-dom';
 
 
 import classes from './CategoryNavigation.module.css';
+import PixabayLogo from '../../../assets/Pixabay/pixabay-logo.png';
+import UnsplashLogo from '../../../assets/Unsplash/unsplash-logo.png';
+import ImagexLogo from '../../../assets/icons/camera.svg';
+
 
 
 class CategoryNavigation extends Component {
 
     render(){
+        let platformLogo = null;
+        switch(this.props.platform) {
+          case "unsplash":
+            platformLogo = <img src={UnsplashLogo} />
+            break;
+          case "pixabay":
+            platformLogo = <img src={PixabayLogo} />
+            break;
+          case "imagex":
+            platformLogo = <img src={ImagexLogo} />
+            break;
+          // default:
+          //   platformLogo = <ImagexLogo />;
+        }
+
         return (
           <div className={classes["Category-navigation"]}>
+            { !this.props.hideLogo ?   <div className={classes["platform-logo"]}> 
+              {platformLogo}
+            </div> : null}
             <ul className={classes["navlink-container"]}>
               <li className={classes["navlink-container__link"]} onClick={() => this.props.clicked('sustainability')}>
                 <NavLink
