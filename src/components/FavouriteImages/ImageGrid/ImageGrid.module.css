@@ -2,31 +2,40 @@
     width: 80%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-rows: 100px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-auto-rows: 50px;
     grid-auto-flow: dense;
-    grid-gap: 40px;
+    grid-gap: 5px;
 }
 
 
-
-
-.image__box img {
-    width: 100%;
-    overflow: hidden;
-    height: 100%;
+.square {
+    grid-row: span 8;
 }
 
+.landscape-1 {
+    grid-row: span 6; 
+}
 
-.portrait {
+.landscape-2 {
     grid-row: span 4;
 }
 
-.landscape {
+.landscape-3 {
     grid-row: span 3;
 }
 
+.portrait-1 {
+    grid-row: span 10;
+}
 
+.portrait-2 {
+    grid-row: span 12;
+}
+
+.portrait-3 {
+    grid-row: span 14;
+}
 
 .image__box {
     position: relative;
@@ -70,7 +79,16 @@
     opacity: 1;
 }
 
+.download-button  a:link , .download-button  a:visited {
+    text-decoration: none;
+    color: black;
+}
 
+
+.download-button  a:hover , .download-button  a:active {
+    text-decoration: none;
+    color: black;
+}
 
 
 .download-button {
@@ -87,12 +105,6 @@
 }
 
 
-.download-button a:link , .download-button a:visited {
-    text-decoration: none;
-    color: inherit;
-}
-
-
 .download-button:hover {
     background-color: #f3f3f3;
 }
@@ -102,7 +114,7 @@
     margin-left: 1rem;
     cursor: pointer;
     font-size: 2rem;
-    color: #860606;
+    color: #d6d6d6;
     height: 2rem;
 }
 
@@ -113,25 +125,6 @@
 }
 
 
-.like-btn span:active {
-    color: #d6d6d6;
-}
-
-
-
-
-.profile__navigation {
-    display: flex;
-    width: 100%;
-    height: 3rem;
-    border-bottom: 1.5px solid silver;
-    margin-bottom: 3rem ;
-    justify-content: center;
-}
-
-.profile__navlink  {
-    margin-left: 1rem;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: rgb(94, 94, 94);
+.like-btn span:hover {
+    color: #860606;
 }

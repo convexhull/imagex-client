@@ -80,6 +80,7 @@ export const asyncSaveFavouriteImageStart = (image, platform) => {
         let data = {};
         switch (platform) {
             case "unsplash":
+                console.log("XXXXXXXXX")
                 data = {
                     platform: "unsplash",
                     imageId: image.id,
@@ -87,7 +88,8 @@ export const asyncSaveFavouriteImageStart = (image, platform) => {
                     smallImageUrl: image.urls.small,
                     mediumImageUrl: image.urls.regular,
                     largeImageUrl: image.urls.full,
-                    downloadUrl: image.links.download
+                    downloadUrl: image.links.download,
+                    aspect: image.width / image.height
                 }
                 break;
             case "pixabay":
@@ -98,7 +100,8 @@ export const asyncSaveFavouriteImageStart = (image, platform) => {
                     smallImageUrl: image.previewURL,
                     mediumImageUrl: image.webformatURL,
                     largeImageUrl: image.largeImageURL,
-                    downloadUrl: image.largeImageURL
+                    downloadUrl: image.largeImageURL,
+                    aspect: image.imageWidth / image.imageHeight
                 }   
                 break;
             case "cv":
@@ -109,19 +112,21 @@ export const asyncSaveFavouriteImageStart = (image, platform) => {
                     smallImageUrl: image.assets.huge_thumb.url,
                     mediumImageUrl: image.assets.preview_1000.url,
                     largeImageUrl: image.assets.preview_1500.url,
-                    downloadUrl: image.assets.preview_1500.url
+                    downloadUrl: image.assets.preview_1500.url,
+                    aspect: image.aspect
                 }   
                 break;
-            default:
-                data = {
-                    platform: "unsplash",
-                    imageId: image.id,
-                    pageUrl: image.links.html,
-                    smallImageUrl: image.urls.small,
-                    mediumImageUrl: image.urls.regular,
-                    largeImageUrl: image.urls.full,
-                    downloadUrl: image.links.download
-                }
+            // default:
+            //     data = {
+            //         platform: "unsplash",
+            //         imageId: image.id,
+            //         pageUrl: image.links.html,
+            //         smallImageUrl: image.urls.small,
+            //         mediumImageUrl: image.urls.regular,
+            //         largeImageUrl: image.urls.full,
+            //         downloadUrl: image.links.download,
+            //         aspect: image.width / image.height
+            //     }
 
         }
         let token = localStorage.getItem('token');
