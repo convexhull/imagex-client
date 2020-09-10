@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
 import classes from "./ImageGrid.module.css";
 import ImageModal from "../ImageModal/ImageModal";
+import ImageUtils from '../../../utils/imageOrientation';
 
 class ImageGrid extends Component {
   state = {
@@ -38,8 +39,11 @@ class ImageGrid extends Component {
 
   render() {
     let imagesToDisplay = this.props.images.map((image) => {
-      let imgOrientation =
-        image.imageWidth >= image.imageHeight ? "landscape" : "portrait";
+      let imgOrientation = ImageUtils.calculateOrientationClass(image.imageWidth, image.imageHeight);
+      if(imgOrientation === "portrait-3"){
+        console.log(image.id)
+      }
+      console.log(imgOrientation);
       let imageOptionsClasses = [classes["image__options"]];
       if (image.id === this.state.hoveredOverImageId) {
         imageOptionsClasses.push(classes["image__options--visible"]);

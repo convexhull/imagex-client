@@ -12,11 +12,7 @@
 }
 
 
-@media (max-width: 700px){
-    .imagex-description {
-        display: none;
-    }
-}
+
 
 .imagex-title {
     font-weight: bold;
@@ -122,3 +118,15 @@
     font-size: 2rem;
 }
 
+
+
+
+
+
+/**************************************MEDIA QUERIES**************************************/
+
+@media (max-width: 700px){
+    .imagex-description {
+        display: none;
+    }
+}

@@ -18,11 +18,9 @@
     flex-basis: 100%;
 }
 
-
 .navlink-container__link {
 
 }
-
 
 .navlink-container__link a:visited , .navlink-container__link a:link {
     text-decoration: none;
@@ -32,24 +30,20 @@
     font-size: 0.9rem;
 }
 
-
 .navlink-container__link a:hover , .navlink-container__link a:active {
     color: black;
 }
 
-
-
 .platform-logo {
     height: 60%;
     overflow: hidden;
-    width: 10rem;
+    min-width: 150px;
+    /* min-width: 7rem; */
     text-align: center;
     border-right: 1px solid black; 
     display: flex;
     justify-content: center;
 }
-
-
 
 .platform-logo img {
     height: 70%;
