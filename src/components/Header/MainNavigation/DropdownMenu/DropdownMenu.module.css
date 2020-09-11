@@ -1,0 +1,39 @@
+.responsive-topnav {
+    /* list-style: none; */
+    /* background-color: black; */
+}
+
+
+.link {
+    color: white;
+    list-style: none;
+    padding: 15px;
+}
+
+.link a {
+    text-decoration: none;
+}
+
+.link a:link, .link a:visited {
+    color: white;
+}
+
+.link a:active, .link a:hover {
+    color: white;
+}
+
+
+
+
+
+
+/**************************************MEDIA QUERIES**************************************/
+
+
+
+
+
+
+
+
+
