@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import classes from './Backdrop.module.css';
+import classes from './NewBackdrop.module.css';
 
 class Backdrop extends Component {
     render(){
@@ -11,7 +11,7 @@ class Backdrop extends Component {
             backdropClasses.push(classes["backdrop--transparent"])
         }
         return (
-            this.props.show ? <div className={backdropClasses.join(' ')} onClick={this.props.hideBackdrop}></div> : null 
+            <div className={backdropClasses.join(' ')} onClick={this.props.hideBackdrop}></div> 
         );
     }
 }

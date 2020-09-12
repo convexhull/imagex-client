@@ -13,23 +13,22 @@ import DropdownMenu from './DropdownMenu/DropdownMenu';
 class MainNavbar extends Component {
 
   state = {
-    showDropDownMenu: false
+    showDropdownMenu: false
   }
 
 
-  toggleDropDownMenu = () => {
+  toggleDropdownMenu = () => {
     this.setState((state, props) => {
       return {
-        showDropDownMenu: !state.showDropDownMenu
+        showDropdownMenu: !state.showDropdownMenu
       }
     })
   }
 
+
+
   render() {
 
-    let dropDownMenuClasses = ["responsive-dropdown"];
-
-    
     let authenticationInfo = (
       <ul className={classes["authenticate"]}>
         <li>
@@ -108,18 +107,18 @@ class MainNavbar extends Component {
             Random Image
           </li>
         </ul>
-        {authenticationInfo}
         <div
           className={classes["burger-btn"]}
-          onClick={this.toggleDropDownMenu}
+          onClick={this.toggleDropdownMenu}
         >
           <i class="fas fa-align-justify"></i>
         </div>
-        {this.state.showDropDownMenu ? (
+        {this.state.showDropdownMenu ? (
           <div className={classes["responsive-dropdown"]}>
-            <DropdownMenu randomImageLoad={this.props.randomImageLoad} />
+            <DropdownMenu randomImageLoad={this.props.randomImageLoad} toggleDropdownMenu={this.toggleDropdownMenu} />
           </div>
         ) : null}
+        {authenticationInfo}
       </div>
     );
   }

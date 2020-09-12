@@ -1,14 +1,19 @@
 .responsive-topnav {
-    /* list-style: none; */
-    /* background-color: black; */
+    position: relative;
+    z-index: 1000;
 }
 
+.responsive-topnav:hover {
+    cursor: pointer;
+}
 
 .link {
     color: white;
     list-style: none;
     padding: 15px;
 }
+
+
 
 .link a {
     text-decoration: none;
@@ -19,8 +24,10 @@
 }
 
 .link a:active, .link a:hover {
-    color: white;
+    color: var(--font-grey);
 }
+
+
 
 
 
