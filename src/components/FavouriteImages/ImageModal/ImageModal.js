@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Modal from '../../Common/UI/Modal/Modal';
 import classes from './ImageModal.module.css';
 import * as actions from '../../../store/actions/index';
+import GeneralUtils from '../../../utils/generalUtils';
 
 
 class ImageModal extends Component {
@@ -17,8 +18,10 @@ class ImageModal extends Component {
     }
   
     render(){
+        let imageDescription = this.props.image.description || this.props.image.alt_description;
+        imageDescription = GeneralUtils.capitalizeFirstLetter(imageDescription);
         return (
-            <Modal show={this.props.show} hideModal={this.props.hideImageModal} >
+            <Modal hideModal={this.props.hideImageModal} >
                 <div className={classes["image-header"]}>
                     {/* <div className={classes["user-info"]}>
                         <div>
@@ -41,7 +44,7 @@ class ImageModal extends Component {
                 </div>
                 <br />
                 <div className={classes["image-footer"]}>
-                    {this.props.image.description || this.props.image.alt_description}
+                    {imageDescription}
                 </div>
             </Modal>
         )

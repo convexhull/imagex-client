@@ -4,19 +4,32 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
 import MainNavbar from '../../components/Header/MainNavigation/MainNavigation';
-import ImageModal from '../../components/Unsplash/ImageModal/ImageModal';
+import ImageModal from '../../components/RandomImage/ImageModal/ImageModal';
 
 
 class Layout extends Component {
 
+  state = {
+    showRandomImageModal: false
+  }
+
   toggleRandomImageModal = () => {
-    this.props.onRandomImageLoad();
+    if(!this.state.showRandomImageModal){
+      this.props.onRandomImageLoad();
+    } else {
+      this.props.onClearRandomImage();
+    }
+    this.setState((state, props) => {
+      return {
+        showRandomImageModal: !state.showRandomImageModal
+      }
+    });
   }
 
   render(){
     return (
       <Fragment>
-        {this.props.randomImage ? <ImageModal show={this.props.randomImage} hideImageModal={this.props.onClearRandomImage} image={this.props.randomImage} /> : null }
+        {this.state.showRandomImageModal ? <ImageModal hideImageModal={this.toggleRandomImageModal} image={this.props.randomImage} /> : null }
         <header>
           <MainNavbar randomImageLoad={this.toggleRandomImageModal}/>
         </header>

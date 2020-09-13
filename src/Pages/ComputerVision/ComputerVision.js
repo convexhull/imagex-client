@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import classes from "./ComputerVision.module.css";
 import * as actions from "../../store/actions";
 import CameraIcon from "../../assets/icons/camera.svg";
-import Spinner from '../../assets/images/spinner.gif';
+import Spinner from '../../components/UI/AwsSpinner/spinner.gif';
 
 class CV extends Component {
   constructor(props) {
