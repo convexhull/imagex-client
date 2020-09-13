@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 
 import classes from "./DropdownMenu.module.css";
-import Backdrop from "../../../Common/UI/NewBackdrop/NewBackdrop";
+import Backdrop from "../../../Common/UI/Backdrop/Backdrop";
 
 
 class DropdownMenu extends Component {
