@@ -43,7 +43,7 @@ export const asyncUnsplashGetRandomImage = () => {
         try {
             let apiResponse = await Axios.get('/unsplash/randomPhoto');
             let payload = {
-                image: apiResponse.data
+                image: apiResponse.data.data
             }
             dispatch(unsplashGetRandomImage(payload));
         }
