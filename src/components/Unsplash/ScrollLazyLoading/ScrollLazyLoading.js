@@ -5,6 +5,7 @@ import ImageGrid from "../../Unsplash/ImageGrid/ImageGrid";
 import Spinner from "../../UI/Spinner/Spinner";
 import * as actions from "../../../store/actions/index";
 import classes from "./ScrollLazyLoading.module.css";
+import EndOfResults from '../../UI/EndOfResults/EndOfResults';
 
 class ScrollLazyLoading extends React.Component {
   constructor(props) {
@@ -27,10 +28,11 @@ class ScrollLazyLoading extends React.Component {
   }
 
   componentDidMount() {
+    this.props.onClearPreviousImages();
     let options = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.2,
+      threshold: 0.1,
     };
     let observer = new IntersectionObserver(
       this.intersectionObserverCallback,
@@ -41,8 +43,14 @@ class ScrollLazyLoading extends React.Component {
 
   render() {
     let spinnerClasses = [classes["spinner"]];
+    let endOfResults = null;
     if (this.props.moreResults === false) {
       spinnerClasses.push(classes["spinner--invisible"]);
+      endOfResults = (
+        <div className={classes["end-of-results"]}>
+          <EndOfResults />
+        </div>
+      );
     }
     return (
       <React.Fragment>
@@ -50,6 +58,7 @@ class ScrollLazyLoading extends React.Component {
         <div ref={this.loaderRef} className={spinnerClasses.join(" ")}>
           <Spinner />
         </div>
+        {endOfResults}
       </React.Fragment>
     );
   }

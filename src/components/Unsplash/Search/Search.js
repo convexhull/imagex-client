@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index'
 import ScrollLazyLoader from '../ScrollLazyLoading/ScrollLazyLoading';
 import CategoryNavigation from '../../Header/CategoryNavigation/CategoryNavigation';
+import classes from './Search.module.css';
+import { capitalizeFirstLetter } from "../../../utils/generalUtils";
 
 
 
@@ -39,6 +41,11 @@ class Search extends Component {
           platform="unsplash"
           clicked={this.inputHandler}
         />
+        <div className={classes["search-keyword"]}>
+          <h1>
+            {capitalizeFirstLetter(this.state.keyword)}
+          </h1>
+        </div>
         <ScrollLazyLoader keyword={this.state.keyword} />
       </React.Fragment>
     );

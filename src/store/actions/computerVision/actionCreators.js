@@ -83,7 +83,7 @@ export const asyncSimilarImagesSearchStart = (data) => {
         let similarImageSearchURL = `/computer-vision/getSimilarImages?upload_id=${data.uploadedImageId}&page=${data.page}`;
         try {
             let apiResponse = await Axios.get(similarImageSearchURL);
-            let payload = {images: apiResponse.data.data};
+            let payload = apiResponse.data.data;
             dispatch(similarImagesSearchSuccess(payload));
         } catch(e) {
             console.log(e);

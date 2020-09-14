@@ -6,7 +6,8 @@ const initState = {
     similarImages: [],
     uploadedImageId: '',
     imageUploading: false,
-    similarImagesLoading: false
+    similarImagesLoading: false,
+    moreResults: true
 }
 
 
@@ -37,12 +38,14 @@ const reducer = (state = initState, action) => {
             });
         case actionTypes.SIMILAR_IMAGES_SEARCH_START:
             return updateObject(state, {
-                similarImagesLoading: true
+                similarImagesLoading: true,
+                moreResults: true
             });
         case actionTypes.SIMILAR_IMAGES_SEARCH_SUCCESS:
             return updateObject(state, {
-                similarImages: [...state.similarImages, ...action.payload.images],
-                similarImagesLoading: false
+                similarImages: [...state.similarImages, ...action.payload.data],
+                similarImagesLoading: false,
+                moreResults: action.payload.moreResults
             });
         case actionTypes.SIMILAR_IMAGES_SEARCH_FAILURE:
             return updateObject(state, {
