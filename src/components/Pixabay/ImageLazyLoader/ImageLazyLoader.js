@@ -1,65 +1,72 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-
-
-import ImageGrid from '../ImageGrid/ImageGrid';
-import Spinner from '../../UI/Spinner/Spinner';
-import * as actions from '../../../store/actions/index';
-
+import ImageGrid from "../ImageGrid/ImageGrid";
+import Spinner from "../../UI/Spinner/Spinner";
+import * as actions from "../../../store/actions/index";
+import classes from './ImageLazyLoader.module.css';
 
 class ScrollLazyLoading extends React.Component {
+  constructor(props) {
+    super(props);
+    this.loaderRef = React.createRef();
+    this.cnt = 1;
+  }
 
-    constructor(props){
-        super(props);
-        this.loaderRef = React.createRef();
+  intersectionObserverCallback = (entries) => {
+    if (entries[0].isIntersecting) {
+      this.props.onSearchByKeyword(this.props.keyword, this.cnt++);
     }
+  };
 
-    state = {
-        pageCount: 1
-    }
-
-    intersectionObserverCallback = (entries) => {
-        if(entries[0].isIntersecting){
-            this.props.onSearchByKeyword(this.props.keyword, this.cnt++);
-        }
-    }
-
-
-    componentDidUpdate(){
-        console.log("Pixabay image lazy loader updated!");
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.keyword !== this.props.keyword) {
         this.props.onClearPreviousImages();
         this.cnt = 1;
     }
+  }
 
-    componentDidMount(){
-        let options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.2
-        }
-        let observer = new IntersectionObserver(this.intersectionObserverCallback, options);
-        observer.observe(this.loaderRef.current);
-    }
+  componentDidMount() {
+    let options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.2,
+    };
+    let observer = new IntersectionObserver(
+      this.intersectionObserverCallback,
+      options
+    );
+    observer.observe(this.loaderRef.current);
+  } 
 
-    render(){
-        return (
-            <React.Fragment>
-                <ImageGrid images={this.props.images} />
-                <div ref={this.loaderRef}>
-                    <Spinner  />
-                </div>
-            </React.Fragment>
-        );
+  render() {
+    let spinnerClasses = [classes["spinner"]];
+    if (this.props.moreResults === false) {
+      spinnerClasses.push(classes["spinner--invisible"]);
     }
+    return (
+      <React.Fragment>
+        <ImageGrid />
+        <div ref={this.loaderRef} className={spinnerClasses.join(" ")}>
+          <Spinner />
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    moreResults: state.pixabay.moreResults,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        onSearchByKeyword : (keyword, page) => dispatch(actions.pixabayImageSearchByKeyword(keyword, page)),
-        onClearPreviousImages: () => dispatch(actions.pixabayClearAllImages())
-    }
-}
+  return {
+    onSearchByKeyword: (keyword, page) =>
+      dispatch(actions.pixabayImageSearchByKeyword(keyword, page)),
+    onClearPreviousImages: () => dispatch(actions.pixabayClearAllImages()),
+  };
+};
 
-export default connect(null, mapDispatchToProps)(ScrollLazyLoading);
+export default connect(mapStateToProps, mapDispatchToProps)(ScrollLazyLoading);

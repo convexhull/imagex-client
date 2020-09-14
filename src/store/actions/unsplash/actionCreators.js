@@ -20,7 +20,7 @@ export const unsplashImageSearchByKeyword = (keyword, page) => {
         dispatch(unsplashImageKeywordSearchStart());
         try {
             let apiResponse = await Axios.post(`/unsplash/searchPhotos?keywords=${keyword}&page=${page}`);
-            let payload = {images: apiResponse.data.images};
+            let payload = {...apiResponse.data.data , moreResults : (apiResponse.data.data.total_pages > page ? true : false)};
             dispatch(unsplashImageKeywordSearchSuccess(payload));
         }
         catch(e){

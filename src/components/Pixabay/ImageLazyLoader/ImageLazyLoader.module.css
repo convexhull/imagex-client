@@ -2,3 +2,14 @@
     height: 200px;
     background-color: rgb(198, 248, 198);
 }
+
+
+
+.spinner {
+
+}
+
+
+.spinner--invisible {
+    display: none;
+}

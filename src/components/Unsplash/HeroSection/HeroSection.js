@@ -30,7 +30,7 @@ class HeroSection extends Component {
         })
     }
 
-    searchClearHandle = () => {
+    searchClearHandler = () => {
         this.setState({
             form: {
                 value: ''
@@ -49,7 +49,7 @@ class HeroSection extends Component {
                         <Search 
                             value={this.state.form.value}
                             changed={this.onInputChange}
-                            clearSearch={this.searchClearHandle} />
+                            clearSearch={this.searchClearHandler} />
                     </form>
                     <p className={classes["mainsection__trending"]}>{this.props.subtitle3}</p>
                 </div>

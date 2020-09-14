@@ -5,21 +5,24 @@ const initialState = {
     images: [],
     loading: false,
     randomImage: '',
-    redirectUrl: ''
+    redirectUrl: '',
+    moreResults: true
 }
 
 
 
 const reducer = (state = initialState, action) => {
-
     switch(action.type){
         case actionTypes.UNSPLASH_IMAGE_KEYWORD_SEARCH_START:
             return updateObject(state, {
-                loading: true
+                loading: true,
+                moreResults: true
             })
         case actionTypes.UNSPLASH_IMAGE_KEYWORD_SEARCH_SUCCESS:
             return updateObject(state, {
-                images: [...state.images, ...action.payload.images]
+                images: [...state.images, ...action.payload.results],
+                moreResults: action.payload.moreResults,
+                loading: false
             })
         case actionTypes.UNSPLASH_GET_RANDOM_IMAGE:
             return updateObject(state, {
@@ -27,7 +30,9 @@ const reducer = (state = initialState, action) => {
             })
         case actionTypes.UNSPLASH_CLEAR_ALL_IMAGES:
             return updateObject(state, {
-                images: []
+                images: [],
+                loading: false,
+                moreResults: true
             })
         case actionTypes.UNSPLASH_CLEAR_RANDOM_IMAGE:
             return updateObject(state, {

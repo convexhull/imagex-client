@@ -4,7 +4,7 @@ import updateObject from '../../../utils/updateObject';
 const initialState = {
     images: [],
     loading: false,
-    endOfResults: false
+    moreResults: true
 }
 
 
@@ -17,20 +17,17 @@ const reducer = (state = initialState, action) => {
                 loading: true
             })
         case actionTypes.PIXABAY_IMAGE_KEYWORD_SEARCH_SUCCESS:
-            let newImages = action.payload.images;
-            let endOfResults = false;
-            if(!newImages.length){
-                endOfResults = true;   
-            }
+            console.log(action.payload.hits);
             return updateObject(state, {
-                images: [...state.images, ...newImages],
-                endOfResults: endOfResults
+                images: [...state.images, ...action.payload.hits],
+                moreResults: action.payload.moreResults
             })
         case actionTypes.PIXABAY_IMAGE_KEYWORD_SEARCH_FAILURE:
             return state;
         case actionTypes.PIXABAY_CLEAR_ALL_IMAGES:
             return updateObject(state, {
-                images: []
+                images: [],
+                moreResults: true
             })
         default: 
             return state;
