@@ -7,6 +7,7 @@ import pixabayReducer from './reducers/pixabay/pixabay';
 import computerVisionReducer from './reducers/computerVision/computerVision';
 import favouriteImagesReducer from './reducers/favouriteImages/favouriteImages';
 import userAccountReducer from './reducers/userAccount/userAccount';
+import imagexGlobalReducer from './reducers/imagex-global/reducer';
 
 
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     pixabay: pixabayReducer,
     cv: computerVisionReducer,
     favourites: favouriteImagesReducer,
-    account: userAccountReducer
+    account: userAccountReducer,
+    imagex: imagexGlobalReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

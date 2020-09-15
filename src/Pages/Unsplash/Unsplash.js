@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import HeroSection from '../../components/Unsplash/HeroSection/HeroSection';
 import classes from './Unsplash.module.css';
 import CategoryNav from '../../components/Header/CategoryNavigation/CategoryNavigation';
+import * as actions from '../../store/actions/index';
 
 
 
@@ -13,6 +14,10 @@ class Unsplash extends Component {
 
   state = {
     keyword: ''
+  }
+
+  componentDidMount(){
+    this.props.onSetActivePlatform("unsplash");
   }
 
   inputHandler = (keyword) => {
@@ -47,6 +52,13 @@ const mapStateToProps = (state) => {
 }
 
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetActivePlatform: (platform) =>  dispatch(actions.setActivePlatform(platform))
+  }
+}
 
 
-export default connect(mapStateToProps)(Unsplash);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Unsplash);

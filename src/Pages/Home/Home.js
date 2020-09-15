@@ -12,12 +12,6 @@ class Home extends Component {
 
     state = {
         keyword: ''
-      }
-    
-    keywordChangeHandler = (keyword) => {
-        this.setState({
-            keyword: keyword
-        })
     }
 
     formSubmitHandler = (event) => {
@@ -27,7 +21,7 @@ class Home extends Component {
     render(){
         return (
             <div className={classes.Home}>
-                <CategoryNavigation hideLogo={true} platform="unsplash" clicked={this.keywordChangeHandler} />
+                <CategoryNavigation hideLogo={true} platform="unsplash" />
                 <div className={classes["hero-container"]}>
                     <HeroSection 
                         title="ImageX"
@@ -42,7 +36,7 @@ class Home extends Component {
             </div>
         )
     }
-
 }
+
 
 export default Home;

@@ -38,3 +38,9 @@ export {
     asyncUserFetchAccountStart,
     asyncUserAccountUpdateStart
 } from './userAccount/actionCreators';
+
+
+
+export {
+    setActivePlatform
+} from './imagex-global/actionCreators';

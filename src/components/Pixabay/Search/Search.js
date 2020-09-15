@@ -9,28 +9,35 @@ import classes from './Search.module.css';
 
 class Search extends Component {
   state = {
-    keyword: "",
-  };
+    keyword: ""
+  }
 
   componentDidMount() {
+    this.props.onSetActivePlatform();
     this.props.onClearPreviousImages();
     let search = new URLSearchParams(this.props.location.search);
     let keyword = search.get("keyword");
     this.setState({
       keyword
-    });
+    })
   }
 
-  inputHandler = (newKeyword) => {
-    this.setState({
-      keyword: newKeyword
-    });
-  };
+ 
+
+  componentDidUpdate(prevProps, prevState){
+    let search = new URLSearchParams(this.props.location.search);
+    let keyword = search.get("keyword");
+    if(keyword !== this.state.keyword){
+      this.setState({
+        keyword: keyword
+      })
+    }
+  }
 
   render() {
     return (
       <React.Fragment>
-        <CategoryNavigation platform="pixabay" clicked={this.inputHandler} />
+        <CategoryNavigation platform="pixabay" />
         <div className={classes["search-keyword"]}>
           <h1 className={classes["search-keyword__title"]}>
             {capitalizeFirstLetter(this.state.keyword)}
@@ -48,6 +55,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSearchByKeyword: (keyword) => dispatch(actions.pixabayImageSearchByKeyword(keyword)),
     onClearPreviousImages: () => dispatch(actions.pixabayClearAllImages()),
+    onSetActivePlatform: () => dispatch(actions.setActivePlatform("pixabay"))
   };
 };
 
