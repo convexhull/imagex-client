@@ -5,13 +5,12 @@
     padding: 1rem;
 }
 
+
 .imagex-description {
     flex-basis: 7.5%;
-    min-width: 7.5rem;
-    margin-left: 1.5rem;
+    min-width: 5.5rem;
+    margin-left: 1rem;
 }
-
-
 
 
 .imagex-title {
@@ -19,10 +18,12 @@
     font-size: 0.75rem;
 }
 
+
 .imagex-subtitle {
     font-weight: bold;
     font-size: 0.5rem;
 }
+
 
 .navlink-container {
     display: flex;
@@ -30,7 +31,6 @@
     align-items: center;
     flex-shrink: 0;
 }
-
 
 
 .main-navigation .logo {
@@ -45,12 +45,13 @@
     width: auto;
 }
 
+
 .main-navigation .image-search {
     flex-basis: 100%;
     flex-shrink: 1;
     border-radius: 10px;
+    margin-left: 1rem;
 }
-
 
 
 .navbar-links:visited, .navbar-links:link {
@@ -61,6 +62,7 @@
     font-size: 0.9rem;
 }
 
+
 .main-navigation .navbar-links:hover {
     color: black;
 }
@@ -69,6 +71,7 @@
 .main-navigation .active-link {
     color: black;
 }
+
 
 
 .main-navigation .authenticate {
@@ -84,9 +87,11 @@
     font-size: 0.9rem;
 }
 
+
 .main-navigation__random-image-btn:hover {
     color: black;
 }
+
 
 .authenticate {
     flex-shrink: 0;
@@ -94,6 +99,7 @@
     margin-left: 1rem;
     list-style: none;
 }
+
 
 .authenticate__profile-menu {
     width: 40px;
@@ -125,23 +131,20 @@
     top: 60px;
     right: 0;
     background-color: black;
-    z-index: 1;
+    z-index: 1000;
 }
 
 
 .burger-btn {
     display: none;
     margin: 0 1rem;
+    cursor: pointer;
 }
 
 /**************************************MEDIA QUERIES**************************************/
 
 @media (max-width: 1000px) {
     .navlink-container {
-        display: none;
-    }
-
-    .authenticate {
         display: none;
     }
 

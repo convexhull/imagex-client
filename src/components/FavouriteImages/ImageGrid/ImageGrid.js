@@ -101,11 +101,11 @@ class ImageGrid extends Component {
             image={this.state.selectedImage}
           />
         ) : null}
-        <div className={classes["profile__navigation"]}>
-          <h3 className={classes["profile__navlink"]}>
+        <div className={classes["favourites-section"]}>
+          <h1 className={classes["favourites-section__title"]}>
             <i className="fa fa-heart" aria-hidden="true"></i>
             &nbsp;&nbsp;My Favourites ({imagesToDisplay.length})
-          </h3>
+          </h1>
         </div>
         <div className={classes["image-grid"]}>{imagesToDisplay}</div>
       </div>

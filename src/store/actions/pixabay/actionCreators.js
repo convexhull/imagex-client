@@ -20,7 +20,7 @@ export const pixabayImageSearchByKeyword = (keyword, page) => {
         dispatch(pixabayImageKeywordSearchStart());
         try {
             let apiResponse = await Axios.get(`/pixabay/searchPhotos?keywords=${keyword}&page=${page}`);
-            let payload = {images: apiResponse.data.images};
+            let payload = {...apiResponse.data.data};
             dispatch(pixabayImageKeywordSearchSuccess(payload));
         }
         catch(e){

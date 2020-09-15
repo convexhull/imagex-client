@@ -1,6 +1,5 @@
 .image-container {
     width: 80%;
-    max-height: 90vh;    
     margin: 0 auto;
     text-align: center;
 }
@@ -86,4 +85,11 @@
     padding: 5px 15px 0px 15px;
     margin-left: 10px;
     border-radius: 5px;
+}
+
+.image-footer {
+    color: var(--font-grey);
+    font-weight: bold;
+    margin: 0 auto 1rem auto;
+    width: 75%;
 }

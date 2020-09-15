@@ -56,25 +56,22 @@
     font-size: 1.25rem;
     margin-left: 10px;
     cursor: pointer;
-    background-color: var(--heart-red);
 }
 
-.icons i {
-    color:  #e9e9e9;
-}
+
 .actions {
     display: flex;
-    width: 100%;
+    margin-left: auto;
 }
 
 
 
-.download-button  a:link , .download-button  a:visited {
+.download-button  a:link , .download-button  a:hover {
     text-decoration: none;
     color: black;
 }
 
-.download-button  a:hover , .download-button  a:active {
+.download-button  a:visited , .download-button  a:active {
     text-decoration: none;
     color: black;
 }
@@ -86,7 +83,7 @@
     border: 1px solid #adacac;
     height: 30px;
     padding: 5px 15px 0px 15px;
-    margin-left: auto;
+    margin-left: 10px;
     border-radius: 5px;
 }
 
@@ -94,6 +91,10 @@
 .image-footer {
     color: var(--font-grey);
     font-weight: bold;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem auto;
+    width: 75%;
+}
+
+.spinner {
+    text-align: center;
 }
