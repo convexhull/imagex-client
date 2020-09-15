@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
 import ImageLazyLoader from "../ImageLazyLoader/ImageLazyLoader";
 import CategoryNavigation from "../../Header/CategoryNavigation/CategoryNavigation";
+import { capitalizeFirstLetter } from "../../../utils/generalUtils";
+import classes from './Search.module.css';
 
 class Search extends Component {
   state = {
@@ -29,6 +31,11 @@ class Search extends Component {
     return (
       <React.Fragment>
         <CategoryNavigation platform="pixabay" clicked={this.inputHandler} />
+        <div className={classes["search-keyword"]}>
+          <h1 className={classes["search-keyword__title"]}>
+            {capitalizeFirstLetter(this.state.keyword)}
+          </h1>
+        </div>
         <ImageLazyLoader keyword={this.state.keyword} />
       </React.Fragment>
     );

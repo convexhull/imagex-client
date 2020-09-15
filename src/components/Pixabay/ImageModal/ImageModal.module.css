@@ -90,6 +90,6 @@
 .image-footer {
     color: var(--font-grey);
     font-weight: bold;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem auto;
+    width: 75%;
 }

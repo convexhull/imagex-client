@@ -1,5 +1,5 @@
 .image-grid {
-    width: 80%;
+    width: 75%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -127,4 +127,10 @@
 
 .like-btn span:hover {
     color: #860606;
+}
+
+
+.favourites-section__title {
+    margin: 3rem auto;
+    width: 75%;
 }

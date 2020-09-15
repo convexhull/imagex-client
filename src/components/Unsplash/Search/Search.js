@@ -42,7 +42,7 @@ class Search extends Component {
           clicked={this.inputHandler}
         />
         <div className={classes["search-keyword"]}>
-          <h1>
+          <h1 className={classes["search-keyword__title"]}>
             {capitalizeFirstLetter(this.state.keyword)}
           </h1>
         </div>
