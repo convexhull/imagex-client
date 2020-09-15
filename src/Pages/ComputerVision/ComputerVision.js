@@ -36,6 +36,9 @@ class CV extends Component {
     });
   };
 
+  componentDidMount(){
+    this.props.onSetActivePlatform();
+  }
  
   componentDidUpdate(prevProps, prevState) {
     if (!prevState.formData.file && this.state.formData.file) {
@@ -98,6 +101,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onImageUpload: (data, history) => dispatch(actions.asyncCvImageUploadStart(data, history)),
+    onSetActivePlatform: () => dispatch(actions.setActivePlatform("cv"))
     // onClearPreviousSearch: () => dispatch(actions.cvClearPreviousSearch())
   };
 };

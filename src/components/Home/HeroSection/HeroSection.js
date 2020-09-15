@@ -1,4 +1,5 @@
 import React , { Component } from 'react';
+import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
 
@@ -17,7 +18,7 @@ class HeroSection extends Component {
 
     formSubmitHandler = (event) => {
         event.preventDefault();
-        this.props.history.push(`/photos/unsplash?keyword=${this.state.form.value}`);
+        this.props.history.push(`/photos/${this.props.platform}?keyword=${this.state.form.value}`);
     }
 
     onInputChange = (e) => {
@@ -60,6 +61,11 @@ class HeroSection extends Component {
 }
 
 
+const mapStateToProps = (state) => {
+    return {
+        platform: state.imagex.activePlatform
+    }
+}
 
 
-export default withRouter(HeroSection);
+export default connect(mapStateToProps)(withRouter(HeroSection));
