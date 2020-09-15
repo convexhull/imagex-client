@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import classes from './SearchBar.module.css';
 
@@ -27,7 +28,7 @@ class SearchBar extends Component {
 
     formSubmitHandler = (event) => {
         event.preventDefault();
-        this.props.history.push(`/photos/unsplash?keyword=${this.state.searchValue}`);
+        this.props.history.push(`/photos/${this.props.platform}?keyword=${this.state.searchValue}`);
     }
 
     render() {
@@ -56,5 +57,12 @@ class SearchBar extends Component {
 };
 
 
+const mapStateToProps = (state) => {
+  return {
+    platform: state.imagex.activePlatform
+  }
+}
 
-export default withRouter(SearchBar);
+
+
+export default connect(mapStateToProps)(withRouter(SearchBar));

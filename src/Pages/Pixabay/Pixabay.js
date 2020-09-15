@@ -4,11 +4,16 @@ import { connect } from "react-redux";
 import HeroSection from "../../components/Pixabay/HeroSection/HeroSection";
 import CategoryNav from "../../components/Header/CategoryNavigation/CategoryNavigation";
 import classes from "./Pixabay.module.css";
+import * as actions from '../../store/actions/index';
 
 class Pixabay extends Component {
 
   state = {
     keyword: ''
+  }
+
+  componentDidMount(){
+    this.props.onSetActivePlatform("pixabay");
   }
 
   keywordChangeHandler = (keyword) => {
@@ -41,4 +46,10 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(Pixabay);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetActivePlatform: (platform) =>  dispatch(actions.setActivePlatform(platform))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pixabay);

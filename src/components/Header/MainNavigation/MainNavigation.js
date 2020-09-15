@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 
@@ -55,13 +55,16 @@ class MainNavbar extends Component {
       )
     }
 
+    let navbarLinkClasses = [classes["navbar-links"]];
+
+
 
     return (
       <div className={classes["main-navigation"]}>
         <div className={classes.logo}>
-          <NavLink to="/">
+          <Link to="/">
             <img src={logo} alt="imagex logo" />
-          </NavLink>
+          </Link>
         </div>
         <div className={classes["imagex-description"]}>
           <p className={classes["imagex-title"]}>ImageX</p>
@@ -72,33 +75,30 @@ class MainNavbar extends Component {
         </div>
         <ul className={classes["navlink-container"]}>
           <li>
-            <NavLink
-              activeClassName={classes["active-link"]}
+            <Link
               to="/unsplash"
               exact
-              className={classes["navbar-links"]}
+              className={classes["navbar-links"] + " " + (this.props.platform === "unsplash" ? classes["active-link"] : "")}
             >
               Unsplash
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
-              activeClassName={classes["active-link"]}
+            <Link
               to="/pixabay"
               exact
-              className={classes["navbar-links"]}
+              className={classes["navbar-links"] + " " + (this.props.platform === "pixabay" ? classes["active-link"] : "")}
             >
               Pixabay
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
-              activeClassName={classes["active-link"]}
+            <Link
               to="/computerVision"
-              className={classes["navbar-links"]}
+              className={classes["navbar-links"] + " " + (this.props.platform === "cv" ? classes["active-link"] : "")}
             >
               Search By Image
-            </NavLink>
+            </Link>
           </li>
           <li
             className={classes["main-navigation__random-image-btn"]}
@@ -129,7 +129,8 @@ class MainNavbar extends Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.token !== null,
-    userProfileInfo: state.account.userProfileInfo
+    userProfileInfo: state.account.userProfileInfo,
+    platform: state.imagex.activePlatform
   }
 }
 

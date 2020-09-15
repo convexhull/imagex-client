@@ -15,9 +15,10 @@ class Search extends Component {
   
   state = {
     keyword: ""
-  };
+  }
 
   componentDidMount() {
+    this.props.onSetActivePlatform();
     this.props.onClearPreviousImages();
     let search = new URLSearchParams(this.props.location.search);
     let keyword = search.get("keyword");
@@ -26,20 +27,21 @@ class Search extends Component {
     })
   }
 
-
-  inputHandler = (newKeyword) => {
-    this.setState({
-      keyword: newKeyword
-    })
+  componentDidUpdate(prevProps, prevState){
+    let search = new URLSearchParams(this.props.location.search);
+    let keyword = search.get("keyword");
+    if(keyword !== this.state.keyword){
+      this.setState({
+        keyword: keyword
+      })
+    }
   }
 
   render() {
-    
     return (
       <React.Fragment>
         <CategoryNavigation
           platform="unsplash"
-          clicked={this.inputHandler}
         />
         <div className={classes["search-keyword"]}>
           <h1 className={classes["search-keyword__title"]}>
@@ -54,20 +56,14 @@ class Search extends Component {
 
 
 
-const mapStateToProps = (state) => {
-    return {
-        images: state.unsplash.images,
-        loading: state.unsplash.loading
-    }
-}
-
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClearPreviousImages: () => dispatch(actions.unsplashClearAllImages())
+        onClearPreviousImages: () => dispatch(actions.unsplashClearAllImages()),
+        onSetActivePlatform: () => dispatch(actions.setActivePlatform("unsplash"))
     }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(Search);
