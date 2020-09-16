@@ -109,6 +109,7 @@ class Login extends Component {
         if(this.props.redirectUrl){
             return <Redirect to={this.props.redirectUrl} />;
         };
+
         return (
             <div className={classes.Login}>
                 <div className={classes["container"]}>
@@ -162,7 +163,9 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        redirectUrl: state.auth.redirectUrl
+        redirectUrl: state.auth.redirectUrl,
+        error: state.auth.error,
+        loading: state.auth.loading
     }
 }
 

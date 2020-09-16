@@ -46,10 +46,11 @@ export const asyncUserLoginStart = (email, password) => {
             dispatch(asyncLoginSuccess(authInfo));
         }
         catch(e){
-            dispatch(loginFail(e));
-            console.log(e);
+            console.log(e.data, e.response);
+            if(e.response && e.response.data){
+                dispatch(loginFail(e.response.data));
+            }
         }
-        
     }
 }
 

@@ -23,6 +23,11 @@ const reducer = (state = initialState, action) => {
                 moreResults: action.payload.moreResults
             })
         case actionTypes.PIXABAY_IMAGE_KEYWORD_SEARCH_FAILURE:
+            return updateObject(state, {
+                moreResults: false,
+                loading: false
+            })
+        case actionTypes.PIXABAY_IMAGE_KEYWORD_SEARCH_FAILURE:
             return state;
         case actionTypes.PIXABAY_CLEAR_ALL_IMAGES:
             return updateObject(state, {

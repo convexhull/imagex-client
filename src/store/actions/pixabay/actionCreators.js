@@ -14,6 +14,13 @@ const pixabayImageKeywordSearchSuccess = (payload) => {
     }
 }
 
+const pixabayImageKeywordSearchFailure = (error) => {
+    return {
+        type: actionTypes.PIXABAY_IMAGE_KEYWORD_SEARCH_FAILURE,
+        payload: error
+    }
+}
+
 
 export const pixabayImageSearchByKeyword = (keyword, page) => {
     return async (dispatch) => {
@@ -25,6 +32,7 @@ export const pixabayImageSearchByKeyword = (keyword, page) => {
         }
         catch(e){
             console.log(e);
+            dispatch(pixabayImageKeywordSearchFailure(e));
         }
     }
 }

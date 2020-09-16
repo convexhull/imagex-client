@@ -14,6 +14,13 @@ const unsplashImageKeywordSearchSuccess = (payload) => {
     }
 }
 
+const unsplashImageKeywordSearchFailure = (error) => {
+    return {
+        type: actionTypes.UNSPLASH_IMAGE_KEYWORD_SEARCH_FAILURE,
+        payload: error
+    }
+}
+
 
 export const unsplashImageSearchByKeyword = (keyword, page) => {
     return async (dispatch) => {
@@ -24,7 +31,8 @@ export const unsplashImageSearchByKeyword = (keyword, page) => {
             dispatch(unsplashImageKeywordSearchSuccess(payload));
         }
         catch(e){
-            console.log(e);
+            console.log (e);
+            dispatch(unsplashImageKeywordSearchFailure(e));
         }
     }
 }

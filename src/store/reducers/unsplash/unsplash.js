@@ -24,6 +24,11 @@ const reducer = (state = initialState, action) => {
                 moreResults: action.payload.moreResults,
                 loading: false
             })
+        case actionTypes.UNSPLASH_IMAGE_KEYWORD_SEARCH_FAILURE:
+            return updateObject(state, {
+                moreResults: false,
+                loading: false
+            })
         case actionTypes.UNSPLASH_GET_RANDOM_IMAGE:
             return updateObject(state, {
                 randomImage: action.payload.image
