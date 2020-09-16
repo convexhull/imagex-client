@@ -27,7 +27,7 @@ class CV extends Component {
     if(file.size > 5000000){
       alert('Your file exceeds the maximum supported size limit of 5MB. Please upload a smaller file.');
       this.fileRef.current.value = null;
-      return ;
+      return;
     }
     this.setState({
       formData: {

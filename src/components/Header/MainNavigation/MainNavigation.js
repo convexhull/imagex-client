@@ -8,19 +8,30 @@ import { connect } from 'react-redux';
 import classes from './MainNavigation.module.css';
 import logo from '../../../assets/images/logo.png';
 import SearchBar from './SearchBar/SearchBar';
-import DropdownMenu from './DropdownMenu/DropdownMenu';
+import OptionsMenu from './OptionsMenu/OptionsMenu';
+import ProfileMenu from './ProfileMenu/ProfileMenu';
 
 class MainNavbar extends Component {
 
   state = {
-    showDropdownMenu: false
+    showOptionsMenu: false,
+    showProfileMenu: false
   }
 
 
-  toggleDropdownMenu = () => {
+  toggleOptionsMenu = () => {
     this.setState((state, props) => {
       return {
-        showDropdownMenu: !state.showDropdownMenu
+        showOptionsMenu: !state.showOptionsMenu
+      }
+    })
+  }
+
+
+  toggleProfileMenu = () => {
+    this.setState((state, props) => {
+      return {
+        showProfileMenu: !state.showProfileMenu
       }
     })
   }
@@ -46,18 +57,14 @@ class MainNavbar extends Component {
           <div className={classes["authenticate__my-list"]}>
             <NavLink to="/favourite-images"><ion-icon name="heart" style={{color: '#6f1200'}}></ion-icon></NavLink>
           </div>
-          <div className={classes["authenticate__profile-menu"]}>
-            <NavLink to="/profile/favourite-images">
+          <div className={classes["authenticate__profile-menu"]} onClick={this.toggleProfileMenu} >
+            <NavLink to="#">
               <img src={this.props.userProfileInfo && this.props.userProfileInfo.profilePicUrl} alt="user's dp" />
             </NavLink>
           </div>
         </div>
       )
     }
-
-    let navbarLinkClasses = [classes["navbar-links"]];
-
-
 
     return (
       <div className={classes["main-navigation"]}>
@@ -109,16 +116,19 @@ class MainNavbar extends Component {
         </ul>
         <div
           className={classes["burger-btn"]}
-          onClick={this.toggleDropdownMenu}
+          onClick={this.toggleOptionsMenu}
         >
           <i class="fas fa-align-justify"></i>
         </div>
-        {this.state.showDropdownMenu ? (
+        {this.state.showOptionsMenu ? (
           <div className={classes["responsive-dropdown"]}>
-            <DropdownMenu randomImageLoad={this.props.randomImageLoad} toggleDropdownMenu={this.toggleDropdownMenu} />
+            <OptionsMenu randomImageLoad={this.props.randomImageLoad} toggleOptionsMenu={this.toggleOptionsMenu} />
           </div>
         ) : null}
         {authenticationInfo}
+        { this.state.showProfileMenu ? <div className={classes["responsive-dropdown"]}>
+          <ProfileMenu toggleProfileMenu={this.toggleProfileMenu} />
+        </div> : null }
       </div>
     );
   }

@@ -1,0 +1,44 @@
+.responsive-topnav {
+    position: relative;
+    z-index: 1000;
+}
+
+.responsive-topnav:hover {
+    cursor: pointer;
+}
+
+.link {
+    color: white;
+    list-style: none;
+    padding: 15px;
+}
+
+.link a {
+    text-decoration: none;
+}
+
+.link a:link, .link a:visited {
+    color: white;
+}
+
+.link a:active, .link a:hover {
+    color: var(--font-grey);
+}
+
+
+
+
+
+
+
+
+/**************************************MEDIA QUERIES**************************************/
+
+
+
+
+
+
+
+
+

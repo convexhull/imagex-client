@@ -1,7 +1,8 @@
 export {
     asyncUserLoginStart,
     asyncUserSignupStart,
-    asyncAppStartupSessionCheck
+    asyncAppStartupSessionCheck,
+    userLogout
 } from './auth/actionCreators';
 
 

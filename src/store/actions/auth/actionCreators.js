@@ -55,7 +55,7 @@ export const asyncUserLoginStart = (email, password) => {
 
 
 
-const userLogout = () => {
+export const userLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('expirationTime');
@@ -143,4 +143,3 @@ export const asyncUserSignupStart = (userInfo, history) => {
         }   
     }
 }
-
