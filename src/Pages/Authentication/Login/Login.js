@@ -58,7 +58,8 @@ class Login extends Component {
                     email: {
                         ...prevState.form.email,
                         value: updatedEmail,
-                        valid: valid
+                        valid: valid,
+                        touched: true
                     }
                 }
             }
@@ -76,7 +77,8 @@ class Login extends Component {
                     password: {
                         ...prevState.form.password,
                         value: updatedPassword,
-                        valid: valid
+                        valid: valid,
+                        touched: true
                     }
                 }
             }
@@ -125,10 +127,10 @@ class Login extends Component {
                     </div>
                     <h3 className={classes["log-in"]}>Login</h3>
                     <h5 className={classes["wlcm-back"]}>Welcome back.</h5>
-                    <div className={classes["container__fbbtn"]}>
+                    {/* <div className={classes["container__fbbtn"]}>
                         <Button>Login With Facebook</Button>
-                    </div>
-                    <h5 className={classes["container__OR"]}>OR</h5>
+                    </div> */}
+                    {/* <h5 className={classes["container__OR"]}>OR</h5> */}
 
                     <form onSubmit={this.formSubmissionHandler} className={classes["login-form"]}>
                         <div className={classes["login-form__input"]}>
@@ -137,8 +139,8 @@ class Login extends Component {
                                 label="Email"
                                 value={this.state.form.email.value || ''}
                                 onChange={this.inputEmailHandler}
-                                valid={this.state.form.email.valid}
-                                errorMsg="* Required"
+                                valid={!this.state.form.email.touched || this.state.form.email.valid}
+                                errorMsg="* Required valid Email"
                             />
                         </div>
                         
@@ -152,13 +154,13 @@ class Login extends Component {
                                 label="Password"
                                 value={this.state.form.password.value || ''}
                                 onChange={this.inputPasswordHandler}
-                                valid={this.state.form.password.valid}
+                                valid={!this.state.form.password.touched || this.state.form.password.valid}
                                 errorMsg="* Required"
                             />
                         </div>
 
-                        <div className={classes["container__loginbtn"]}>
-                            <Button>Login</Button>
+                        <div className={classes["container__loginbtn"] + " " + (this.props.loading ? classes["container__loginbtn--disabled"]: "")} >
+                            <Button disabled={this.props.loading}>Login</Button>
                         </div>
                     </form>
                     <p className={classes["container__signuplink"]}>Don't have an account? <Link to="/signup" >Join</Link> </p>
