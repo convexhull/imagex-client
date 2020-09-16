@@ -41,6 +41,10 @@
     margin-bottom: 40px;
 }
 
+.container__loginbtn--disabled {
+    cursor: wait;
+}
+
 .log-in {
     margin-bottom: 20px;
     text-align: center;

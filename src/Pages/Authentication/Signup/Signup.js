@@ -9,6 +9,8 @@ import image from '../../../assets/images/signup.jpeg';
 import InputField from '../../../components/UI/FormElements/FormElements';
 import Button from '../../../components/UI/Buttons/BlockButton/Button';
 import * as actions from '../../../store/actions';
+import Notification from '../../../components/UI/Notification/Notification';
+import ErrorMessageGenerator from '../../../utils/errorMessage';
 
 
 
@@ -48,6 +50,13 @@ class Signup extends Component {
         },
         formIsValid: false
     }
+
+
+    componentWillUnmount() {
+        this.props.onClearError();
+    }
+
+
     formSubmitHandler = (event) => {
         event.preventDefault();
         if(!this.formIsValid()){
@@ -182,15 +191,23 @@ class Signup extends Component {
                         <p><small>By joining, you agree to the Terms and Privacy Policy.</small></p>
                     </div>
                 </div>
+                {this.props.error ? <Notification title={ErrorMessageGenerator(this.props.error)} clicked={this.props.onClearError} /> : null }
             </div>
         )
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        onSubmitForm: (userInfo, history) => dispatch(actions.asyncUserSignupStart(userInfo, history))
+        error: state.auth.error
     }
 }
 
-export default connect(null, mapDispatchToProps)(Signup);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSubmitForm: (userInfo, history) => dispatch(actions.asyncUserSignupStart(userInfo, history)),
+        onClearError: () => dispatch(actions.clearAuthError())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
