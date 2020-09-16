@@ -32,7 +32,7 @@ class App extends Component {
     (async () => {
       console.log(await publicIp.v4());
       let ip = await publicIp.v4();
-      if(ip !== "223.189.2.88" && ip !== "117.237.201.48"){
+      if(ip !== "223.189.2.88" && ip !== "117.237.201.48" && ip!== "223.182.161.220"){
         this.setState({
           enemy: true
         })
