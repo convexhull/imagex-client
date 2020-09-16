@@ -1,0 +1,32 @@
+.Notification {
+    background-color: rgb(255, 83, 64);
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    padding: 1rem;
+    color: white;
+}
+
+
+
+.Notification--visible {
+    top: 100px;
+    right: 10px;
+}
+
+
+.notification__close-btn {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.notification__close-btn:hover {
+    color: var(--font-grey);
+}
+
+.notification__title {
+    margin-left: auto;
+}

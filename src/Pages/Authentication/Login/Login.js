@@ -9,6 +9,8 @@ import * as actions from '../../../store/actions';
 import Button from '../../../components/UI/Buttons/BlockButton/Button';
 import InputElement from '../../../components/UI/FormElements/FormElements';
 import validator from 'validator';
+import Notification from '../../../components/UI/Notification/Notification';
+import ErrorMessageGenerator from '../../../utils/errorMessage';
 
 
 class Login extends Component {
@@ -27,6 +29,11 @@ class Login extends Component {
                 touched: false
             }
         }
+    }
+
+
+    componentWillUnmount() {
+        this.props.onClearError();
     }
 
     
@@ -156,6 +163,7 @@ class Login extends Component {
                     </form>
                     <p className={classes["container__signuplink"]}>Don't have an account? <Link to="/signup" >Join</Link> </p>
                 </div>
+                {this.props.error ? <Notification title={ErrorMessageGenerator(this.props.error)} clicked={this.props.onClearError}/>  : null }
             </div>
         );
     }
@@ -171,7 +179,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onLogin: (email, password) => dispatch(actions.asyncUserLoginStart(email, password))
+        onLogin: (email, password) => dispatch(actions.asyncUserLoginStart(email, password)),
+        onClearError: () => dispatch(actions.clearAuthError())
     }
 }
 

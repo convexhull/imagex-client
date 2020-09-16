@@ -122,9 +122,10 @@ const userSignupSuccess = (payload) => {
     }
 }
 
-const userSignupFailure = () => {
+const userSignupFailure = (error) => {
     return {
-        type: actionTypes.USER_SIGNUP_FAILURE
+        type: actionTypes.USER_SIGNUP_FAILURE,
+        payload: error
     }
 }
 
@@ -140,7 +141,18 @@ export const asyncUserSignupStart = (userInfo, history) => {
         }
         catch(e){
             console.log(e);
-            dispatch(userSignupFailure());
+            if(e.response && e.response.data){
+                dispatch(userSignupFailure(e.response.data));
+            } else {
+                dispatch(userSignupFailure(e));
+            }
         }   
+    }
+}
+
+
+export const clearAuthError = () => {
+    return {
+        type: actionTypes.CLEAR_AUTH_ERROR
     }
 }

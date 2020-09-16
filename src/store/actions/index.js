@@ -2,7 +2,8 @@ export {
     asyncUserLoginStart,
     asyncUserSignupStart,
     asyncAppStartupSessionCheck,
-    userLogout
+    userLogout,
+    clearAuthError
 } from './auth/actionCreators';
 
 
