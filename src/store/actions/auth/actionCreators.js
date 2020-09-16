@@ -46,16 +46,17 @@ export const asyncUserLoginStart = (email, password) => {
             dispatch(asyncLoginSuccess(authInfo));
         }
         catch(e){
-            dispatch(loginFail(e));
-            console.log(e);
+            console.log(e.data, e.response);
+            if(e.response && e.response.data){
+                dispatch(loginFail(e.response.data));
+            }
         }
-        
     }
 }
 
 
 
-const userLogout = () => {
+export const userLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('expirationTime');
@@ -143,4 +144,3 @@ export const asyncUserSignupStart = (userInfo, history) => {
         }   
     }
 }
-

@@ -97,6 +97,11 @@ class Account extends Component {
 
   imageUploadHandler = (event) => {
     let file = event.target.files[0];
+    if(file.size > 5000000){
+      alert('Your file exceeds the maximum supported size limit of 5MB. Please upload a smaller file.');
+      this.inputRef.current.value = null;
+      return;
+    }
     this.props.onProfilePicUpdate(file);
   };
 
@@ -181,6 +186,7 @@ class Account extends Component {
               style={{ display: "none" }}
               type="file"
               onChange={this.imageUploadHandler}
+              accept="image/*"
             />
             <button
               className={profilePicUploadBtnClasses}

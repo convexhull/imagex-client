@@ -6,6 +6,7 @@ const initialState = {
     userId: '',
     loading: false,
     redirectUrl: '',
+    error: ''
 };
 
 
@@ -28,7 +29,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.USER_LOGIN_FAIL:
             return {
                 ...state,
-                loading: false
+                loading: false,
+                error: action.payload.message
             }
         case actionTypes.USER_LOGOUT:
             return {
