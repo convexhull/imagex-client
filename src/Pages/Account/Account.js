@@ -233,6 +233,7 @@ class Account extends Component {
               onChange={(event) => this.inputChangeHandler(event, "email")}
               valid={!this.state.form.email.touched || this.state.form.email.valid}
               errorMsg="* Enter a valid email"
+              disabled={true}
             />
           </div>
           <div className={classes["extra-info__username"]}>

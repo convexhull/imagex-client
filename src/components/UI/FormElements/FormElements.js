@@ -25,6 +25,7 @@ class FormElements extends Component {
                             value={this.props.value}
                             required={this.props.required}
                             onChange={this.props.onChange}
+                            disabled={this.props.disabled}
                         />
                         {!this.props.valid ? <p className={classes["text-input__error-msg"]}>{this.props.errorMsg}</p> : null }
                     </React.Fragment>
@@ -40,6 +41,7 @@ class FormElements extends Component {
                             value={this.props.value}
                             required={this.props.required}
                             onChange={this.props.onChange}
+                            disabled={this.props.disabled}
                         />
                         {!this.props.valid ? <p className={classes["text-input__error-msg"]}>{this.props.errorMsg}</p> : null }
                     </React.Fragment>
@@ -56,6 +58,7 @@ class FormElements extends Component {
                             value={this.props.value}
                             required={this.props.required}
                             onChange={this.props.onChange}
+                            disabled={this.props.disabled}
                         />
                         {!this.props.valid ? <p className={classes["text-input__error-msg"]}>{this.props.errorMsg}</p> : null }
                     </React.Fragment>
@@ -71,6 +74,7 @@ class FormElements extends Component {
                             value={this.props.value}
                             required={this.props.required}
                             onChange={this.props.onChange}
+                            disabled={this.props.disabled}
                         />
                         {!this.props.valid ? <p className={classes["text-input__error-msg"]}>{this.props.errorMsg}</p> : null }
                     </React.Fragment>
@@ -84,6 +88,7 @@ class FormElements extends Component {
                         value={this.props.value}
                         required={this.props.required}
                         onChange={this.props.onChange}
+                        disabled={this.props.disabled}
                     />
                 )
         }
