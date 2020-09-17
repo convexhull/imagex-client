@@ -58,12 +58,10 @@ class MainNavbar extends Component {
             <NavLink to="/favourite-images"><ion-icon name="heart" style={{color: '#6f1200'}}></ion-icon></NavLink>
           </div>
           <div className={classes["authenticate__profile-menu"]} onClick={this.toggleProfileMenu} >
-            <NavLink to="#">
-              <img src={this.props.userProfileInfo && this.props.userProfileInfo.profilePicUrl} alt="user's dp" />
-            </NavLink>
+            <img src={this.props.userProfileInfo && this.props.userProfileInfo.profilePicUrl} alt="user's dp" />
           </div>
         </div>
-      )
+      );
     }
 
     return (

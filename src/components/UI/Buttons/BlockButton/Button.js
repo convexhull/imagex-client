@@ -13,10 +13,9 @@ class Button extends Component {
             elementClasses.push(classes["imagex-default-btn"])
         }
         return (
-            <button className={elementClasses.join(' ')} onClick={this.props.clicked} > {this.props.children} </button>
+            <button className={elementClasses.join(' ')} onClick={this.props.clicked} disabled={this.props.disabled}> {this.props.children} </button>
         );
     }
 }
 
 export default Button;
-

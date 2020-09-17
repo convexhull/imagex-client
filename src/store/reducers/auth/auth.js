@@ -6,13 +6,36 @@ const initialState = {
     userId: '',
     loading: false,
     redirectUrl: '',
-    error: ''
+    error: '',
+    onboardingNotification: false
 };
-
 
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
+
+        case actionTypes.USER_SIGNUP_START:
+            return {
+                ...state,
+                loading: true
+            }
+        case actionTypes.USER_SIGNUP_SUCCESS:
+            return {
+                ...state,
+                onboardingNotification: true,
+                loading: false
+            }
+        case actionTypes.USER_SIGNUP_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload.message
+            }
+        case actionTypes.HIDE_ONBOARDING_NOTIFICATION:
+            return {
+                ...state,
+                onboardingNotification: false
+            }
         case actionTypes.USER_LOGIN_START:
             return {
                 ...state, 
@@ -47,11 +70,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 error: ''
             }
-        case actionTypes.USER_SIGNUP_FAILURE:
-            return {
-                ...state,
-                error: action.payload.message
-            }
+        
         default: 
             return state;
     }

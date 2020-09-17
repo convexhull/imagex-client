@@ -186,7 +186,6 @@ export const asyncRemoveFavouriteImageStart = (imageId) => {
                 "Authorization" : `Bearer ${token}`
             }
         };
-        console.log("xxx", config)
         try {
             let apiResponse = await Axios.delete(`/users/removeFavouriteImage?imageId=${imageId}`, config);
             dispatch(removeFavouriteImageSuccess(apiResponse.data));

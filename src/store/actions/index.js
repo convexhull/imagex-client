@@ -3,7 +3,8 @@ export {
     asyncUserSignupStart,
     asyncAppStartupSessionCheck,
     userLogout,
-    clearAuthError
+    clearAuthError,
+    hideOnboardingNotification
 } from './auth/actionCreators';
 
 

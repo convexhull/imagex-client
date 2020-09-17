@@ -185,13 +185,13 @@ class Signup extends Component {
                                 />
                             </div>
                             <div>
-                                <Button btnLink="#" clicked={this.onSubmitForm}> Join  </Button>
+                                <Button disabled={this.props.loading} theme="imagex-default" btnLink="#" clicked={this.onSubmitForm}>{this.props.loading ? "..." : "Join"} </Button>
                             </div>
                         </form>
                         <p><small>By joining, you agree to the Terms and Privacy Policy.</small></p>
                     </div>
                 </div>
-                {this.props.error ? <Notification title={ErrorMessageGenerator(this.props.error)} clicked={this.props.onClearError} /> : null }
+                {this.props.error ? <Notification theme="error" title={ErrorMessageGenerator(this.props.error)} clicked={this.props.onClearError} /> : null }
             </div>
         )
     }
@@ -199,14 +199,15 @@ class Signup extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        error: state.auth.error
+        error: state.auth.error,
+        loading: state.auth.loading
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onSubmitForm: (userInfo, history) => dispatch(actions.asyncUserSignupStart(userInfo, history)),
-        onClearError: () => dispatch(actions.clearAuthError())
+        onClearError: () => dispatch(actions.clearAuthError()),
     }
 }
 
