@@ -88,6 +88,9 @@ class Account extends Component {
   }
 
   componentDidMount() {
+    if(!this.props.isAuthenticated){
+      return this.props.history.replace('/login');
+    }
     this.props.onLoadAccountInfo();
   }
 
@@ -270,7 +273,8 @@ class Account extends Component {
 const mapStateToProps = (state) => {
   return {
     userProfileInfo: state.account.userProfileInfo,
-    profilePicUpdating: state.account.profilePicUploading
+    profilePicUpdating: state.account.profilePicUploading,
+    isAuthenticated: state.auth.token !== null
   };
 };
 

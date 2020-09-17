@@ -30,9 +30,11 @@ export const asyncFetchFavouriteImagesStart = () => {
     return async (dispatch) => {
         dispatch(fetchFavouriteImagesStart());
         let token = localStorage.getItem('token');
+        console.log("xxxxx");
         if(!token) {
-            return alert('Please login to use this feature');
+            return;
         }
+        console.log("xxxxx");
         let config = {
             headers: {
                 "Authorization" : `Bearer ${token}`
@@ -80,7 +82,6 @@ export const asyncSaveFavouriteImageStart = (image, platform) => {
         let data = {};
         switch (platform) {
             case "unsplash":
-                console.log("XXXXXXXXX")
                 data = {
                     platform: "unsplash",
                     imageId: image.id,

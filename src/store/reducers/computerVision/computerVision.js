@@ -49,7 +49,8 @@ const reducer = (state = initState, action) => {
             });
         case actionTypes.SIMILAR_IMAGES_SEARCH_FAILURE:
             return updateObject(state, {
-                similarImagesLoading: false
+                similarImagesLoading: false,
+                moreResults: false
             });
         default:
             return state;

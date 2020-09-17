@@ -7,7 +7,7 @@ class EndOfResults extends Component {
     render() {
         return (
             <div className={classes["EndOfResults"]}>
-                <p className={classes["message"]}>That's all folks :)</p>
+                <p className={classes["message"]}>That's all folks :) Try another search!</p>
                 <div className={classes["image-container"]}>
                     <img src={gif} />
                 </div>

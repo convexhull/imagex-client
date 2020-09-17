@@ -9,34 +9,31 @@ const initialState = {
 };
 
 
-
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.USER_ACCOUNT_UPDATE_START:
             return updateObject(state, {
-                profileUpdating: true
+                loading: true
             });
         case actionTypes.USER_ACCOUNT_UPDATE_SUCCESS:
             return updateObject(state, {
-                profileUpdating: false
+                loading: false
             });
         case actionTypes.USER_ACCOUNT_UPDATE_FAILURE:
             return updateObject(state, {
                 profileUpdateError: true,
-                profileUpdating: false
+                loading: false
             });
         case actionTypes.USER_FETCH_ACCOUNT_START:
             return updateObject(state, {
-                profilePicUploading: true
+
             });
         case actionTypes.USER_FETCH_ACCOUNT_SUCCESS:
             return updateObject(state, {
-                profilePicUploading: false,
                 userProfileInfo: action.payload
             });
         case actionTypes.USER_FETCH_ACCOUNT_FAILURE:
             return updateObject(state, {
-                profilePicUploading: false
             });
             case actionTypes.USER_PROFILE_PIC_UPDATE_START:
                 return updateObject(state, {

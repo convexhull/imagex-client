@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
 import ImageGrid from '../../components/FavouriteImages/ImageGrid/ImageGrid';
@@ -6,6 +7,13 @@ import classes from './FavouriteImages.module.css';
 
 
 class FavouriteImages extends Component {
+
+
+    componentDidMount() {
+      if(!this.props.isAuthenticated){
+        this.props.history.replace('/login');
+      }
+    }    
 
     render(){
         return (
@@ -17,5 +25,11 @@ class FavouriteImages extends Component {
 }
 
 
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.token !== null
+  }
+}
 
-export default FavouriteImages;
+
+export default connect(mapStateToProps)(FavouriteImages);

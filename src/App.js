@@ -17,6 +17,7 @@ import Signup from './Pages/Authentication/Signup/Signup';
 import CV from './Pages/ComputerVision/ComputerVision';
 import FavouriteImages from './Pages/FavouriteImages/FavouriteImages';
 import Account from './Pages/Account/Account';
+import PageNotFound from './components/NotFound/NotFound';
 import * as actions from './store/actions/index';
 
 
@@ -52,7 +53,7 @@ class App extends Component {
               <Route path="/account" exact component={Account} />
               <Route path="/computerVision" exact component={CV} />
               <Route path="/favourite-images" exact component={FavouriteImages} />
-              <Route component={() => (<h1>Route Not found!!!</h1>)} />
+              <Route component={PageNotFound} />
             </Switch>
           </Layout>
         </Switch>

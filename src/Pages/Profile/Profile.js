@@ -10,11 +10,12 @@ import * as actions from '../../store/actions/index';
 
 class Profile extends Component {
 
-
   componentDidMount() {
     this.props.onLoadAccountInfo();
+    if(!this.props.isAuthenticated) {
+      this.props.history.replace('/login');
+    }
   }
-
 
   render() {
     return (
@@ -56,6 +57,7 @@ class Profile extends Component {
 const mapStateToProps = (state) => {
   return {
     userProfileInfo: state.account.userProfileInfo,
+    isAuthenticated: state.auth.token !== null
   };
 };
 

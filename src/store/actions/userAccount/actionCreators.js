@@ -121,7 +121,7 @@ export const asyncUserFetchAccountStart = (data) => {
         dispatch(userFetchAccountStart());
         let token = localStorage.getItem('token');
         if(!token) {
-            return alert('Please login to use this feature');
+            return;
         }
         let config = {
             headers: {
