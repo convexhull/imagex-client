@@ -137,6 +137,9 @@ export const asyncUserSignupStart = (userInfo, history) => {
             let response = await Axios.post('/users/signup', data);
             console.log("new user", response);
             dispatch(userSignupSuccess());
+            setTimeout(()=> {
+                dispatch(hideOnboardingNotification());
+            },3000);
             history.push('/login');
         }
         catch(e){
@@ -154,5 +157,12 @@ export const asyncUserSignupStart = (userInfo, history) => {
 export const clearAuthError = () => {
     return {
         type: actionTypes.CLEAR_AUTH_ERROR
+    }
+}
+
+
+export const hideOnboardingNotification = () => {
+    return {
+        type: actionTypes.HIDE_ONBOARDING_NOTIFICATION
     }
 }

@@ -1,5 +1,4 @@
 .Notification {
-    background-color: rgb(255, 83, 64);
     position: fixed;
     top: 0px;
     right: 0px;
@@ -10,7 +9,14 @@
     color: white;
 }
 
+.Notification--success {
+    background-color: #23c552;
+}
 
+
+.Notification--error {
+    background-color: rgb(255, 83, 64);
+}
 
 .Notification--visible {
     top: 100px;

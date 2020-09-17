@@ -159,13 +159,14 @@ class Login extends Component {
                             />
                         </div>
 
-                        <div className={classes["container__loginbtn"] + " " + (this.props.loading ? classes["container__loginbtn--disabled"]: "")} >
-                            <Button disabled={this.props.loading}>Login</Button>
+                        <div className={classes["container__loginbtn"]} >
+                            <Button theme="imagex-default" disabled={this.props.loading}>{this.props.loading ? "..." : "Login"}</Button>
                         </div>
                     </form>
                     <p className={classes["container__signuplink"]}>Don't have an account? <Link to="/signup" >Join</Link> </p>
                 </div>
-                {this.props.error ? <Notification title={ErrorMessageGenerator(this.props.error)} clicked={this.props.onClearError}/>  : null }
+                { this.props.error ? <Notification theme="error" title={ErrorMessageGenerator(this.props.error)} clicked={this.props.onClearError}/>  : null }
+                { this.props.onboardingNotification ? <Notification theme="success" title="Account was created successfully. Please login to continue."  clicked={this.props.onClearOnboardingNotification} /> : null }
             </div>
         );
     }
@@ -175,14 +176,16 @@ const mapStateToProps = (state) => {
     return {
         redirectUrl: state.auth.redirectUrl,
         error: state.auth.error,
-        loading: state.auth.loading
+        loading: state.auth.loading,
+        onboardingNotification: state.auth.onboardingNotification
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onLogin: (email, password) => dispatch(actions.asyncUserLoginStart(email, password)),
-        onClearError: () => dispatch(actions.clearAuthError())
+        onClearError: () => dispatch(actions.clearAuthError()),
+        onClearOnboardingNotification: () => dispatch(actions.hideOnboardingNotification())
     }
 }
 
