@@ -130,7 +130,16 @@
 }
 
 
-.favourites-section__title {
-    margin: 3rem auto;
-    width: 75%;
+
+
+/********************MEDIA QUEIRES ************************/
+
+
+@media (max-width: 538px) {
+    .image-grid {
+        width: 90%;
+        grid-template-columns: 300px;
+        justify-content: center;
+        grid-auto-rows: 35px;
+    }
 }

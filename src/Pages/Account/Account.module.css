@@ -12,6 +12,7 @@
 .basic-info {
     display: flex;
     margin-bottom: 3rem;
+    flex-wrap: wrap;
 }
 
 
@@ -85,4 +86,32 @@
     overflow: hidden;
     border-radius: 50%;
 
+}
+
+
+
+
+/******************************MEDIA QUERIES***************************/
+
+@media (max-width: 1000px) {
+    .Account {
+        width: 75%;
+    }
+
+
+    .basic-info__profile-pic  {
+        flex-basis: 100%;
+    }
+
+    .basic-info__account-info {
+        flex-basis: 100%;
+    }
+}
+
+
+
+@media (max-width: 538px) {
+    .Account {
+        width: 80%;
+    }
 }

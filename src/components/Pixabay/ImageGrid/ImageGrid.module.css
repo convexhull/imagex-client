@@ -134,6 +134,7 @@
 
 
 
+
 /********************MEDIA QUEIRES ************************/
 
 
@@ -142,5 +143,6 @@
         width: 90%;
         grid-template-columns: 300px;
         justify-content: center;
+        grid-auto-rows: 35px;
     }
 }

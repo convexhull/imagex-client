@@ -4,7 +4,6 @@
 
 
 .profile-info {
-    min-width: 500px;
     display: flex;
     width: 60%;
     margin: 0 auto;
@@ -69,6 +68,9 @@
         flex-basis: 100%;
     }
 
+    .profile-info {
+        padding: 2rem 0;
+    }
 
     .profile-info__name-bio {
         flex-basis: 100%;

@@ -128,3 +128,20 @@
 .like-btn span:hover {
     color: #860606;
 }
+
+
+
+
+
+
+/********************MEDIA QUEIRES ************************/
+
+
+@media (max-width: 538px) {
+    .image-grid {
+        width: 90%;
+        grid-template-columns: 300px;
+        justify-content: center;
+        grid-auto-rows: 35px;
+    }
+}

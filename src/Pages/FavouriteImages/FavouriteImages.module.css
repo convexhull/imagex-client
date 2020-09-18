@@ -1,5 +1,27 @@
 .Favourite-images {
     margin-top: 3rem;
+    text-align: center;
 }
 
 
+.img-grid-container {
+    margin-top: 3rem;
+    height: 100%;
+}
+
+
+/******************************MEDIA QUERIES***************************/
+
+@media (max-width: 538px) {
+    .Favourite-images {
+        margin-top: 0rem;
+    }
+}
+
+
+
+@media (max-width: 1000px) {
+    .Favourite-images {
+        margin-top: 2rem;
+    }
+}

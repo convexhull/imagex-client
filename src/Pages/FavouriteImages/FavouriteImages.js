@@ -18,7 +18,13 @@ class FavouriteImages extends Component {
     render(){
         return (
           <div className={classes["Favourite-images"]}>
-            <ImageGrid />
+            <h1 className={classes["favourites-section__title"]}>
+            <i className="fa fa-heart" aria-hidden="true"></i>
+            &nbsp;&nbsp;My Favourites ({this.props.favouriteImages.length})
+          </h1>
+            <div className={classes["img-grid-container"]}>
+              <ImageGrid />
+            </div>
           </div>
         );
     }
@@ -27,7 +33,8 @@ class FavouriteImages extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    favouriteImages: state.favourites.images
   }
 }
 
