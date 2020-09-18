@@ -123,7 +123,7 @@ class Login extends Component {
             <div className={classes.Login}>
                 <div className={classes["container"]}>
                     <div className={classes["container__logo"]}>
-                        <img src={logo} alt="logo" />
+                        <Link to="/"><img src={logo} alt="logo" /></Link>
                     </div>
                     <h3 className={classes["log-in"]}>Login</h3>
                     <h5 className={classes["wlcm-back"]}>Welcome back.</h5>

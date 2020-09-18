@@ -30,11 +30,9 @@ export const asyncFetchFavouriteImagesStart = () => {
     return async (dispatch) => {
         dispatch(fetchFavouriteImagesStart());
         let token = localStorage.getItem('token');
-        console.log("xxxxx");
         if(!token) {
             return;
         }
-        console.log("xxxxx");
         let config = {
             headers: {
                 "Authorization" : `Bearer ${token}`

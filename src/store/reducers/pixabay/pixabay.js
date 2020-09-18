@@ -17,7 +17,6 @@ const reducer = (state = initialState, action) => {
                 loading: true
             })
         case actionTypes.PIXABAY_IMAGE_KEYWORD_SEARCH_SUCCESS:
-            console.log(action.payload.hits);
             return updateObject(state, {
                 images: [...state.images, ...action.payload.hits],
                 moreResults: action.payload.moreResults

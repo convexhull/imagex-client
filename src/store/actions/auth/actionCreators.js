@@ -46,7 +46,6 @@ export const asyncUserLoginStart = (email, password) => {
             dispatch(asyncLoginSuccess(authInfo));
         }
         catch(e){
-            console.log(e.data, e.response);
             if(e.response && e.response.data){
                 dispatch(loginFail(e.response.data));
             }
@@ -135,7 +134,6 @@ export const asyncUserSignupStart = (userInfo, history) => {
         let data = userInfo;
         try {
             let response = await Axios.post('/users/signup', data);
-            console.log("new user", response);
             dispatch(userSignupSuccess());
             setTimeout(()=> {
                 dispatch(hideOnboardingNotification());

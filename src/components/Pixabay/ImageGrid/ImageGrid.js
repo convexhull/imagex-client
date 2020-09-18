@@ -38,12 +38,8 @@ class ImageGrid extends Component {
   };
 
   render() {
-    let imagesToDisplay = this.props.images.map((image) => {
+    let imagesToDisplay = this.props.images.map((image,index) => {
       let imgOrientation = ImageUtils.calculateOrientationClass(image.imageWidth, image.imageHeight);
-      if(imgOrientation === "portrait-3"){
-        console.log(image.id)
-      }
-      console.log(imgOrientation);
       let imageOptionsClasses = [classes["image__options"]];
       if (image.id === this.state.hoveredOverImageId) {
         imageOptionsClasses.push(classes["image__options--visible"]);

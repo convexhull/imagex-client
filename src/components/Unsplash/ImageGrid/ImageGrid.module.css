@@ -144,4 +144,12 @@
         justify-content: center;
         grid-auto-rows: 35px;
     }
+
+    .image__overlay {
+        opacity: .1;
+    }
+
+    .image__options {
+        opacity: 1;
+    }
 }

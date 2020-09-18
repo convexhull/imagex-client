@@ -38,7 +38,7 @@ class OptionsMenu extends Component {
             <NavLink to="/computerVision">Search Image</NavLink>
           </li>
           <li onClick={this.props.randomImageLoad} className={classes["link"]}>
-            <NavLink to="#">Random Image</NavLink>
+            Random Image
           </li>
         </ul>
       </React.Fragment>
