@@ -7,10 +7,12 @@ import * as actions from "../../../store/actions/index";
 import ImageUtils from '../../../utils/imageOrientation';
 
 class ImageGrid extends Component {
+
   state = {
     showImageModal: false,
     selectedImage: "",
     hoveredOverImageId: "",
+    removedImageId: ""
   };
 
   componentDidMount() {
@@ -38,14 +40,16 @@ class ImageGrid extends Component {
   };
 
   removeImage = (imageId) => {
-    setTimeout(() => {
-      this.props.onRemoveFavouriteImage(imageId);
-      this.props.onFetchFavourites();
-    }, 0);
+    this.setState({
+      removedImageId: imageId
+    })
+    this.props.onRemoveFavouriteImage(imageId);
+    this.props.onFetchFavourites();
   };
 
   render() {
-    let imagesToDisplay = this.props.images.map((image) => {
+    let filteredImages = this.props.images.filter((image) => image._id !== this.state.removedImageId);
+    let imagesToDisplay = filteredImages.map((image) => {
       let imgOrientation = ImageUtils.findOrientationClass(image.aspect);
       let imageOptionsClasses = [classes["image__options"]];
       if (image._id === this.state.hoveredOverImageId) {
@@ -84,7 +88,7 @@ class ImageGrid extends Component {
                 rel="nofollow noopener noreferrer"
                 target="_blank"
               >
-                <span className="_2Aga-">Download</span>
+                <span className="_2Aga-"><i class="fa fa-download" aria-hidden="true"></i></span>
               </a>
             </div>
           </div>
@@ -109,7 +113,7 @@ class ImageGrid extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    images: state.favourites.images,
+    images: state.favourites.images
   };
 };
 

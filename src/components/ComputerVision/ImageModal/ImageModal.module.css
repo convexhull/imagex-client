@@ -59,6 +59,13 @@
 }
 
 
+.like-btn--liked {
+    background-color: #f15151;
+    color: white;
+}
+
+
+
 .actions {
     display: flex;
     margin-left: auto;

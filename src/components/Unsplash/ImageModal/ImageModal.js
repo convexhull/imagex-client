@@ -10,9 +10,24 @@ import GeneralUtils from '../../../utils/generalUtils';
 
 class ImageModal extends Component {
 
+    state = {
+        liked: false
+    }
+
+    likeBtnHandler = () => {
+        this.setState({
+            liked: true
+        });
+        this.props.onAddToFavourites(this.props.image, "unsplash")
+    }
+
     render(){
         let imageDescription = this.props.image.description || this.props.image.alt_description;
         imageDescription = GeneralUtils.capitalizeFirstLetter(imageDescription);
+        let likeBtnClasses = [classes["icons"]];
+        if(this.state.liked){
+            likeBtnClasses.push(classes["like-btn--liked"]);
+        }
         return (
             <Modal hideModal={this.props.hideImageModal} >
                 <div className={classes["image-header"]}>
@@ -24,7 +39,7 @@ class ImageModal extends Component {
                         <p>@{this.props.image.user.username}</p>
                     </div>
                     <div className={classes["actions"]}>
-                        <div className={classes["icons"]} onClick={() => this.props.onAddToFavourites(this.props.image, "unsplash")}>
+                        <div className={likeBtnClasses.join(' ')} onClick={this.likeBtnHandler}>
                             <ion-icon name="heart"></ion-icon>
                         </div>
                         <div className={classes["download-button"]}>

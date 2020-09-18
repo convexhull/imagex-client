@@ -11,6 +11,7 @@ class ImageGrid extends Component {
     showImageModal: false,
     selectedImage: "",
     hoveredOverImageId: "",
+    justLikedImageIds: []
   };
 
   imageClickHandler = (image) => {
@@ -22,6 +23,11 @@ class ImageGrid extends Component {
   };
 
   likeBtnHandler = (image) => {
+    this.setState((state,props) => {
+      return {
+        justLikedImageIds: [...state.justLikedImageIds , image.id]
+      }
+    });
     this.props.onAddToFavourites(image, "unsplash");
   };
 
@@ -41,8 +47,12 @@ class ImageGrid extends Component {
     let imagesToDisplay = this.props.images.map((image) => {
       let imgOrientation = ImageUtils.calculateOrientationClass(image.width, image.height);
       let imageOptionsClasses = [classes["image__options"]];
+      let likeBtnClasses = [classes["like-btn"]];
       if (image.id === this.state.hoveredOverImageId) {
         imageOptionsClasses.push(classes["image__options--visible"]);
+      }
+      if(this.state.justLikedImageIds.includes(image.id)){
+        likeBtnClasses.push(classes["like-btn--liked"])
       }
       return (
         <div
@@ -62,7 +72,7 @@ class ImageGrid extends Component {
           </div>
           <div className={imageOptionsClasses.join(" ")}>
             <div
-              className={classes["like-btn"]}
+              className={likeBtnClasses.join(' ')}
               onClick={() => this.likeBtnHandler(image)}
             >
               <span>
@@ -76,7 +86,8 @@ class ImageGrid extends Component {
                 rel="nofollow noopener noreferrer"
                 target="_blank"
               >
-                <span className="_2Aga-">Download</span>
+                <span className="_2Aga-"><i class="fa fa-download" aria-hidden="true"></i>
+</span>
               </a>
             </div>
           </div>

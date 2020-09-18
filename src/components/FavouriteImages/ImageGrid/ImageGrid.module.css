@@ -93,15 +93,21 @@
 
 .download-button {
     border: 1px solid #adacac;
-    width: 8rem;
     height: 30px;
-    padding: 5px 15px 0px 15px;
+    width: 45px;
+    padding-top: 5px;
     border-radius: 5px;
     text-align: center;
     margin-left: auto;
     margin-right: 1rem;
     background-color: #d6d6d6;
     cursor: pointer;
+}
+
+.download-button a {
+    height: 100%;
+    width: 100%;
+    display: block;
 }
 
 
@@ -113,22 +119,26 @@
 .like-btn {
     margin-left: 1rem;
     cursor: pointer;
-    font-size: 2rem;
-    color: #d6d6d6;
-    height: 2rem;
+    font-size: 1rem;
+    color: #111111;
+    padding: .3rem 0.65rem;
+    text-align: center;
+    background-color: #f15151;
+    border-radius: 5px;
 }
 
 
 .like-btn span {
     position: relative;
-    top: -5px;
 }
 
-
-.like-btn span:hover {
-    color: #860606;
+.like-btn:hover {
+    background-color: hsla(0,0%,100%,.9);
 }
 
+.like-btn:hover span {
+    color: black;
+}
 
 
 
@@ -141,5 +151,13 @@
         grid-template-columns: 300px;
         justify-content: center;
         grid-auto-rows: 35px;
+    }
+
+    .image__overlay {
+        opacity: .1;
+    }
+
+    .image__options {
+        opacity: 1;
     }
 }
