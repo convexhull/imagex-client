@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch} from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
-import './App.css';
+import classes from './App.module.css';
 import Layout from './hoc/Layout/Layout';
 import Home from './Pages/Home/Home';
 import Unsplash from './Pages/Unsplash/Unsplash';
@@ -36,7 +35,7 @@ class App extends Component {
   
   render(){
     return (
-      <div className="App">
+      <div className={classes["App"]}>
         <Switch>
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />

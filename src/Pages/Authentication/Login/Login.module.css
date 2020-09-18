@@ -81,3 +81,16 @@
 }
 
 
+
+
+
+
+/******************************MEDIA QUERIES***************************/
+
+
+@media (max-width: 538px) {
+    .Login {
+        width: 85%;
+        min-width: initial;
+    }
+}

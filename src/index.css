@@ -25,4 +25,40 @@ code {
   --heart-red: #860606;
   --screen-large: 1000px;
   --unsplash-black: #111111;
+  --screen-min: 538px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+
+}
+
+h6 {
+  
+}
+
+
+
+
+/********************MEDIA QUEIRES ************************/
+
+@media (max-width: 538px){
+  html {
+    font-size: 12px;
+  }
 }

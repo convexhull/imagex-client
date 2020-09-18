@@ -132,7 +132,7 @@ class Signup extends Component {
                         <p >OR</p>
                         <form onSubmit={this.formSubmitHandler}>
                             <div className={classes["name-container"]}>
-                                <div>
+                                <div className={classes["name-container__first-name"]}>
                                     <InputField
                                         elementType="text"
                                         label="First Name"
@@ -142,7 +142,7 @@ class Signup extends Component {
                                         errorMsg="*First Name is required"
                                     />
                                 </div>
-                                <div>
+                                <div className={classes["name-container__last-name"]}>
                                     <InputField
                                         elementType="text"
                                         label="Last Name"
