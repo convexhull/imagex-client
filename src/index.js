@@ -9,12 +9,16 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 import App from './App';
 import store from './store/store';
+import ErrorBoundary from './hoc/ErrorBoundary/ErrorBoundary';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

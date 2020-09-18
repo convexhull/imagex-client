@@ -17,7 +17,7 @@ import Signup from './Pages/Authentication/Signup/Signup';
 import CV from './Pages/ComputerVision/ComputerVision';
 import FavouriteImages from './Pages/FavouriteImages/FavouriteImages';
 import Account from './Pages/Account/Account';
-import PageNotFound from './components/NotFound/NotFound';
+import PageNotFound from './Pages/NotFound/NotFound';
 import * as actions from './store/actions/index';
 
 
@@ -35,7 +35,6 @@ class App extends Component {
   }
   
   render(){
-
     return (
       <div className="App">
         <Switch>
