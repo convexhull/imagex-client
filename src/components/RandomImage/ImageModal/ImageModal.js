@@ -39,7 +39,7 @@ class ImageModal extends Component {
                             <ion-icon name="heart"></ion-icon>
                         </div>
                         <div className={classes["download-button"]}>
-                            <a title="Download photo" href={`${this.props.image.links.download}?force=true`} rel="noopener noreferrer" target="_blank"  ><span className="_2Aga-">Download</span></a>
+                            <a title="Download photo" href={`${this.props.image.links.download}?force=true`} rel="noopener noreferrer" target="_blank"  ><span className="_2Aga-"><i class="fa fa-download" aria-hidden="true"></i></span></a>
                         </div>
                     </div>
                 </div>

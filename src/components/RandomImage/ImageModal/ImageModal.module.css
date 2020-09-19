@@ -79,12 +79,33 @@
 
 
 
+.icons:hover {
+    color:  #f15151;
+}
+
 .download-button {
     border: 1px solid #adacac;
     height: 30px;
-    padding: 5px 15px 0px 15px;
+    width: 100px;
     margin-left: 10px;
     border-radius: 5px;
+
+}
+
+.download-button:hover {
+    background-color: rgb(100, 100, 100);
+}
+
+.download-button a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.download-button:hover a {
+    color: white;
 }
 
 
@@ -97,4 +118,15 @@
 
 .spinner {
     text-align: center;
+}
+
+
+
+/********************MEDIA QUEIRES ************************/
+
+
+@media (max-width: 538px) {
+    .download-button {
+        width: 60px;
+    }
 }

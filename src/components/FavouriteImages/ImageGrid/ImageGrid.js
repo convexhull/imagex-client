@@ -105,6 +105,10 @@ class ImageGrid extends Component {
             image={this.state.selectedImage}
           />
         ) : null}
+        <h1 className={classes["favourites-section__title"]}>
+            <i className="fa fa-heart" aria-hidden="true"></i>
+            &nbsp;&nbsp;My Favourites ({imagesToDisplay.length})
+        </h1>
         <div className={classes["image-grid"]}>{imagesToDisplay}</div>
       </div>
     );

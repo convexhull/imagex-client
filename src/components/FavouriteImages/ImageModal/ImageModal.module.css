@@ -82,13 +82,38 @@
 
 
 
+.icons:hover {
+    /* color:  #f15151; */
+    color: blue;
+    background-color: #fff;
+
+}
+
 .download-button {
     border: 1px solid #adacac;
     height: 30px;
-    padding: 5px 15px 0px 15px;
-    margin-left: auto;
+    width: 100px;
+    margin-left: 10px;
     border-radius: 5px;
+
 }
+
+.download-button:hover {
+    background-color: rgb(100, 100, 100);
+}
+
+.download-button a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.download-button:hover a {
+    color: white;
+}
+
 
 
 .image-footer {
@@ -96,4 +121,15 @@
     font-weight: bold;
     margin-left: 1rem;
     margin-bottom: 1rem;
+}
+
+
+
+/********************MEDIA QUEIRES ************************/
+
+
+@media (max-width: 538px) {
+    .download-button {
+        width: 60px;
+    }
 }

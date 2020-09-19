@@ -31,4 +31,5 @@
 .imagex-default-btn:disabled {
     background-color: rgb(236, 236, 236);
     color: black;
+    cursor: not-allowed;
 }

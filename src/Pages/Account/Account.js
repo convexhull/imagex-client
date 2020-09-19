@@ -6,6 +6,7 @@ import classes from "./Account.module.css";
 import InputElement from "../../components/UI/FormElements/FormElements";
 import Button from "../../components/UI/Buttons/BlockButton/Button";
 import * as actions from "../../store/actions/index";
+import Notification from '../../components/UI/Notification/Notification';
 
 class Account extends Component {
   state = {
@@ -261,8 +262,8 @@ class Account extends Component {
           </div>
         </div>
         <div className={classes["Account__submit-btn"]}>
-          <Button theme="imagex-default" clicked={this.updateBtnHandler}>
-            Update account
+          <Button theme="imagex-default" clicked={this.updateBtnHandler} disabled={this.props.profileUpdating} >
+            {this.props.profileUpdating ? "..." : "Update account"} 
           </Button>
         </div>
       </div>
@@ -274,7 +275,8 @@ const mapStateToProps = (state) => {
   return {
     userProfileInfo: state.account.userProfileInfo,
     profilePicUpdating: state.account.profilePicUploading,
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    profileUpdating: state.account.profileUpdating
   };
 };
 
