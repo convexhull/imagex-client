@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Modal from '../../Common/UI/Modal/Modal';
 import classes from './ImageModal.module.css';
@@ -17,7 +18,7 @@ class ImageModal extends Component {
         this.setState({
             liked: true
         });
-        this.props.onAddToFavourites(this.props.image, "pixabay")
+        this.props.onAddToFavourites(this.props.image, "pixabay", this.props.history);
     }
   
     render(){
@@ -60,9 +61,9 @@ class ImageModal extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddToFavourites: (image, platform) => dispatch(actions.asyncSaveFavouriteImageStart(image, platform))
+        onAddToFavourites: (image, platform, history) => dispatch(actions.asyncSaveFavouriteImageStart(image, platform, history))
     }
 }
 
 
-export default connect(null, mapDispatchToProps)(ImageModal);
+export default connect(null, mapDispatchToProps)(withRouter(ImageModal));

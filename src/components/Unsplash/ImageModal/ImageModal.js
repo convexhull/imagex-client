@@ -6,6 +6,7 @@ import Modal from '../../Common/UI/Modal/Modal';
 import classes from './ImageModal.module.css';
 import * as actions from '../../../store/actions/index';
 import GeneralUtils from '../../../utils/generalUtils';
+import { withRouter } from 'react-router-dom';
 
 
 class ImageModal extends Component {
@@ -18,7 +19,7 @@ class ImageModal extends Component {
         this.setState({
             liked: true
         });
-        this.props.onAddToFavourites(this.props.image, "unsplash")
+        this.props.onAddToFavourites(this.props.image, "unsplash", this.props.history);
     }
 
     render(){
@@ -63,9 +64,9 @@ class ImageModal extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddToFavourites: (image, platform) => dispatch(actions.asyncSaveFavouriteImageStart(image, platform))
+        onAddToFavourites: (image, platform, history) => dispatch(actions.asyncSaveFavouriteImageStart(image, platform, history))
     }
 }
 
 
-export default connect(null, mapDispatchToProps)(ImageModal);
+export default connect(null, mapDispatchToProps)(withRouter(ImageModal));

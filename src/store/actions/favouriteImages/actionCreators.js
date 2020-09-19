@@ -74,7 +74,7 @@ const saveFavouriteImageFailure = (error) => {
 
 
 
-export const asyncSaveFavouriteImageStart = (image, platform) => {
+export const asyncSaveFavouriteImageStart = (image, platform, history) => {
     return async (dispatch) => {
         dispatch(saveFavouriteImageStart());
         let data = {};
@@ -130,7 +130,7 @@ export const asyncSaveFavouriteImageStart = (image, platform) => {
         }
         let token = localStorage.getItem('token');
         if(!token) {
-            return alert('Please login to use this feature');
+            return history.push('/login');
         }
         let config = {
             headers: {

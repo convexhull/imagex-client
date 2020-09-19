@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-
+import {withRouter} from 'react-router-dom';
 
 import Modal from '../../Common/UI/Modal/Modal';
 import classes from './ImageModal.module.css';
@@ -35,7 +35,7 @@ class ImageModal extends Component {
                         <p>@{this.props.image.user.username}</p>
                     </div>
                     <div className={classes["actions"]}>
-                        <div className={classes["icons"]} onClick={() => this.props.onAddToFavourites(this.props.image, "unsplash")}>
+                        <div className={classes["icons"]} onClick={() => this.props.onAddToFavourites(this.props.image, "unsplash", this.props.history)}>
                             <ion-icon name="heart"></ion-icon>
                         </div>
                         <div className={classes["download-button"]}>
@@ -58,9 +58,9 @@ class ImageModal extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddToFavourites: (image, platform) => dispatch(actions.asyncSaveFavouriteImageStart(image, platform))
+        onAddToFavourites: (image, platform, history) => dispatch(actions.asyncSaveFavouriteImageStart(image, platform, history))
     }
 }
 
 
-export default connect(null, mapDispatchToProps)(ImageModal);
+export default connect(null, mapDispatchToProps)(withRouter(ImageModal));

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 
 import classes from "./ImageGrid.module.css";
 import ImageModal from "../ImageModal/ImageModal";
@@ -28,7 +29,7 @@ class ImageGrid extends Component {
         justLikedImageIds: [...state.justLikedImageIds , image.id]
       }
     });
-    this.props.onAddToFavourites(image, "unsplash");
+    this.props.onAddToFavourites(image, "unsplash", this.props.history);
   };
 
   displayImageOverlay = (id) => {
@@ -118,9 +119,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddToFavourites: (image, platform) =>
-      dispatch(actions.asyncSaveFavouriteImageStart(image, platform)),
+    onAddToFavourites: (image, platform, history) =>
+      dispatch(actions.asyncSaveFavouriteImageStart(image, platform, history)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageGrid);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ImageGrid));

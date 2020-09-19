@@ -6,6 +6,7 @@ import * as actions from "../../../store/actions/index";
 import classes from "./ImageGrid.module.css";
 import ImageModal from "../ImageModal/ImageModal";
 import ImageUtils from '../../../utils/imageOrientation';
+import { withRouter } from "react-router-dom";
 
 class ImageGrid extends Component {
   state = {
@@ -29,7 +30,7 @@ class ImageGrid extends Component {
         justLikedImageIds: [...state.justLikedImageIds , image.id]
       }
     });
-    this.props.onAddToFavourites(image, "pixabay");
+    this.props.onAddToFavourites(image, "pixabay", this.props.history);
   };
 
   displayImageOverlay = (id) => {
@@ -118,9 +119,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddToFavourites: (image, platform) =>
-      dispatch(actions.asyncSaveFavouriteImageStart(image, platform)),
+    onAddToFavourites: (image, platform, history) =>
+      dispatch(actions.asyncSaveFavouriteImageStart(image, platform, history))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageGrid);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ImageGrid));

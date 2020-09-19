@@ -54,7 +54,6 @@ class ImageModal extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddToFavourites: (image, platform) => dispatch(actions.asyncSaveFavouriteImageStart(image, platform)),
         onRemoveFavouriteImage: (imageId) => dispatch(actions.asyncRemoveFavouriteImageStart(imageId)),
         onFetchFavourites: () => dispatch(actions.asyncFetchFavouriteImagesStart())
     }
