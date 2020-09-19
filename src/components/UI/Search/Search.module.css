@@ -6,6 +6,8 @@
     border-radius: 5px;
     transition: border 0.2s;
     color: #000000; 
+    width: 100%;
+    overflow: hidden;
 }
 
 .Search:focus-within {
