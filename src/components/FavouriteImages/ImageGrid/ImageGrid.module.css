@@ -132,6 +132,7 @@
 
 .like-btn span {
     position: relative;
+    top: 5px;
 }
 
 .like-btn:hover {

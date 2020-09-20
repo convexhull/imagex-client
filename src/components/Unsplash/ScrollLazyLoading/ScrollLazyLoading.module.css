@@ -4,12 +4,30 @@
 }
 
 
-.spinner {
 
+.spinner {
+    margin: 0 auto;
+    width: 540px;
+    height: 360px;
 }
 
 
 .spinner--invisible {
     display: none;
 }
+
+
+/*****************MEDIA QUERIES*********************/
+
+
+@media (max-width: 540px) {
+    .spinner {
+        width: 300px;
+        height: auto;
+    }
+}
+
+
+
+
 
