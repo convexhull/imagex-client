@@ -1,5 +1,5 @@
 .image-grid {
-    width: 75%;
+    width: 1320px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -157,7 +157,7 @@
 
 @media (max-width: 538px) {
     .image-grid {
-        width: 90%;
+        width: 350px;
         grid-template-columns: 300px;
         justify-content: center;
         grid-auto-rows: 35px;
@@ -173,5 +173,20 @@
 
     .image__options {
         opacity: 1;
+    }
+}
+
+
+@media (min-width: 539px) and (max-width: 1074px) {
+    .image-grid {
+        width: 500px;
+        grid-gap: 8px;
+    }
+}
+
+
+@media (min-width: 1075px) and (max-width: 1614px) {
+    .image-grid {
+        width: 875px;
     }
 }
