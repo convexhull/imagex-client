@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    script: 'serve -s build -l 3333',
+    script: 'npx serve -s build -l 4444',
     name: 'imagex-client-service'
   }],
   deploy : {
