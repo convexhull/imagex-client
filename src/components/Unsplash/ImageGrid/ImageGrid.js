@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 
 import classes from "./ImageGrid.module.css";
-import ImageModal from "../ImageModal/ImageModal";
+import ImageModal from '../../Common/UI/ImageModal/ImageModal'
 import * as actions from "../../../store/actions/index";
 import ImageUtils from '../../../utils/imageOrientation';
 

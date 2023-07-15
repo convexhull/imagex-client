@@ -2,10 +2,10 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 
 
-import Modal from '../../Common/UI/Modal/Modal';
+import Modal from '../Modal/Modal';
 import classes from './ImageModal.module.css';
-import * as actions from '../../../store/actions/index';
-import GeneralUtils from '../../../utils/generalUtils';
+import * as actions from '../../../../store/actions/index';
+import GeneralUtils from '../../../../utils/generalUtils';
 import { withRouter } from 'react-router-dom';
 
 
