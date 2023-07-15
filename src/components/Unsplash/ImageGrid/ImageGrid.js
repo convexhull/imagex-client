@@ -98,13 +98,20 @@ class ImageGrid extends Component {
         </div>
       );
     });
-
+    const image = this.state.selectedImage;
     return (
       <div>
         {this.state.showImageModal ? (
           <ImageModal
             hideImageModal={this.hideModalHandler}
             image={this.state.selectedImage}
+            platform="unsplash"
+            imageDescription={image.description || image.alt_description}
+            uploaderProfileImageUrl={image.user.profile_image.large}
+            uploaderName={image.user.name}
+            uploaderUsername={image.user.username}
+            imageDownloadUrl={image.links.download}
+            imageUrl={image.urls.regular}
           />
         ) : null}
         <div className={classes["image-grid"]}>{imagesToDisplay}</div>

@@ -6,31 +6,41 @@ import * as actions from "../../../../store/actions/index";
 import GeneralUtils from "../../../../utils/generalUtils";
 import { useHistory } from "react-router-dom";
 
-const ImageModal = ({ hideImageModal, image }) => {
+const ImageModal = ({
+  hideImageModal,
+  image,
+  platform,
+  imageUrl,
+  imageDescription,
+  uploaderProfileImageUrl,
+  uploaderName,
+  uploaderUsername,
+  imageDownloadUrl,
+}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [liked, setLiked] = useState(false);
-  let imageDescription = image.description || image.alt_description;
-  imageDescription = GeneralUtils.capitalizeFirstLetter(imageDescription);
+  const capitalizedImageDesc =
+    GeneralUtils.capitalizeFirstLetter(imageDescription);
   let likeBtnClasses = [classes["icons"]];
   if (liked) {
     likeBtnClasses.push(classes["like-btn--liked"]);
   }
   const likeBtnHandler = () => {
     setLiked(true);
-    dispatch(actions.asyncSaveFavouriteImageStart(image, "unsplash", history));
+    dispatch(actions.asyncSaveFavouriteImageStart(image, platform, history));
   };
   return (
     <Modal hideModal={hideImageModal}>
       <div className={classes["image-header"]}>
         <div className={classes["user-info"]}>
           <div>
-            <img src={image.user.profile_image.large} alt="uploader's" />
+            <img src={uploaderProfileImageUrl} alt="uploader's" />
           </div>
           <p>
-            <strong>{image.user.name}</strong>
+            <strong>{uploaderName}</strong>
           </p>
-          <p>@{image.user.username}</p>
+          <p>@{uploaderUsername}</p>
         </div>
         <div className={classes["actions"]}>
           <div className={likeBtnClasses.join(" ")} onClick={likeBtnHandler}>
@@ -39,9 +49,10 @@ const ImageModal = ({ hideImageModal, image }) => {
           <div className={classes["download-button"]}>
             <a
               title="Download photo"
-              href={`${image.links.download}?force=true`}
+              href={`${imageDownloadUrl}?force=true`}
               rel="noopener noreferrer"
               target="_blank"
+              download
             >
               <span className="_2Aga-">
                 {" "}
@@ -53,14 +64,12 @@ const ImageModal = ({ hideImageModal, image }) => {
       </div>
       <div className={classes["image-container"]}>
         <img
-          src={image.urls.regular}
-          alt={
-            image.alt_description || image.description || "alternate definition"
-          }
+          src={imageUrl}
+          alt={capitalizedImageDesc || "alternate definition"}
         />
       </div>
       <br />
-      <div className={classes["image-footer"]}>{imageDescription}</div>
+      <div className={classes["image-footer"]}>{capitalizedImageDesc}</div>
     </Modal>
   );
 };
