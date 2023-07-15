@@ -98,13 +98,26 @@ class ImageGrid extends Component {
         </div>
       );
     });
+    const image = this.state.selectedImage;
 
     return (
       <div>
         {this.state.showImageModal ? (
           <ImageModal
             hideImageModal={this.hideModalHandler}
-            image={this.state.selectedImage}
+            image={image}
+            platform="pixabay"
+            imageDescription={
+              image.description || image.alt_description || image.tags
+            }
+            uploaderProfileImageUrl={
+              image.userImageURL ||
+              "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__480.png"
+            }
+            uploaderName={image.user.name}
+            uploaderUsername={image.user}
+            imageDownloadUrl={image.largeImageURL}
+            imageUrl={image.largeImageURL}
           />
         ) : null}
         <div className={classes["image-grid"]}>{imagesToDisplay}</div>
