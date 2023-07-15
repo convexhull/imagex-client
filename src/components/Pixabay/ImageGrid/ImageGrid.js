@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-
 import * as actions from "../../../store/actions/index";
 import classes from "./ImageGrid.module.css";
-import ImageModal from "../ImageModal/ImageModal";
-import ImageUtils from '../../../utils/imageOrientation';
+import ImageModal from "../../Common/UI/ImageModal/ImageModal";
+import ImageUtils from "../../../utils/imageOrientation";
 import { withRouter } from "react-router-dom";
 
 class ImageGrid extends Component {
@@ -13,7 +12,7 @@ class ImageGrid extends Component {
     showImageModal: false,
     selectedImage: "",
     hoveredOverImageId: "",
-    justLikedImageIds: []
+    justLikedImageIds: [],
   };
 
   imageClickHandler = (image) => {
@@ -25,10 +24,10 @@ class ImageGrid extends Component {
   };
 
   likeBtnHandler = (image) => {
-    this.setState((state,props) => {
+    this.setState((state, props) => {
       return {
-        justLikedImageIds: [...state.justLikedImageIds , image.id]
-      }
+        justLikedImageIds: [...state.justLikedImageIds, image.id],
+      };
     });
     this.props.onAddToFavourites(image, "pixabay", this.props.history);
   };
@@ -46,15 +45,18 @@ class ImageGrid extends Component {
   };
 
   render() {
-    let imagesToDisplay = this.props.images.map((image,index) => {
-      let imgOrientation = ImageUtils.calculateOrientationClass(image.imageWidth, image.imageHeight);
+    let imagesToDisplay = this.props.images.map((image, index) => {
+      let imgOrientation = ImageUtils.calculateOrientationClass(
+        image.imageWidth,
+        image.imageHeight
+      );
       let imageOptionsClasses = [classes["image__options"]];
       let likeBtnClasses = [classes["like-btn"]];
       if (image.id === this.state.hoveredOverImageId) {
         imageOptionsClasses.push(classes["image__options--visible"]);
       }
-      if(this.state.justLikedImageIds.includes(image.id)){
-        likeBtnClasses.push(classes["like-btn--liked"])
+      if (this.state.justLikedImageIds.includes(image.id)) {
+        likeBtnClasses.push(classes["like-btn--liked"]);
       }
       return (
         <div
@@ -73,7 +75,7 @@ class ImageGrid extends Component {
           ></div>
           <div className={imageOptionsClasses.join(" ")}>
             <div
-              className={likeBtnClasses.join(' ')}
+              className={likeBtnClasses.join(" ")}
               onClick={() => this.likeBtnHandler(image)}
             >
               <span>
@@ -87,7 +89,9 @@ class ImageGrid extends Component {
                 rel="nofollow noopener noreferrer"
                 target="_blank"
               >
-                <span className="_2Aga-"><i class="fa fa-download" aria-hidden="true"></i></span>
+                <span className="_2Aga-">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                </span>
               </a>
             </div>
           </div>
@@ -99,7 +103,6 @@ class ImageGrid extends Component {
       <div>
         {this.state.showImageModal ? (
           <ImageModal
-            show={this.state.showImageModal}
             hideImageModal={this.hideModalHandler}
             image={this.state.selectedImage}
           />
@@ -116,12 +119,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddToFavourites: (image, platform, history) =>
-      dispatch(actions.asyncSaveFavouriteImageStart(image, platform, history))
+      dispatch(actions.asyncSaveFavouriteImageStart(image, platform, history)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ImageGrid));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(ImageGrid));
