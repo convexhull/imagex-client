@@ -5,6 +5,7 @@ import classes from "./ImageModal.module.css";
 import * as actions from "../../../../store/actions/index";
 import GeneralUtils from "../../../../utils/generalUtils";
 import { useHistory } from "react-router-dom";
+import AwsSpinner from "../../../UI/AwsSpinner/spinner.gif";
 
 const ImageModal = ({
   hideImageModal,
@@ -30,6 +31,15 @@ const ImageModal = ({
     setLiked(true);
     dispatch(actions.asyncSaveFavouriteImageStart(image, platform, history));
   };
+  if (!image) {
+    return (
+      <Modal hideModal={hideImageModal}>
+        <div className={classes["spinner"]}>
+          <img src={AwsSpinner} alt="spinner gif" />
+        </div>
+      </Modal>
+    );
+  }
   return (
     <Modal hideModal={hideImageModal}>
       <div className={classes["image-header"]}>
