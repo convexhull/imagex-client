@@ -1,0 +1,138 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.image-container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  flex: 1;
+  height: calc(100vh - 100px);
+}
+
+.image-container > img {
+  max-width: 100%;
+  height: calc(100vh - 200px);
+}
+
+.image-header {
+  display: flex;
+  height: 100px;
+  padding: 10px 20px 20px 20px;
+}
+
+.download-button {
+  margin-left: auto;
+}
+
+.user-info {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px;
+}
+
+.user-info > div {
+  grid-row: span 2;
+  height: 100%;
+}
+
+.user-info > div > img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.user-info p:first-of-type {
+  font-size: 0.8rem;
+  align-self: end;
+}
+
+.user-info p:nth-of-type(2) {
+  font-size: 0.6rem;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #adacac;
+  border-radius: 5px;
+  height: 30px;
+  width: 35px;
+  font-size: 1.25rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.icons:hover {
+  color: #f15151;
+}
+
+.like-btn--liked {
+  background-color: #f15151;
+  color: white;
+}
+
+.actions {
+  display: flex;
+  margin-left: auto;
+}
+
+.download-button a:link,
+.download-button a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.download-button a:visited,
+.download-button a:active {
+  text-decoration: none;
+  color: black;
+}
+
+.icons:hover {
+  color: #f15151;
+}
+
+.download-button {
+  border: 1px solid #adacac;
+  height: 30px;
+  width: 100px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.download-button:hover {
+  background-color: rgb(100, 100, 100);
+}
+
+.download-button a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-button:hover a {
+  color: white;
+}
+
+.image-footer {
+  color: var(--font-grey);
+  font-weight: bold;
+  margin: 0 auto 1rem auto;
+  width: 75%;
+  height: 100px;
+}
+
+/********************MEDIA QUERIES ************************/
+
+@media (max-width: 538px) {
+  .download-button {
+    width: 60px;
+  }
+}
