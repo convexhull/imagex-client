@@ -42,44 +42,45 @@ const ImageModal = ({
   }
   return (
     <Modal hideModal={hideImageModal}>
-      <div className={classes["image-header"]}>
-        <div className={classes["user-info"]}>
-          <div>
-            <img src={uploaderProfileImageUrl} alt="uploader's" />
+      <div className={classes.container}>
+        <div className={classes["image-header"]}>
+          <div className={classes["user-info"]}>
+            <div>
+              <img src={uploaderProfileImageUrl} alt="uploader's" />
+            </div>
+            <p>
+              <strong>{uploaderName}</strong>
+            </p>
+            <p>@{uploaderUsername}</p>
           </div>
-          <p>
-            <strong>{uploaderName}</strong>
-          </p>
-          <p>@{uploaderUsername}</p>
+          <div className={classes["actions"]}>
+            <div className={likeBtnClasses.join(" ")} onClick={likeBtnHandler}>
+              <ion-icon name="heart"></ion-icon>
+            </div>
+            <div className={classes["download-button"]}>
+              <a
+                title="Download photo"
+                href={`${imageDownloadUrl}?force=true`}
+                rel="noopener noreferrer"
+                target="_blank"
+                download
+              >
+                <span className="_2Aga-">
+                  {" "}
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
-        <div className={classes["actions"]}>
-          <div className={likeBtnClasses.join(" ")} onClick={likeBtnHandler}>
-            <ion-icon name="heart"></ion-icon>
-          </div>
-          <div className={classes["download-button"]}>
-            <a
-              title="Download photo"
-              href={`${imageDownloadUrl}?force=true`}
-              rel="noopener noreferrer"
-              target="_blank"
-              download
-            >
-              <span className="_2Aga-">
-                {" "}
-                <i class="fa fa-download" aria-hidden="true"></i>
-              </span>
-            </a>
-          </div>
+        <div className={classes["image-container"]}>
+          <img
+            src={imageUrl}
+            alt={capitalizedImageDesc || "alternate definition"}
+          />
+          <div className={classes["image-footer"]}>{capitalizedImageDesc}</div>
         </div>
       </div>
-      <div className={classes["image-container"]}>
-        <img
-          src={imageUrl}
-          alt={capitalizedImageDesc || "alternate definition"}
-        />
-      </div>
-      <br />
-      <div className={classes["image-footer"]}>{capitalizedImageDesc}</div>
     </Modal>
   );
 };
