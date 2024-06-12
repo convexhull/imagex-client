@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ImageGrid from "../../Unsplash/ImageGrid/ImageGrid";
-import Spinner from "../../UI/Spinner/Spinner";
+import AwsSpinner from "../../UI/AwsSpinner/spinner.gif";
 import * as actions from "../../../store/actions/index";
 import classes from "./ScrollLazyLoading.module.css";
-import EndOfResults from '../../UI/EndOfResults/EndOfResults';
+import EndOfResults from "../../UI/EndOfResults/EndOfResults";
 
 class ScrollLazyLoading extends React.Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class ScrollLazyLoading extends React.Component {
       <React.Fragment>
         <ImageGrid />
         <div ref={this.loaderRef} className={spinnerClasses.join(" ")}>
-          <Spinner />
+          <img src={AwsSpinner} alt="spinner gif" />
         </div>
         {endOfResults}
       </React.Fragment>

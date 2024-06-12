@@ -1,35 +1,33 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-import classes from './ImageGrid.module.css';
+import classes from "./ImageGrid.module.css";
 import * as actions from "../../../store/actions/index";
 import ImageModal from "../ImageModal/ImageModal";
-import ImageUtils from '../../../utils/imageOrientation';
-
+import ImageUtils from "../../../utils/imageOrientation";
 
 class ImageGrid extends Component {
-
   state = {
-    showImageModal : false,
-    selectedImage: '',
+    showImageModal: false,
+    selectedImage: "",
     hoveredOverImageId: "",
-    justLikedImageIds: []
-  }
+    justLikedImageIds: [],
+  };
 
   imageClickHandler = (image) => {
-    this.setState({showImageModal : true, selectedImage: image})
-  }
+    this.setState({ showImageModal: true, selectedImage: image });
+  };
 
   hideModalHandler = () => {
-    this.setState({showImageModal : false})
-  }
+    this.setState({ showImageModal: false });
+  };
 
   likeBtnHandler = (image) => {
-    this.setState((state,props) => {
+    this.setState((state, props) => {
       return {
-        justLikedImageIds: [...state.justLikedImageIds , image.id]
-      }
+        justLikedImageIds: [...state.justLikedImageIds, image.id],
+      };
     });
     this.props.onAddToFavourites(image, "cv", this.props.history);
   };
@@ -54,20 +52,27 @@ class ImageGrid extends Component {
       if (image.id === this.state.hoveredOverImageId) {
         imageOptionsClasses.push(classes["image__options--visible"]);
       }
-      if(this.state.justLikedImageIds.includes(image.id)){
-        likeBtnClasses.push(classes["like-btn--liked"])
+      if (this.state.justLikedImageIds.includes(image.id)) {
+        likeBtnClasses.push(classes["like-btn--liked"]);
       }
       return (
-        <div className={classes[imgOrientation] + " " + classes["image__box"]} key={image.id}  onMouseEnter={() => this.displayImageOverlay(image.id)} onMouseLeave={this.removeImageOverlay}>
-          <img src={image.assets.preview_1000.url} alt={image.description ? image.description : "search result"} />
+        <div
+          className={classes[imgOrientation] + " " + classes["image__box"]}
+          key={image.id}
+          onMouseEnter={() => this.displayImageOverlay(image.id)}
+          onMouseLeave={this.removeImageOverlay}
+        >
+          <img
+            src={image.assets.preview.url}
+            alt={image.description ? image.description : "search result"}
+          />
           <div
             className={classes["image__overlay"]}
             onClick={() => this.imageClickHandler(image)}
-          >
-          </div>
+          ></div>
           <div className={imageOptionsClasses.join(" ")}>
             <div
-              className={likeBtnClasses.join(' ')}
+              className={likeBtnClasses.join(" ")}
               onClick={() => this.likeBtnHandler(image)}
             >
               <span>
@@ -77,17 +82,19 @@ class ImageGrid extends Component {
             <div className={classes["download-button"]}>
               <a
                 title="Download photo"
-                href={`${image.assets.preview_1500.url}?force=true`}
+                href={`${image.assets.preview.url}?force=true`}
                 rel="nofollow noopener noreferrer"
                 target="_blank"
               >
-                <span className="_2Aga-"><i class="fa fa-download" aria-hidden="true"></i></span>
+                <span className="_2Aga-">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                </span>
               </a>
             </div>
           </div>
         </div>
       );
-    })
+    });
     return (
       <div>
         <div className={classes["image-grid"]}>
@@ -105,14 +112,11 @@ class ImageGrid extends Component {
   }
 }
 
-
-
 const mapStateToProps = (state) => {
   return {
-    images: state.cv.similarImages
-  }
-}
-
+    images: state.cv.similarImages,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -121,10 +125,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ImageGrid));
-
-
-
-
-
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(ImageGrid));

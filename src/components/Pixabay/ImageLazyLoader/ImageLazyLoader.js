@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ImageGrid from "../ImageGrid/ImageGrid";
-import Spinner from "../../UI/Spinner/Spinner";
+import AwsSpinner from "../../UI/AwsSpinner/spinner.gif";
 import * as actions from "../../../store/actions/index";
-import classes from './ImageLazyLoader.module.css';
-import EndOfResults from '../../UI/EndOfResults/EndOfResults';
+import classes from "./ImageLazyLoader.module.css";
+import EndOfResults from "../../UI/EndOfResults/EndOfResults";
 
 class ScrollLazyLoading extends React.Component {
   constructor(props) {
@@ -22,8 +22,8 @@ class ScrollLazyLoading extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.keyword !== this.props.keyword) {
-        this.props.onClearPreviousImages();
-        this.cnt = 1;
+      this.props.onClearPreviousImages();
+      this.cnt = 1;
     }
   }
 
@@ -38,7 +38,7 @@ class ScrollLazyLoading extends React.Component {
       options
     );
     observer.observe(this.loaderRef.current);
-  } 
+  }
 
   render() {
     let spinnerClasses = [classes["spinner"]];
@@ -55,7 +55,7 @@ class ScrollLazyLoading extends React.Component {
       <React.Fragment>
         <ImageGrid />
         <div ref={this.loaderRef} className={spinnerClasses.join(" ")}>
-          <Spinner />
+          <img src={AwsSpinner} alt="spinner gif" />
         </div>
         {endOfResults}
       </React.Fragment>
