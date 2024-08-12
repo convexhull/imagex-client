@@ -1,3 +1,5 @@
+Backend for this project: https://github.com/convexhull/imagex-server
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Deployed [here](https://imagex.netlify.app)
