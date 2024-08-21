@@ -5,7 +5,7 @@ import classes from "./ImageModal.module.css";
 import * as actions from "../../../../store/actions/index";
 import GeneralUtils from "../../../../utils/generalUtils";
 import { useHistory } from "react-router-dom";
-import AwsSpinner from "../../../UI/AwsSpinner/spinner.gif";
+import Spinner from "../../../UI/Spinner/Spinner";
 
 const ImageModal = ({
   hideImageModal,
@@ -37,7 +37,7 @@ const ImageModal = ({
       {!image && (
         <div className={classes.container}>
           <div className={classes["spinner"]}>
-            <img src={AwsSpinner} alt="spinner gif" />
+            <Spinner />
           </div>
         </div>
       )}

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import * as actions from "../../store/actions/index";
 import MainNavbar from "../../components/Header/MainNavigation/MainNavigation";
-// import ImageModal from "../../components/RandomImage/ImageModal/ImageModal";
 import ImageModal from "../../components/Common/UI/ImageModal/ImageModal";
 
 class Layout extends Component {

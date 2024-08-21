@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import classes from "./ComputerVision.module.css";
 import * as actions from "../../store/actions";
 import CameraIcon from "../../assets/icons/camera.svg";
-import Spinner from '../../components/UI/AwsSpinner/spinner.gif';
-
+import Spinner from "../../components/UI/Spinner/Spinner";
 class CV extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +14,7 @@ class CV extends Component {
   state = {
     formData: {
       file: null,
-    }
+    },
   };
 
   clickHandler = () => {
@@ -24,22 +23,24 @@ class CV extends Component {
 
   fileUploadHandler = (event) => {
     let file = event.target.files[0];
-    if(file.size > 5000000){
-      alert('Your file exceeds the maximum supported size limit of 5MB. Please upload a smaller file.');
+    if (file.size > 5000000) {
+      alert(
+        "Your file exceeds the maximum supported size limit of 5MB. Please upload a smaller file."
+      );
       this.fileRef.current.value = null;
       return;
     }
     this.setState({
       formData: {
-        file
-      }
+        file,
+      },
     });
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.onSetActivePlatform();
   }
- 
+
   componentDidUpdate(prevProps, prevState) {
     if (!prevState.formData.file && this.state.formData.file) {
       this.props.onImageUpload(this.state.formData, this.props.history);
@@ -47,11 +48,16 @@ class CV extends Component {
   }
 
   render() {
-    if(this.props.loading){
+    if (this.props.loading) {
       return (
         <div className={classes["spinner"]}>
-          <img src={Spinner} alt="loading" />
-          <p className={classes["spinner__text"]}>Bringing you similar images from the web. Our AI algorithms are at work...</p>
+          <div>
+            <Spinner />
+            <p className={classes["spinner__text"]}>
+              Bringing you similar images from the web. Our AI algorithms are at
+              work...
+            </p>
+          </div>
         </div>
       );
     }
@@ -90,18 +96,18 @@ class CV extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
     uploadedImageId: state.cv.uploadedImageId,
-    loading: state.cv.imageUploading
-  }
-}
+    loading: state.cv.imageUploading,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onImageUpload: (data, history) => dispatch(actions.asyncCvImageUploadStart(data, history)),
-    onSetActivePlatform: () => dispatch(actions.setActivePlatform("cv"))
+    onImageUpload: (data, history) =>
+      dispatch(actions.asyncCvImageUploadStart(data, history)),
+    onSetActivePlatform: () => dispatch(actions.setActivePlatform("cv")),
     // onClearPreviousSearch: () => dispatch(actions.cvClearPreviousSearch())
   };
 };
