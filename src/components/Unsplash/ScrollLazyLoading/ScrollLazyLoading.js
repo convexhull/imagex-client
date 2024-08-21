@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import Spinner from "../../UI/Spinner/Spinner";
 import ImageGrid from "../../Unsplash/ImageGrid/ImageGrid";
-import AwsSpinner from "../../UI/AwsSpinner/spinner.gif";
 import * as actions from "../../../store/actions/index";
 import classes from "./ScrollLazyLoading.module.css";
 import EndOfResults from "../../UI/EndOfResults/EndOfResults";
@@ -56,7 +56,7 @@ class ScrollLazyLoading extends React.Component {
       <React.Fragment>
         <ImageGrid />
         <div ref={this.loaderRef} className={spinnerClasses.join(" ")}>
-          <img src={AwsSpinner} alt="spinner gif" />
+          <Spinner />
         </div>
         {endOfResults}
       </React.Fragment>

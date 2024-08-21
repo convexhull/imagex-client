@@ -1,33 +1,22 @@
 .Loader {
-    height: 200px;
-    background-color: rgb(198, 248, 198);
+  height: 200px;
+  background-color: rgb(198, 248, 198);
 }
-
-
 
 .spinner {
-    margin: 0 auto;
-    width: 540px;
-    height: 360px;
+  margin: 0 auto;
+  width: 100%;
+  height: 360px;
 }
-
 
 .spinner--invisible {
-    display: none;
+  display: none;
 }
-
 
 /*****************MEDIA QUERIES*********************/
 
-
 @media (max-width: 540px) {
-    .spinner {
-        width: 300px;
-        height: auto;
-    }
+  .spinner {
+    height: 180px;
+  }
 }
-
-
-
-
-
