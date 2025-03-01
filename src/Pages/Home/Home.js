@@ -6,14 +6,6 @@ import HeroSection from "../../components/Home/HeroSection/HeroSection";
 import CategoryNavigation from "../../components/Header/CategoryNavigation/CategoryNavigation";
 
 class Home extends Component {
-  state = {
-    keyword: "",
-  };
-
-  formSubmitHandler = (event) => {
-    event.preventDefault();
-  };
-
   render() {
     return (
       <div className={classes.Home}>
